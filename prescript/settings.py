@@ -94,7 +94,7 @@ STATICFILES_DIRS = (
 )
 
 
-TEMPLATE_DIRS = [os.path.join(BASE_DIR, '/prescript/templates')]
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
