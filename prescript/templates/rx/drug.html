@@ -1,0 +1,146 @@
+{% extends 'rx/base.html' %}
+
+{% block title %}Data@thedetail{% endblock %}
+
+{% block header %}
+{% load staticfiles %}
+<!-- Leaflet declarations -->
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+<!--[if lte IE 8]>
+ <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+<![endif]-->
+ <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+<link rel="stylesheet"  media="all" type="text/css" href="{% static 'rx/css/jquery-ui.min.css' %}">
+<link rel="stylesheet" href="{% static 'rx/css/drug_page.css' %}">
+
+ <script>
+var map_url = "{% static 'rx/image/map-uk.png' %}",
+	pill_url = "{% static 'rx/image/pill.png' %}";
+</script>
+
+{% endblock %}
+
+
+
+
+{% block content %}
+{% load humanize %}
+
+<style>
+</style>
+
+
+<div id="text_main">
+<div id="page_title_banner">	
+	<h1>{{drug_detail.chem_name}}</h1>
+</div>
+
+
+
+
+<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.</p>
+
+
+<script type="text/javascript">
+  var NIR_probability={{nir_rx_prob}}
+      drug="{{drug_detail.chem_name}}"
+      chem_type = "{{drug_detail.chem_class}}"
+      drug_use = "{{drug_detail.chem_action|lower}}"
+      NIR_qt_per_100k = 125780
+      ENG_qt_per_100k = "{{nir_rx_prob}}"
+      qt_unit = "capsules"
+      NIR_rx_per_100k = "{{nir_all_rx_per}}"
+      ENG_rx_per_100k = "{{eng_all_rx_per}}";
+</script>
+
+<div id="interactive">
+	<div id="viz_title_div">
+	<h4>100 Prescriptions<span class="info" id="i100">?</span></h4>	
+	</div>
+<script type="text/javascript" src="{% static 'rx/js/pill_graph.js' %}"></script>
+</div>
+
+<h2>Common Uses</h2>
+
+{{drug_detail.drug_uses|safe|linebreaks}}
+
+<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.</p>
+
+
+
+<h2>Possible Risks</h2>
+
+{{drug_detail.drug_warnings|safe|linebreaks}}
+
+<p>His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+
+
+
+
+<div id="map">
+<script type="text/javascript">
+
+		var map = L.map('map',{
+			scrollWheelZoom: false
+		}).fitBounds({{latlon}}, {padding: [10,10]});
+
+	L.tileLayer('http://{s}.tile.cloudmade.com/e87822f63861499982c677d840781aa7/997/256/{z}/{x}/{y}.png', {
+	    attribution: 'GP locations are only accurate to the postcode. Do not use to navigate.',
+	    maxZoom:12
+
+	}).addTo(map);
+
+	var icon = L.icon({
+		iconUrl: "{% static 'rx/image/Marker-Ball-Azure48.png' %}",
+		iconAnchor: [22, 50],
+		/*iconSize: [40, 55],*/
+		popupAnchor: [15, -50],
+	})
+	{% for gp in gps %}	
+	/*var marker2 = L.marker([{{gp.lat}}, {{gp.lon}}]).addTo(map);*/
+	var marker = L.marker([{{gp.lat}}, {{gp.lon}}], {icon: icon}).addTo(map);
+	marker.bindPopup("<span class='popup_prac'>{{gp.gp_name|title}}</span><br>Postcode: {{gp.postcode}}");
+	{% endfor %}
+</script>
+</div>
+
+
+<h3>Top Prescribers</h3>
+<div id="top_table">
+	<table>
+		<tr>
+			<th></th>
+			<th>Practice</th>
+			<th>Postcode</th>
+			<th>Presciptions per 1,000 Patients</th>
+		</tr>
+	{% for gp in gps %}	
+		<tr {% if forloop.counter|divisibleby:2 %}class='even'{% else %}class='odd'{% endif %}>
+			<td>{{forloop.counter}}</td>
+			<td style="width:220px"><a href="{% url 'rx.views.gp' gp.code %}">{{gp.name|title}}</a> </td>
+			<td>{{gp.postcode}}</td>
+			<td style="width:140px; text-align:center;">{{gp.rx_per_1k|floatformat:1|intcomma}}</td>
+		</tr>
+	{% endfor %}	
+	</table>
+
+</div>
+
+<div id="100_dialog" class="help_dialogue" title="100 Prescriptions"><p>This graph models how many of 100 {{drug_detail.chem_name|lower}} prescriptions would be filled in Northern Ireland v. England.<br><br><p>The split is based on the distribution of prescriptions filled from April to June 2013 between the two countries and assumes equal populations for the purpose of a per capita comparison.<br><br><p>The graph is randomly modelled based on probabilty.</div>
+
+
+	
+
+
+<script>
+	$( "#100_dialog" ).dialog({ autoOpen: false, width: 540, maxHeight:500});
+	$( "#i100" ).click(function() {
+  		$( "#100_dialog" ).dialog( "open" );
+	});
+</script>
+
+
+
+</div>
+
+{% endblock %}

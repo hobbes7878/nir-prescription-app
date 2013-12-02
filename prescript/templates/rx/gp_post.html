@@ -1,0 +1,123 @@
+{% extends 'rx/base.html' %}
+
+{% block title %}Data@thedetail{% endblock %}
+
+{% block header %}
+{% load staticfiles %}
+<!-- Leaflet declarations -->
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+<!--[if lte IE 8]>
+ <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+<![endif]-->
+ <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+<link rel="stylesheet" href="{% static 'rx/css/gp_post.css' %}">
+{% endblock %}
+
+
+
+
+
+{% block content %}
+<!-- Temp style -->
+<style>
+</style>
+
+
+<div id="text_main">
+
+{% if gps %}
+
+	<div class="gp_list">
+	<div class="rightsearch">
+		 These are the 10 nearest GPs to you. <br>Which would you like to look at?
+
+	</div>
+	<hr>
+		<ul class = "gplist_name">
+		{% for gp in gps %}
+			<li><a href="{% url 'rx.views.gp' gp.code %}">{{gp.name|title}}</a>
+				<ul class="gplist_post">
+					<li>{{gp.postcode}}</li>
+				</ul>
+			</li> 
+		{% endfor %}
+		</ul>
+	<hr>
+	<div class="wrongsearch">
+		Not here? Try searching by GP name <a href="{% url 'rx.views.gp_search_name' %}">here</a>.
+	</div>
+		
+	</div>
+
+	<div id="map">
+	<script type="text/javascript">
+
+		var map = L.map('map',{
+			scrollWheelZoom: false
+		}).fitBounds({{latlon}}, {padding: [10,10]});
+
+
+		L.tileLayer('http://{s}.tile.cloudmade.com/e87822f63861499982c677d840781aa7/997/256/{z}/{x}/{y}.png', {
+		    attribution: 'GP locations are only accurate to the postcode. Do not use to navigate.',
+		    maxZoom:15
+
+		}).addTo(map);
+
+		var icon = L.icon({
+			iconUrl: "{% static 'rx/image/Marker-Ball-Azure48.png' %}",
+			iconAnchor: [22, 50],
+			/*iconSize: [40, 55],*/
+			popupAnchor: [15, -50],
+		})
+		{% for gp in gps %}	
+		/*var marker2 = L.marker([{{gp.lat}}, {{gp.lon}}]).addTo(map);*/
+		var marker = L.marker([{{gp.lat}}, {{gp.lon}}], {icon: icon}).addTo(map);
+		marker.bindPopup("<span class='popup_prac'>{{gp.name|title}}</span><br>Postcode: {{gp.postcode}}");
+		{% endfor %}
+	</script>
+	</div>
+
+
+
+
+{% else %}
+
+<div id="searchdiv">
+	<h3 class="searchtitle">Enter your full postcode to search nearby GPs.</h3>
+	<form method="get" action="/prescript/gp_search_area/">
+	<div id="tfheader" class="searchbox">
+        	<input type="text" id="tfq" class="tftextinput" name="q" size="21" maxlength="10" value="Search by full postcode"><input type="submit" value=">" class="tfbutton">
+	</div>
+	</form>
+
+{% if search_error %}
+	<span class="searcherror">*Sorry, we couldn't locate your postcode. Please use a different postcode or try searching by name.</span>
+{% endif %}
+
+</div>
+
+<!--Search box script-->
+<script type="text/javascript">
+window.onload = function(){ 
+	//Get submit button
+	var submitbutton = document.getElementById("tfq");
+	//Add listener to submit button
+	if(submitbutton.addEventListener){
+		submitbutton.addEventListener("click", function() {
+			if (submitbutton.value == 'Search by full postcode'){
+				submitbutton.value = '';
+			}
+		});
+	}
+}
+
+</script>
+
+{% endif %}
+
+
+
+
+</div>
+
+{% endblock %}

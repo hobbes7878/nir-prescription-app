@@ -1,0 +1,209 @@
+
+#gp_demographic{
+	margin:30 0;
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+#antimap{
+	float: left;
+	padding-top: 20px;
+}
+
+
+#demo_div{
+	clear:left;
+}
+#address_bar{
+	font-family: Monaco, Consolas, "Lucida Console", monospace;
+	font-size: 14px;
+	margin-bottom: 10px;
+	color:grey;
+	max-width: 725px;
+	float: left;
+}
+#gp_name{
+	float:left;
+	max-width:300px;
+	font-family: Monaco, Consolas, "Lucida Console", monospace;
+	font-size: 44px;
+	text-align: right;
+	padding-right: 20px;
+}
+
+.gp_demodata{
+	float:left;
+	max-width:200px;
+	padding:0px 20px;
+	border-left:2px solid grey;
+	height: 100px;
+}
+.gp_demodata2{
+	float:left;
+	max-width:125px;
+	padding:0px 20px;
+	border-left:2px solid grey;
+	height:100px;
+}
+
+
+.head_cap{
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	font-size: 14px;
+	color:darkred;	
+}
+
+.big_int{
+	font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+	font-size: 70px;
+	font-weight: bold;
+}
+.deprived{
+	font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+
+
+
+#map{
+	margin:0px 10px;
+	float: left;
+	height:175px;
+	width:200px;
+	border: 2px solid #000000;
+}
+
+#table_div{
+	width:100%;
+	clear:left;
+}
+
+table{
+	margin:auto;
+}
+
+th{
+	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+	font-size: 20px;
+	vertical-align: bottom;
+}
+.lower_th th{
+	height: 10px;
+	border-bottom:3px solid darkgrey;
+}
+
+
+.upper_th th{
+
+}
+
+.over_hd{
+	text-align: center;
+	background: #42526C;
+	color:white;
+	font-size: 16px;
+}
+
+
+.top_drug{
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	font-size: 14px;
+	border-spacing: 0px;
+	
+}
+
+.top_drug caption{
+	padding-top: 10px;
+	padding-bottom: 5px;
+	font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+	font-size: 26px;
+	text-align: left;
+	font-style: italic;
+
+}
+tr.even{
+	background-color:lightgrey;
+}
+
+td{
+	padding-left: 10px;
+}
+
+td a{
+	color:darkblue;
+	text-decoration: none;
+}
+
+td a:hover{
+	text-decoration: underline;
+}
+.td_drug{
+	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+	font-size: 20px;
+	width:150px;
+
+}
+.td_rx{
+	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+	font-size: 20px;
+	width:100px;
+}
+
+.td_cost{
+	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+	font-size: 20px;
+	width:100px;
+}
+
+.td_rate{
+	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+	font-size: 20px;
+	width:135px;	
+	padding-left: 10px;
+	text-align: center;
+}
+.td_dep_rank{
+	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+	font-size: 20px;
+	width:150px;	
+	padding-left: 10px;
+	color:darkred;
+	text-align: center;
+}
+
+.td_rank{
+	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+	font-size: 20px;
+	width:135px;	
+	padding-left: 10px;
+	color:darkred;
+	text-align: center;
+}
+
+
+.table_sub{
+	font-size: 12px;
+	color:#333333;
+}
+
+.info{
+	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+	font-size: 15px;
+	color:black;
+	vertical-align: super;
+	cursor:pointer;
+}
+.info{
+	text-decoration: none;
+}
+.info:hover{
+	text-decoration: underline;
+	color:red;
+}
+.help_dialogue{
+	text-align: left;
+	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+	font-size: 18px;
+	font-style: italic;
+}

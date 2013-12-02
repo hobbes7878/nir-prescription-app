@@ -1,0 +1,188 @@
+{% extends 'rx/base.html' %}
+
+{% block title %}Data@thedetail{% endblock %}
+
+{% block header %}
+{% load staticfiles %}
+<!-- Leaflet declarations -->
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+<!--[if lte IE 8]>
+ <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+<![endif]-->
+ <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+
+<link rel="stylesheet"  media="all" type="text/css" href="{% static 'rx/css/jquery-ui.min.css' %}">
+<link rel="stylesheet" href="{% static 'rx/css/gp_page.css' %}">
+{% endblock %}
+
+
+
+
+
+{% block content %}
+<!-- Temp style -->
+<style>
+</style>
+{% load humanize %}
+
+
+<div id="text_main">
+
+<div id="gp_demographic">
+
+	<div id="antimap">
+
+		<div id="address_bar">
+		{{gp_info.add1}}
+		{{gp_info.add2}}
+		{{gp_info.add3}}
+		{{gp_info.postcode}}
+		</div>
+		<div id="demo_div">
+			<div id="gp_name">
+				{{gp_info.name|title}}
+			<!-- Fit font to div height -->
+			<script>
+			$(function() {
+		    var div = $('#gp_name');
+		    var fontSize = parseInt(div.css('font-size'));
+		    do {
+		        fontSize--;
+		        div.css('font-size', fontSize.toString() + 'px');
+		    } while (div.height() >= 100);});
+			</script>
+
+
+			</div>
+			<div class="gp_demodata">
+				<span class="head_cap">
+					Registered Patients
+				</span><br>	
+				<span class="big_int">
+					{{gp_info.patients|intcomma}}
+				</span>
+			</div>
+			<div class="gp_demodata2">
+				<span class="head_cap">
+					Area Deprivation<span class="info" id="ideprive">?</span>
+				</span><br>
+				<span class="deprived">
+					{% if gp_info.deprive == '1' %}Least Deprived{% endif %}	
+					{% if gp_info.deprive == '2' %}Less Deprived{% endif %}	
+					{% if gp_info.deprive == '3' %}More Deprived{% endif %}	
+					{% if gp_info.deprive == '4' %}Most Deprived{% endif %}	
+				</span>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="map">
+	<script type="text/javascript">
+	/*MAP*/
+		var map = L.map('map',{zoomControl:false,
+		scrollWheelZoom: false}).setView([{{gp_info.lat}},{{gp_info.lon}} ], 12);
+
+		L.tileLayer('http://{s}.tile.cloudmade.com/e87822f63861499982c677d840781aa7/997/256/{z}/{x}/{y}.png', {
+		    maxZoom:12
+
+		}).addTo(map);
+
+		var icon = L.icon({
+			iconUrl: "{% static 'rx/image/Marker-Ball-Azure48.png' %}",
+			iconAnchor: [22, 50],
+			/*iconSize: [40, 55],*/
+			popupAnchor: [15, -50],
+		});
+		var marker = L.marker([{{gp_info.lat}}, {{gp_info.lon}}], {icon: icon}).addTo(map);
+	
+
+	</script>
+	</div>
+
+</div>
+
+<br>
+<div id="table_div">
+<table class="top_drug">
+	<caption>Top 10 Prescriptions: Antidepressant, Anti-anxiety & Analgesic Drugs</caption>
+	<thead>
+		<tr class="upper_th">
+			<th></th>
+			<th>Prescriptions</th>
+			<th></th>
+			<th class="over_hd" colspan="3">Prescription Rate</th>
+		</tr>
+		<tr class="lower_th">
+			<th>Drug</th>
+			<th>Written</th>
+			<th>Gross Cost<span class="info" id="icost">?</span></th>
+			<th><span class="table_sub"> Per 1,000 registered patients</span></th>
+			<th><span class="table_sub"> Rank within Deprivation Group<span class="info" id="idgroup">?</span></span></th>
+			<th><span class="table_sub"> Rank among all N. Irish GPs<span class="info" id="iagroup">?</span></span></th>
+			
+		</tr>
+	</thead>
+	<tbody>
+	{% for drug in top_drugs %}
+		<tr  {% if forloop.counter|divisibleby:2 %}class='even'{% else %}class='odd'{% endif %} >
+			<td class="td_drug"><a href="{% url 'rx.views.drug' drug.chem_name %}">{{drug.chem_name}}</a></td>
+			<td class="td_rx">{{drug.prescripts|floatformat:0|intcomma}}</td>
+			<td class="td_cost">£{{drug.cost|floatformat:2|intcomma}}</td>
+			<td class="td_rate">{{drug.rx_per_1k|floatformat:1}}</td>
+			<td class="td_dep_rank">{{drug.deprive_rank|ordinal}}<span class="table_sub"> / {{drug.deprive_group}}</span></td>
+			<td class="td_rank">{{drug.all_rank|ordinal}}<span class="table_sub"> / {{drug.all_prescribing_gps}}</span></td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+</div>
+
+
+<br><br>
+
+
+
+
+
+
+<div id="deprive_dialog" class="help_dialogue" title="Area Deprivation"><p>Area deprivation is assigned according to the employment and income deprivation scores assessed by the Northern Ireland Statistics and Research Agency at the postcode of each GP. <br><br>Groups are determined by quartiles of deprivation scores and range: Most-More-Less-Least deprived.<br><br>The graph below explains further how the groups were determined.<br><br><hr><br><img src="{% static 'rx/image/zgroup.png' %}"></div>
+
+<div id="cost_dialog" class="help_dialogue" title="Gross Cost">Gross cost is the cost of the medicines prescribed and dispensed.</div>
+
+<div id="dgroup_dialog" class="help_dialogue" title="Deprivation Rank">This GP's prescription rate ranked against all GPs within the same deprivation group that have prescribed this medicine.</div>
+
+<div id="agroup_dialog" class="help_dialogue" title="All GPs Rank">This GP's prescription rate ranked against all other GPs that have prescribed this medicine in Northern Ireland.</div>
+
+
+	
+
+
+<script>
+	$( "#deprive_dialog" ).dialog({ autoOpen: false, width: 540, maxHeight:500});
+	$( "#ideprive" ).click(function() {
+  		$( "#deprive_dialog" ).dialog( "open" );
+	});
+
+	$( "#cost_dialog" ).dialog({ autoOpen: false, width: 340, height:120  });
+	$( "#icost" ).click(function() {
+  		$( "#cost_dialog" ).dialog( "open" );
+	});
+
+	$( "#dgroup_dialog" ).dialog({ autoOpen: false, width: 400, height:140 });
+	$( "#idgroup" ).click(function() {
+  		$( "#dgroup_dialog" ).dialog( "open" );
+	});
+
+	$( "#agroup_dialog" ).dialog({ autoOpen: false, width: 400, height:140 });
+	$( "#iagroup" ).click(function() {
+  		$( "#agroup_dialog" ).dialog( "open" );
+	});
+</script>
+
+
+
+
+</div>
+
+{% endblock %}

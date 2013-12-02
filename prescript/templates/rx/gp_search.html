@@ -1,0 +1,132 @@
+{% extends 'rx/base.html' %}
+
+{% block title %}Data@thedetail{% endblock %}
+
+{% block header %}
+{% load staticfiles %}
+<!-- Leaflet declarations -->
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+<!--[if lte IE 8]>
+ <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+<![endif]-->
+ <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+<link rel="stylesheet" href="{% static 'rx/css/gp_search.css' %}">
+<link rel="stylesheet"  media="all" type="text/css" href="{% static 'rx/css/jquery-ui.min.css' %}">
+{% endblock %}
+
+
+
+
+
+{% block content %}
+<!-- Temp style -->
+<style>
+</style>
+
+
+<div id="text_main">
+
+{% if gps %}
+
+<div class="gp_list">
+<div class="rightsearch">
+	{% if mapcenter %}
+	Is this your GP?
+	{% else %}
+	 Which of these is your GP?
+	{% endif %}
+
+</div>
+<hr>
+	<ul class = "gplist_name">
+	{% for gp in gps %}
+		<li><a href="{% url 'rx.views.gp' gp.code %}">{{gp.name|title}}</a>
+			<ul class="gplist_post">
+				<li>{{gp.postcode}}</li>
+			</ul>
+		</li> 
+	{% endfor %}
+	</ul>
+<hr>
+<div class="wrongsearch">
+	{% if mapcenter %}
+	Not it? Try searching by postcode <a href="{% url 'rx.views.gp_search_area' %}">here</a>.
+	{% else %}
+	Not here? Try searching by postcode <a href="{% url 'rx.views.gp_search_area' %}">here</a>.
+	{% endif %}
+</div>
+	
+</div>
+
+<div id="map">
+<script type="text/javascript">
+	{% if mapcenter %}
+		var map = L.map('map',{
+		scrollWheelZoom: false}).setView({{mapcenter}}, 12);
+	{% else %}
+		var map = L.map('map',{
+			scrollWheelZoom: false
+		}).fitBounds({{latlon}}, {padding: [10,10]});
+	{% endif %}
+
+	L.tileLayer('http://{s}.tile.cloudmade.com/e87822f63861499982c677d840781aa7/997/256/{z}/{x}/{y}.png', {
+	    attribution: 'GP locations are only accurate to the postcode. Do not use to navigate.',
+	    maxZoom:12
+
+	}).addTo(map);
+
+	var icon = L.icon({
+		iconUrl: "{% static 'rx/image/Marker-Ball-Azure48.png' %}",
+		iconAnchor: [22, 50],
+		/*iconSize: [40, 55],*/
+		popupAnchor: [15, -50],
+	})
+	{% for gp in gps %}	
+	/*var marker2 = L.marker([{{gp.lat}}, {{gp.lon}}]).addTo(map);*/
+	var marker = L.marker([{{gp.lat}}, {{gp.lon}}], {icon: icon}).addTo(map);
+	marker.bindPopup("<span class='popup_prac'>{{gp.name|title}}</span><br>Postcode: {{gp.postcode}}");
+	{% endfor %}
+</script>
+</div>
+{% else %}
+<div id="searchdiv">
+	<h3 class="searchtitle">Enter a GP name to search.</h3>
+	<form method="get" action="/prescript/gp_search_name/">
+	<div id="tfheader" class="searchbox">
+        	<input type="text" id="tfq" class="tftextinput" name="q" size="21" maxlength="10" value="Search by GP name"><input type="submit" value=">" class="tfbutton">
+	</div>
+	</form>
+
+{% if search_error %}
+	<span class="searcherror">*Sorry, we couldn't locate a GP by that name. Please try a different name or try searching by postcode.</span>
+{% endif %}
+
+</div>
+
+<!--Search box script-->
+<script type="text/javascript">
+window.onload = function(){ 
+	//Get submit button
+	var submitbutton = document.getElementById("tfq");
+	//Add listener to submit button
+	if(submitbutton.addEventListener){
+		submitbutton.addEventListener("click", function() {
+			if (submitbutton.value == 'Search by GP name'){
+				submitbutton.value = '';
+			}
+		});
+	}
+}
+$( "#tfq").autocomplete({ autoFocus: true, delay:200, minLength:3,
+source: ["{{gps_search|safe|title}}"]  });
+</script>
+
+
+
+{% endif %}
+
+
+</div>
+
+
+{% endblock %}

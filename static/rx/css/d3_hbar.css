@@ -1,0 +1,73 @@
+.bar.positive {
+  stroke:black;
+  stroke-width:1;
+  stroke-right-width:4;
+  border-left-width: 0;
+}
+.bar.negative {
+  stroke:black;
+  stroke-width:1;
+  border-right-width: 0;
+}
+.bar:hover{
+  stroke:orange;
+  stroke-width:2;
+}
+.axis text {
+  font: 14px Garamond, serif;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke:black;
+  stroke-width:1px;
+  shape-rendering: crispEdges;
+}
+.x.axis line{
+  stroke: #000;
+}
+.y.axis line{
+  stroke:black;
+}
+.title {
+  font: bold 22px monospace;
+}
+.enter {
+}
+.update {
+  fill: #333;
+}
+.exit {
+  fill: brown;
+}
+.tip{
+  font:  24px monospace, Garamond, serif;
+  opacity:0;
+}
+.lab{
+  font: 16px Garamond, serif;
+}
+.ENG{
+  font: 12px Garamond, serif;
+}
+.instruct{
+  font: 12px Arial, sans-serif; 
+  font-style: italic;
+}
+.pointer{
+  stroke:red;
+  stroke-width:2px;
+  opacity:0;
+  fill:red;
+}
+.pause{
+  stroke:grey;
+  stroke-width:3px;
+  fill:white;
+  opacity: 0;
+}
+.play{
+  stroke:grey;
+  stroke-width:3px;
+  fill:white;
+  opacity:0;

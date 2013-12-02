@@ -1,0 +1,161 @@
+{% extends 'rx/base.html' %}
+
+{% block header %}
+{% load staticfiles %}
+<link rel="stylesheet"  media="all" type="text/css" href="{% static 'rx/css/d3_hbar.css' %}">
+<link rel="stylesheet"  media="all" type="text/css" href="{% static 'rx/css/jquery-ui.min.css' %}">
+
+<!--[if IE]>
+<script type="text/javascript">
+window.location = "{% url 'rx.views.redirect' %}";
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+if ( $.browser.webkit ) {
+  
+  } else {
+  	window.location = "{% url 'rx.views.redirect' %}"
+  }
+</script>
+
+
+{% endblock %}
+
+{% block title %}Data@thedetail{% endblock %}
+
+
+{% block content %}
+
+<style>
+#vizblock1{
+	margin-top: 20px;
+	float:left;
+	padding: 20px;
+}
+#vizblock2{
+	clear:left;
+	float:right;
+	padding-left: 20px;
+	margin-top: 30px;
+}
+</style>
+
+
+
+
+
+<div id="text_main">
+
+
+
+
+
+
+<h1>Drugs, drugs everywhere!</h1>
+
+<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.</p>
+
+<p>His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+
+
+<p>His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+
+
+
+
+<div id="vizblock1"></div>
+<script type="text/javascript" src="{% static 'rx/js/d3_hbar_data1.js' %}"></script>
+<script type="text/javascript" src="{% static 'rx/js/d3_hbar.js' %}"></script>
+
+<h2>Antidepressants</h2>
+<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.</p>
+
+<p>His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+
+<div id="vizblock2"></div>
+<script type="text/javascript" src="{% static 'rx/js/d3_hbar2.js' %}"></script>
+
+<h2>Anti-anxiety Drugs</h2>
+<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.</p>
+
+<p>His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+
+
+<h2>Analgesics</h2>
+
+<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.</p>
+
+<p>His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+	
+
+<br>
+<br>
+<div id="searchdiv">
+<h3 class="searchtitle">Search our data for individual drugs or GPs.</h3>
+{% if search_error %}
+	<form method="get" action="/prescript/drugs/">
+{% else %}
+	<form method="get" action="drugs/">
+{% endif %}
+	<div id="tfheader" class="searchbox">
+        	<input type="text" id="tfq" class="tftextinput2" name="q" size="21" maxlength="120" value="Search for a drug by name"><input type="submit" value=">" class="tfbutton2">
+	</div>
+	</form>
+{% if search_error %}
+	<form method="get" action="/prescript/gp_search_name/">
+{% else %}
+	<form method="get" action="gp_search_name/">
+{% endif %}
+	<div id="tfheader2" class="searchbox">
+    		<input type="text" id="tfr" class="tftextinput2" name="q" size="21" maxlength="120" value="Search for a GP by name"><input type="submit" value=">" class="tfbutton2">
+	</div>
+	</form>
+{% if search_error %}
+	<script>
+	$('html,body').animate({scrollTop: $("#searchdiv").offset().top -40})
+	</script>
+
+	<span class="searcherror">*Sorry, your search did not return any results. Please resubmit with a new search term or try browsing with the menu bar instead.</span>
+{% endif %}
+
+</div>
+<br>
+<br>
+<br>
+<br>
+
+<!--Search box script-->
+<script type="text/javascript">
+window.onload = function(){ 
+	//Get submit button
+	var submitbutton = document.getElementById("tfq");
+	var submitbutton2 = document.getElementById("tfr");
+	//Add listener to submit button
+	if(submitbutton.addEventListener){
+		submitbutton.addEventListener("click", function() {
+			if (submitbutton.value == 'Search for a drug by name'){
+				submitbutton.value = '';
+			}
+		});
+	}
+	if(submitbutton2.addEventListener){
+		submitbutton2.addEventListener("click", function() {
+			if (submitbutton2.value == 'Search for a GP by name'){
+				submitbutton2.value = '';
+			}
+		});
+	}
+}
+
+$( "#tfr").autocomplete({ autoFocus: true, delay:200, minLength:3,
+source: ["{{gps_search|safe|title}}"]  });
+$( "#tfq").autocomplete({ autoFocus: true, delay:200, minLength:3,
+source: ["{{drug_search|safe|title}}"]  });
+
+</script>
+
+
+</div>
+
+{% endblock %}
