@@ -41,8 +41,6 @@ def latlon(gps):
 ## VIEWS ##
 ###########
 
-
-
 def index(request):
 	return render_to_response('rx/index.html', {'links':drug_links(), 'gps_search':gp_choice(), 'drug_search':drug_choice(), 'search_error':False})
 
@@ -67,11 +65,7 @@ def drug(request, chem):
 	return render_to_response('rx/drug.html',{'chem_name':chem,'links':drug_links(), 'drug_detail':drug, 'nir_rx_prob':nir_rx_prob, 'eng_all_rx_per':int(eng_all_rx_per), 'nir_all_rx_per':int(nir_all_rx_per), 'gps':gps, 'latlon':latlon(gps), }) 
 
 def drug_search(request):
-	links_list=[]
-	for ll in drug_links():
-			links_list.append(ll.chem_name.lower())
-
-	if request.GET['q'].lower() in links_list:
+	if request.GET['q'].lower() in [str(e).lower() for e in drug_links()]:
 		drug = Drug_Detail.objects.filter(chem_name__iexact=request.GET['q'])[0]
 		prescripts = Drug_Detail.objects.filter(chem_name__iexact=request.GET['q'])
 
@@ -88,19 +82,13 @@ def drug_search(request):
 
 		gps = TopDrugGPs.objects.filter(chem_name__iexact=request.GET['q']).order_by('-rx_per_1k')[:10]
 
-
 		return render_to_response('rx/drug.html',{'chem_name':request.GET['q'],'links':drug_links(), 'drug_detail':drug, 'nir_rx_prob':nir_rx_prob, 'eng_all_rx_per':int(eng_all_rx_per), 'nir_all_rx_per':int(nir_all_rx_per), 'gps':gps, 'latlon':latlon(gps), }) 
-	
 	else:
 		return render_to_response('rx/index.html', {'links':drug_links(), 'gps_search':gp_choice(), 'drug_search':drug_choice(), 'search_error':True})
 
 
 def gp_search_name(request):
-	links_list=[]
-	links = Drug_Detail.objects.distinct('chem_name')
 	if request.GET:
-		for ll in links:
-				links_list.append(ll.chem_name.lower())
 		gps = TopDrugGPs.objects.distinct('code').filter(name__icontains=request.GET['q'])
 		if gps:
 			mapcenter=[]
@@ -119,10 +107,10 @@ def gp_search_name(request):
 
 
 def gp_search_area(request):
-	links = Drug_Detail.objects.distinct('chem_name')
 	if request.GET:
 		try:
 			post = PostGEO.objects.get(postcode_low__iexact=request.GET['q'].replace(' ',''))
+			
 			## Haversin formula for distance, closest 10 ##
 			gps = TopDrugGPs.objects.raw(''' SELECT *,
 												3956 * 2 * ASIN(SQRT( POW(SIN((%s -
@@ -137,7 +125,6 @@ def gp_search_area(request):
 												where rank = 1
 												ORDER BY distance
 												''', [post.lat,post.lat,post.lon])[:10]	
-	
 
 			return render_to_response('rx/gp_post.html',{'links':drug_links(),'gps':gps,'latlon':latlon(gps)})
 		except:
@@ -148,11 +135,10 @@ def gp_search_area(request):
 
 
 def gp(request,gp_code):
-	links = Drug_Detail.objects.distinct('chem_name')
 	top_drugs = TopDrugGPs.objects.filter(code=gp_code).order_by('code','drug_gp_rank')
 	for td in top_drugs:
 		#################################
-		#Surely there's a better way...
+		#Surely, there's a better way...
 		#################################
 		rankset = TopDrugGPs.objects.order_by('-rx_per_1k').filter(chem_name=td.chem_name)
 		i = 1
@@ -165,7 +151,6 @@ def gp(request,gp_code):
 		td.all_prescribing_gps = len(rankset)
 
 		rankset = TopDrugGPs.objects.order_by('-rx_per_1k').filter(chem_name=td.chem_name).filter(deprive=td.deprive)
-		
 		i = 1
 		for rank in rankset:
 			if rank.code == td.code:
@@ -174,7 +159,9 @@ def gp(request,gp_code):
 			else:
 				i+=1
 		td.deprive_group = len(rankset)
-		#################################
+		############################################
+		#No, there's not, and don't call me Shirley.
+		############################################
 
 	gp_info = top_drugs[0]
 	all_gps = len(TopDrugGPs.objects.distinct('code'))
@@ -184,10 +171,5 @@ def gp(request,gp_code):
 
 
 
-
-
-
-
 def redirect(request):
-
 	return render_to_response('rx/redirect.html')	
