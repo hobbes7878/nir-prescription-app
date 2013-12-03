@@ -61,7 +61,6 @@ def drug(request, chem):
 
 	gps = TopDrugGPs.objects.filter(chem_name__iexact=chem).order_by('-rx_per_1k')[:10]
 	
-	
 	return render_to_response('rx/drug.html',{'chem_name':chem,'links':drug_links(), 'drug_detail':drug, 'nir_rx_prob':nir_rx_prob, 'eng_all_rx_per':int(eng_all_rx_per), 'nir_all_rx_per':int(nir_all_rx_per), 'gps':gps, 'latlon':latlon(gps), }) 
 
 def drug_search(request):

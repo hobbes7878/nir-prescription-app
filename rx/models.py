@@ -28,17 +28,17 @@ class Drug_Detail(models.Model):
 	def __unicode__(self):
 		return self.chem_name
 
-class GP(models.Model):
-	gp_name = models.CharField(max_length=250)
-	postcode = models.CharField(max_length=10)
-	patients = models.FloatField(null=True, default=0)
-	chem_name = models.CharField(max_length=250)
-	lat = models.FloatField()
-	lon = models.FloatField()
-	rank = models.IntegerField()
-	items_per = models.FloatField()
-	def __unicode__(self):
-		return self.chem_name + " - "+self.gp_name
+# class GP(models.Model):
+# 	gp_name = models.CharField(max_length=250)
+# 	postcode = models.CharField(max_length=10)
+# 	patients = models.FloatField(null=True, default=0)
+# 	chem_name = models.CharField(max_length=250)
+# 	lat = models.FloatField()
+# 	lon = models.FloatField()
+# 	rank = models.IntegerField()
+# 	items_per = models.FloatField()
+# 	def __unicode__(self):
+# 		return self.chem_name + " - "+self.gp_name
 
 
 class PostGEO(models.Model):
