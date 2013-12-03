@@ -1,0 +1,73 @@
+.bar2.positive2 {
+  stroke:black;
+  stroke-width:1;
+  stroke-right-width:4;
+  border-left-width: 0;
+}
+.bar2.negative2 {
+  stroke:black;
+  stroke-width:1;
+  border-right-width: 0;
+}
+.bar2:hover{
+  stroke:orange;
+  stroke-width:2;
+}
+.axis2 text {
+  font: 14px Garamond, serif;
+}
+.axis2 path,
+.axis2 line {
+  fill: none;
+  stroke:black;
+  stroke-width:1px;
+  shape-rendering: crispEdges;
+}
+.x2.axis2 line{
+  stroke: #000;
+}
+.y2.axis2 line{
+  stroke:black;
+}
+.title2 {
+  font: bold 22px monospace;
+}
+.enter2 {
+}
+.update2 {
+  fill: #333;
+}
+.exit2 {
+  fill: brown;
+}
+.tip2{
+  font:  24px monospace, Garamond, serif;
+  opacity:0;
+}
+.lab2{
+  font: 16px Garamond, serif;
+}
+.ENG2{
+  font: 12px Garamond, serif;
+}
+.instruct2{
+  font: 12px Arial, sans-serif; 
+  font-style: italic;
+}
+.pointer2{
+  stroke:red;
+  stroke-width:2px;
+  opacity:0;
+  fill:red;
+}
+.pause2{
+  stroke:grey;
+  stroke-width:3px;
+  fill:white;
+  opacity: 0;
+}
+.play2{
+  stroke:grey;
+  stroke-width:3px;
+  fill:white;
+  opacity:0;

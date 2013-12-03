@@ -140,7 +140,6 @@ function update(data) {
             .style("opacity","1")
             .style("fill","black");
           svg.select(".pointer."+ d.name)
-            .transition().duration(100)
             .style("opacity","1");
           svg.selectAll(".instruct")
             .transition().duration(700)
@@ -152,7 +151,6 @@ function update(data) {
             .transition().duration(100)
             .style("opacity","0");
           svg.selectAll(".pointer")
-            .transition().duration(100)
             .style("opacity","0");
           svg.selectAll(".instruct")
             .transition().duration(700)
