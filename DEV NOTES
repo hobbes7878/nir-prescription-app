@@ -1,0 +1,20 @@
+
+######################
+## To Do ##
+######################
+
+CSS:
+_ Replace ? with i on more info. Add tooltip.
+
+DJANGO:
+_
+
+
+PYTHON:
+_ Pair down Models - Two models: one for drugs, one for gps
+	X_ Eliminate GP model - Just need to delete
+
+_ Write model for front page content
+
+_ Look into writing python code to extract json for front page visualizations
+

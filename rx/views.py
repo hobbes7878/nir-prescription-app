@@ -1,26 +1,52 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
-from rx.models import Drug_Detail, GP, PostGEO, TopDrugGPs
+from rx.models import Drug_Detail, PostGEO, TopDrugGPs
 import operator
 
 
-def index(request):
-	links = Drug_Detail.objects.distinct('chem_name')
-	gps = GP.objects.distinct('gp_name')
-	gps_list =[]
-	links_list=[]
-	for gp in gps:
-		gps_list.append(gp.gp_name)
-	gps_search = '","'.join(str(e) for e in gps_list)
-	for ll in links:
-		links_list.append(ll.chem_name)
-	drug_search = '","'.join(str(e) for e in links_list)
+######################
+## HELPER FUNCTIONS ##
+######################
 
-	return render_to_response('rx/index.html', {'links':links, 'gps_search':gps_search, 'drug_search':drug_search, 'search_error':False})
+#Top menu drug links
+def drug_links():
+	links = Drug_Detail.objects.distinct('chem_name')
+	return links
+#GP search name options
+def gp_choice():
+	gps = TopDrugGPs.objects.distinct('name')
+	gps_list =[]
+	for gp in gps:
+		gps_list.append(gp.name)
+	gp_search = '","'.join(str(e) for e in gps_list)
+	return gp_search
+#Drug seach name options
+def drug_choice():
+	drugs = Drug_Detail.objects.distinct('chem_name')
+	drugs_list=[]
+	for dg in drugs:
+		drugs_list.append(dg.chem_name)
+	drug_search = '","'.join(str(e) for e in drugs_list)
+	return drug_search
+#latlon list for map
+def latlon(gps):
+	latlon = []
+	for gp in gps:
+		latlon.append([gp.lat,gp.lon])
+	return latlon
+
+
+###########
+## VIEWS ##
+###########
+
+
+
+def index(request):
+	return render_to_response('rx/index.html', {'links':drug_links(), 'gps_search':gp_choice(), 'drug_search':drug_choice(), 'search_error':False})
 
 def drug(request, chem):
-	links = Drug_Detail.objects.distinct('chem_name')
 	drug = Drug_Detail.objects.filter(chem_name__iexact=chem)[0]
 	prescripts = Drug_Detail.objects.filter(chem_name__iexact=chem)
 
@@ -36,16 +62,13 @@ def drug(request, chem):
 	nir_rx_prob = nir_all_rx_per / (eng_all_rx_per+nir_all_rx_per)
 
 	gps = TopDrugGPs.objects.filter(chem_name__iexact=chem).order_by('-rx_per_1k')[:10]
-	latlon = []
-	for gp in gps:
-		latlon.append([gp.lat,gp.lon])
 	
-	return render_to_response('rx/drug.html',{'chem_name':chem,'links':links, 'drug_detail':drug, 'nir_rx_prob':nir_rx_prob, 'eng_all_rx_per':int(eng_all_rx_per), 'nir_all_rx_per':int(nir_all_rx_per), 'gps':gps, 'latlon':latlon, }) 
+	
+	return render_to_response('rx/drug.html',{'chem_name':chem,'links':drug_links(), 'drug_detail':drug, 'nir_rx_prob':nir_rx_prob, 'eng_all_rx_per':int(eng_all_rx_per), 'nir_all_rx_per':int(nir_all_rx_per), 'gps':gps, 'latlon':latlon(gps), }) 
 
 def drug_search(request):
 	links_list=[]
-	links = Drug_Detail.objects.distinct('chem_name')
-	for ll in links:
+	for ll in drug_links():
 			links_list.append(ll.chem_name.lower())
 
 	if request.GET['q'].lower() in links_list:
@@ -63,23 +86,13 @@ def drug_search(request):
 		nir_all_rx_per = nir_all_rx/(drug.nir_patients/100000)
 		nir_rx_prob = nir_all_rx_per / (eng_all_rx_per+nir_all_rx_per)
 
-		gps = GP.objects.filter(chem_name__iexact=request.GET['q']).order_by('rank')
-		latlon = []
-		for gp in gps:
-			latlon.append([gp.lat,gp.lon])
-		
-		return render_to_response('rx/drug.html',{'chem_name':request.GET['q'],'links':links, 'drug_detail':drug, 'nir_rx_prob':nir_rx_prob, 'eng_all_rx_per':int(eng_all_rx_per), 'nir_all_rx_per':int(nir_all_rx_per), 'gps':gps, 'latlon':latlon, }) 
+		gps = TopDrugGPs.objects.filter(chem_name__iexact=request.GET['q']).order_by('-rx_per_1k')[:10]
+
+
+		return render_to_response('rx/drug.html',{'chem_name':request.GET['q'],'links':drug_links(), 'drug_detail':drug, 'nir_rx_prob':nir_rx_prob, 'eng_all_rx_per':int(eng_all_rx_per), 'nir_all_rx_per':int(nir_all_rx_per), 'gps':gps, 'latlon':latlon(gps), }) 
 	
 	else:
-		gps = GP.objects.distinct('gp_name')
-		gps_list =[]
-		for gp in gps:
-			gps_list.append(gp.gp_name)
-		gps_search = '","'.join(str(e) for e in gps_list)
-		
-		drug_search = '","'.join(str(e) for e in links_list)
-
-		return render_to_response('rx/index.html', {'links':links, 'gps_search':gps_search, 'drug_search':drug_search, 'search_error':True})
+		return render_to_response('rx/index.html', {'links':drug_links(), 'gps_search':gp_choice(), 'drug_search':drug_choice(), 'search_error':True})
 
 
 def gp_search_name(request):
@@ -90,37 +103,17 @@ def gp_search_name(request):
 				links_list.append(ll.chem_name.lower())
 		gps = TopDrugGPs.objects.distinct('code').filter(name__icontains=request.GET['q'])
 		if gps:
-			latlon = []
-			for gp in gps:
-				latlon.append([gp.lat,gp.lon])
 			mapcenter=[]
-			if len(latlon)==1:
-				mapcenter = latlon[0]
-			return render_to_response('rx/gp_search.html', {'gps':gps, 'latlon':latlon, 'mapcenter':mapcenter, 'links':links})
+			if len(latlon(gps))==1:
+				mapcenter = latlon(gps)[0]
+			return render_to_response('rx/gp_search.html', {'gps':gps, 'latlon':latlon(gps), 'mapcenter':mapcenter, 'links':drug_links()})
 		else:
 			if request.META['HTTP_REFERER'][-10:] == 'prescript/':
-				gps = GP.objects.distinct('gp_name')
-				gps_list =[]
-				for gp in gps:
-					gps_list.append(gp.gp_name)
-				gps_search = '","'.join(str(e) for e in gps_list)
-				
-				drug_search = '","'.join(str(e) for e in links_list)
-				return render_to_response('rx/index.html', {'links':links, 'gps_search':gps_search, 'drug_search':drug_search, 'search_error':True})
+				return render_to_response('rx/index.html', {'links':drug_links(), 'gps_search':gp_choice(), 'drug_search':drug_choice(), 'search_error':True})
 			else:
-				gps = GP.objects.distinct('gp_name')
-				gps_list =[]
-				for gp in gps:
-					gps_list.append(gp.gp_name)
-				gps_search = '","'.join(str(e) for e in gps_list)
-			 	return render_to_response('rx/gp_search.html',{'links':links, 'gps_search':gps_search,'search_error':True})
+			 	return render_to_response('rx/gp_search.html',{'links':drug_links(), 'gps_search':gp_choice(),'search_error':True})
 	else:
-		gps = GP.objects.distinct('gp_name')
-		gps_list =[]
-		for gp in gps:
-			gps_list.append(gp.gp_name)
-		gps_search = '","'.join(str(e) for e in gps_list)
-		return render_to_response('rx/gp_search.html',{'links':links, 'gps_search':gps_search,})
+		return render_to_response('rx/gp_search.html',{'links':drug_links(), 'gps_search':gp_choice(),})
 
 
 
@@ -144,16 +137,13 @@ def gp_search_area(request):
 												where rank = 1
 												ORDER BY distance
 												''', [post.lat,post.lat,post.lon])[:10]	
+	
 
-			latlon = []
-			for gp in gps:
-				latlon.append([gp.lat,gp.lon])		
-
-			return render_to_response('rx/gp_post.html',{'links':links,'gps':gps,'latlon':latlon})
+			return render_to_response('rx/gp_post.html',{'links':drug_links(),'gps':gps,'latlon':latlon(gps)})
 		except:
-			return render_to_response('rx/gp_post.html',{'links':links,'search_error':True})
+			return render_to_response('rx/gp_post.html',{'links':drug_links(),'search_error':True})
 	else: 
-		return render_to_response('rx/gp_post.html',{'links':links})
+		return render_to_response('rx/gp_post.html',{'links':drug_links()})
 
 
 
@@ -161,10 +151,10 @@ def gp(request,gp_code):
 	links = Drug_Detail.objects.distinct('chem_name')
 	top_drugs = TopDrugGPs.objects.filter(code=gp_code).order_by('code','drug_gp_rank')
 	for td in top_drugs:
-	
-		#surely there's a better way...
+		#################################
+		#Surely there's a better way...
+		#################################
 		rankset = TopDrugGPs.objects.order_by('-rx_per_1k').filter(chem_name=td.chem_name)
-
 		i = 1
 		for rank in rankset:
 			if rank.code == td.code:
@@ -173,7 +163,6 @@ def gp(request,gp_code):
 			else:
 				i+=1
 		td.all_prescribing_gps = len(rankset)
-
 
 		rankset = TopDrugGPs.objects.order_by('-rx_per_1k').filter(chem_name=td.chem_name).filter(deprive=td.deprive)
 		
@@ -185,12 +174,13 @@ def gp(request,gp_code):
 			else:
 				i+=1
 		td.deprive_group = len(rankset)
+		#################################
 
 	gp_info = top_drugs[0]
 	all_gps = len(TopDrugGPs.objects.distinct('code'))
 	top_drugs_sorted = sorted(top_drugs, key=operator.attrgetter('deprive_rank'))[:10]
 
-	return render_to_response('rx/gp.html', { 'links':links, 'gp_code':gp_code, 'top_drugs':top_drugs_sorted, 'gp_info':gp_info, 'all_gps':all_gps })
+	return render_to_response('rx/gp.html', { 'links':drug_links(), 'gp_code':gp_code, 'top_drugs':top_drugs_sorted, 'gp_info':gp_info, 'all_gps':all_gps })
 
 
 
