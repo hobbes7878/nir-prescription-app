@@ -64,7 +64,7 @@
 			</div>
 			<div class="gp_demodata2">
 				<span class="head_cap">
-					Area Deprivation<span class="info" id="ideprive">?</span>
+					Area Deprivation<span class="info" id="ideprive"><img src="{% static 'rx/image/i.png' %}" ></span>
 				</span><br>
 				<span class="deprived">
 					{% if gp_info.deprive == '1' %}Least Deprived{% endif %}	
@@ -116,10 +116,10 @@
 		<tr class="lower_th">
 			<th>Drug</th>
 			<th>Written</th>
-			<th>Gross Cost<span class="info" id="icost">?</span></th>
+			<th>Gross Cost<span class="info" id="icost"><img src="{% static 'rx/image/i.png' %}" ></span></th>
 			<th><span class="table_sub"> Per 1,000 registered patients</span></th>
-			<th><span class="table_sub"> Rank within Deprivation Group<span class="info" id="idgroup">?</span></span></th>
-			<th><span class="table_sub"> Rank among all N. Irish GPs<span class="info" id="iagroup">?</span></span></th>
+			<th><span class="table_sub"> Rank within Deprivation Group<span class="info" id="idgroup"><img src="{% static 'rx/image/i.png' %}" ></span></span></th>
+			<th><span class="table_sub"> Rank among all N. Irish GPs<span class="info" id="iagroup"><img src="{% static 'rx/image/i.png' %}" ></span></span></th>
 			
 		</tr>
 	</thead>
