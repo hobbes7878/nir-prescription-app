@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from rx.models import Drug_Detail, PostGEO, TopDrugGPs
 import operator
+from django.template import RequestContext
 
 
 ######################
@@ -42,7 +43,7 @@ def latlon(gps):
 ###########
 
 def index(request):
-	return render_to_response('rx/index.html', {'links':drug_links(), 'gps_search':gp_choice(), 'drug_search':drug_choice(), 'search_error':False})
+	return render_to_response('rx/index.html', {'links':drug_links(), 'gps_search':gp_choice(), 'drug_search':drug_choice(), 'search_error':False}, context_instance=RequestContext(request))
 
 def drug(request, chem):
 	drug = Drug_Detail.objects.filter(chem_name__iexact=chem)[0]

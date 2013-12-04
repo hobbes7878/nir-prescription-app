@@ -50,8 +50,8 @@
 	   </li>
 	   <li><a href='.'><span>Share</span></a>
 	      <ul>
-	         <li><a href="http://twitter.com/home?status=Drugs%20{% url 'rx.views.index' %}"><span>Twitter</span></a></li>
-	         <li><a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]={% url 'rx.views.index' %}&p[images][0]=&p[title]=Link&p[summary]="><span>Facebook</span></a></li>
+	         <li><a href="http://twitter.com/home?status=Drugs%20{{ request.get_full_path }}"><span>Twitter</span></a></li>
+	         <li><a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]={{ request.get_full_path }}&p[images][0]=&p[title]=Link&p[summary]="><span>Facebook</span></a></li>
 	      </ul>
 	   </li>
 	</ul>
