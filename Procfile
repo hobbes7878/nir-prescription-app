@@ -1,1 +1,1 @@
-web: gunicorn prescript.wsgi
+web: newrelic-admin run-program gunicorn prescript.wsgi

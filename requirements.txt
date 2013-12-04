@@ -10,4 +10,4 @@ mechanize==0.2.5
 South==0.8.2
 pycurl==7.19.0
 simplejson==2.3.2
-
+newrelic
