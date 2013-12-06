@@ -17,9 +17,13 @@
 	font-family: Monaco, Consolas, "Lucida Console", monospace;
 	font-size: 14px;
 	margin-bottom: 10px;
-	color:grey;
+	padding-top: 5px;
+	padding-left:5px;
+	padding-right: 5px;
+	color:white;
 	max-width: 725px;
 	float: left;
+	background-color: #999999;
 }
 #gp_name{
 	float:left;
@@ -74,14 +78,21 @@
 	border: 2px solid #000000;
 }
 
+#table_container{
+	width: 100%;
+	margin:0 auto;
+}
 #table_div{
-	width:100%;
+	margin:0 auto;
+	width:850px;
 	clear:left;
 }
 
 table{
-	margin:auto;
+
 }
+
+
 
 th{
 	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
@@ -91,37 +102,68 @@ th{
 .lower_th th{
 	height: 10px;
 	border-bottom:3px solid darkgrey;
+	cursor:pointer;
 }
 
+.lower_th th:hover{
+	border-bottom-color: darkred;
+}
 
-.upper_th th{
+.table_sub{
+	font-size: 12px;
+	color:#333333;
+}
+
+.table_sub:hover{
+	border-bottom-color: darkred;
+}
+
+.upper_th td{
+	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+	font-size: 20px;
+	vertical-align: bottom;
+	padding-left: 0px;
+	margin-left: 0px;
 
 }
+thead.zero span{
+	display:none;
+	}
+
+thead.zero td{
+	display:none;
+	}
+
 
 .over_hd{
 	text-align: center;
 	background: #42526C;
 	color:white;
 	font-size: 16px;
+
 }
 
 
-.top_drug{
+#top_drug{
 	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
 	font-size: 14px;
 	border-spacing: 0px;
 	
 }
 
-.top_drug caption{
+#top_drug caption{
 	padding-top: 10px;
 	padding-bottom: 5px;
 	font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
 	font-size: 26px;
 	text-align: left;
 	font-style: italic;
-
 }
+tbody{
+	max-height:50px;
+	overflow-y:scroll;
+}
+
 tr.even{
 	background-color:lightgrey;
 }
@@ -182,25 +224,17 @@ td a:hover{
 }
 
 
-.table_sub{
-	font-size: 12px;
-	color:#333333;
-}
+
 
 .info{
 	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
 	font-size: 15px;
 	color:black;
 	vertical-align: super;
-	cursor:pointer;
+	cursor: pointer;
+	z-index: 99999990;
 }
-.info{
-	text-decoration: none;
-}
-.info:hover{
-	text-decoration: underline;
-	color:red;
-}
+
 .help_dialogue{
 	text-align: left;
 	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;

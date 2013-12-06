@@ -103,15 +103,18 @@
 </div>
 
 <br>
+<h4>Top Prescriptions: Antidepressant, Anti-anxiety & Analgesic Drugs</h4>
+<div id="table_container">
 <div id="table_div">
-<table class="top_drug">
-	<caption>Top 10 Prescriptions: Antidepressant, Anti-anxiety & Analgesic Drugs</caption>
-	<thead>
+	<script type="text/javascript" src="{% static 'rx/js/jquery.tablesorter.js' %}"></script>
+	<script type="text/javascript" src="{% static 'rx/js/jquery.tablesorter.scroller.js' %}"></script>
+<table id="top_drug" class="tablesorter">	
+	<thead class="zero">
 		<tr class="upper_th">
-			<th></th>
-			<th>Prescriptions</th>
-			<th></th>
-			<th class="over_hd" colspan="3">Prescription Rate</th>
+			<td style="width:23px"></td>
+			<td>Prescriptions</td>
+			<td></td>
+			<td class="over_hd" colspan="3">Prescription Rate</td>
 		</tr>
 		<tr class="lower_th">
 			<th>Drug</th>
@@ -119,8 +122,7 @@
 			<th>Gross Cost<span class="info" id="icost"><img src="{% static 'rx/image/i.png' %}" ></span></th>
 			<th><span class="table_sub"> Per 1,000 registered patients</span></th>
 			<th><span class="table_sub"> Rank within Deprivation Group<span class="info" id="idgroup"><img src="{% static 'rx/image/i.png' %}" ></span></span></th>
-			<th><span class="table_sub"> Rank among all N. Irish GPs<span class="info" id="iagroup"><img src="{% static 'rx/image/i.png' %}" ></span></span></th>
-			
+			<th><span class="table_sub"> Rank among all N. Irish GPs<span class="info" ><img id="iagroup" src="{% static 'rx/image/i.png' %}" ></span></span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -136,8 +138,47 @@
 	{% endfor %}
 	</tbody>
 </table>
-</div>
 
+<script>
+		$.tablesorter.addParser({
+	            id: "ordinalNumber",
+	            is: function (s) {
+	                return false;
+	            },
+	            format: function (s) {
+	            	var regex = /^([0-9]+)[a-z]+/
+	                return regex.exec(s)[1];
+	            },
+	            type: "numeric"
+        	});
+		$.tablesorter.addParser({
+	            id: "cleanNumber",
+	            is: function (s) {
+	                return false;
+	            },
+	            format: function (s) {
+	                return parseFloat(s.replace("£","").replace(",",""));
+	            },
+	            type: "numeric"
+        	});
+	$(document).ready(function() 
+	    { 
+	        $("#top_drug").tablesorter({
+	        							headers :{
+	        								1: {sorter:'cleanNumber'},
+	        								2: {sorter:'cleanNumber'},
+	        								4: {sorter:'ordinalNumber'},
+	        								5: {sorter:'ordinalNumber'},
+	        							},
+	        							sortList: [[4,0]], 
+	        							scrollHeight: 232,
+	        							widgets: ['zebra', 'scroller']} ); 
+	    } 
+	);     
+</script>
+
+</div>
+</div>
 
 <br><br>
 
@@ -159,6 +200,8 @@
 
 
 <script>
+$(window).load(function () {
+
 	$( "#deprive_dialog" ).dialog({ autoOpen: false, width: 540, maxHeight:500});
 	$( "#ideprive" ).click(function() {
   		$( "#deprive_dialog" ).dialog( "open" );
@@ -178,6 +221,8 @@
 	$( "#iagroup" ).click(function() {
   		$( "#agroup_dialog" ).dialog( "open" );
 	});
+
+});
 </script>
 
 

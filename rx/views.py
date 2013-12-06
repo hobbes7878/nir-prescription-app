@@ -165,7 +165,7 @@ def gp(request,gp_code):
 
 	gp_info = top_drugs[0]
 	all_gps = len(TopDrugGPs.objects.distinct('code'))
-	top_drugs_sorted = sorted(top_drugs, key=operator.attrgetter('deprive_rank'))[:10]
+	top_drugs_sorted = sorted(top_drugs, key=operator.attrgetter('deprive_rank'))
 
 	return render_to_response('rx/gp.html', { 'links':drug_links(), 'gp_code':gp_code, 'top_drugs':top_drugs_sorted, 'gp_info':gp_info, 'all_gps':all_gps })
 

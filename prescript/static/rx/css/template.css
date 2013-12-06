@@ -5,6 +5,18 @@ html{color:#000;background:#FFF}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre
 http://yui.yahooapis.com/2.9.0/build/reset/reset-min.css
  */
 
+
+
+
+
+
+
+
+
+
+
+
+
 /*--- Default Page CSS ---*/
 
 html, body, div, span, applet, object, iframe,
@@ -86,7 +98,7 @@ body {
   border: 0px;
   margin: 0px;
   padding: 0px;
-  font: 67.5% 'Lucida Sans Unicode', 'Bitstream Vera Sans', 'Trebuchet Unicode MS', 'Lucida Grande', Verdana, Helvetica, sans-serif;
+  font: 67.5% Verdana, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: bold;
   width: 950px;
@@ -194,7 +206,7 @@ body {
 
 
 #text_main h1, h2, h3, h4, h5 {
-  font-family: "Bodoni MT", Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif;
+  font-family: "Times New Roman", serif;
   font-style: italic;
   text-align: center;
   padding-bottom: 10px;
@@ -223,7 +235,7 @@ h5{
 }
 
 #text_main p{
-  font-family: "Bodoni MT", Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif;
+  font-family: 'Lora', "Times New Roman", serif;
   font-size: 20px;
   padding-bottom:30px;
 }
