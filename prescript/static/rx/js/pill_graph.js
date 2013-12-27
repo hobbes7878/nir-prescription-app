@@ -6,7 +6,7 @@ var w = 400,
     h = 400,
     fill = d3.scale.category10(),
     nodes = [],
-    foci = [{x: 120, y: 160}, {x: 250, y: 275}];
+    foci = [{x: 120, y: 160}, {x: 240, y: 250}];
 
 
 
@@ -152,7 +152,7 @@ var draw = setInterval(
 
   clearInterval(draw);
   }
-}, 400);
+}, 300);
 
 /*Slider*/
 box = vis.append("g")

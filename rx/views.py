@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
-from rx.models import Drug_Detail, PostGEO, TopDrugGPs
-import operator
 from django.template import RequestContext
+from rx.models import Drug_Detail, PostGEO, TopDrugGPs, Drug_Stat, Fatal_Stat
+import operator
+import re
+
+
 
 
 ######################
@@ -36,6 +39,20 @@ def latlon(gps):
 	for gp in gps:
 		latlon.append([gp.lat,gp.lon])
 	return latlon
+#Regex gets placename from address fields 
+def get_city(gps):
+	for gp in gps:
+		#compiles address, removes extra spaces
+		add =(gp.add1 +" "+ gp.add2 +" "+ gp.add3+" "+gp.postcode).replace("  "," ").replace("  "," ")
+		#removes common street names
+		streets = [' street ',' st ',' rd ',' road' ,' ave ',' avenue ', ' estate ']
+		for street in streets:
+			add = re.sub(r'%s' %street,r' ',add,flags=re.I)
+		#removes counties
+		address = re.sub(r'(.+ )[Cc][Oo]\.* .+ (BT.+)$',r'\1\2', add)
+		#Pull closest placename to Postcode
+		gp.city = re.sub(r'.+ ([A-Za-z]+) BT\d.+',r'\1',address)
+	return gps
 
 
 ###########
@@ -48,6 +65,19 @@ def index(request):
 def drug(request, chem):
 	drug = Drug_Detail.objects.filter(chem_name__iexact=chem)[0]
 	prescripts = Drug_Detail.objects.filter(chem_name__iexact=chem)
+	drug_stat = Drug_Stat.objects.filter(chem_name__iexact=chem)[0]
+
+	if chem in [f.chem_name for f in Fatal_Stat.objects.all()]:
+		fatal = Fatal_Stat.objects.filter(chem_name__iexact=chem)[0]
+		generic = False
+	elif drug_stat.chem_action in [f.chem_name for f in Fatal_Stat.objects.all()]:
+		fatal = Fatal_Stat.objects.filter(chem_name__iexact=drug_stat.chem_action)[0]
+		generic = True
+	else:
+		fatal=''
+		generic = False
+		
+
 
 	nir_all_rx = 0
 	eng_all_rx = 0
@@ -60,14 +90,25 @@ def drug(request, chem):
 	nir_all_rx_per = nir_all_rx/(drug.nir_patients/100000)
 	nir_rx_prob = nir_all_rx_per / (eng_all_rx_per+nir_all_rx_per)
 
-	gps = TopDrugGPs.objects.filter(chem_name__iexact=chem).order_by('-rx_per_1k')[:10]
+	gps = get_city(TopDrugGPs.objects.filter(chem_name__iexact=chem).order_by('-rx_per_1k')[:10])
 	
-	return render_to_response('rx/drug.html',{'chem_name':chem,'links':drug_links(), 'drug_detail':drug, 'nir_rx_prob':nir_rx_prob, 'eng_all_rx_per':int(eng_all_rx_per), 'nir_all_rx_per':int(nir_all_rx_per), 'gps':gps, 'latlon':latlon(gps), }) 
+	return render_to_response('rx/drug.html',{'fatal':fatal, 'generic':generic, 'chem_name':chem,'links':drug_links(), 'drug_detail':drug, 'nir_rx_prob':nir_rx_prob, 'eng_all_rx_per':int(eng_all_rx_per), 'nir_all_rx_per':int(nir_all_rx_per), 'gps':gps, 'latlon':latlon(gps),'drug_stat':drug_stat,}) 
 
 def drug_search(request):
 	if request.GET['q'].lower() in [str(e).lower() for e in drug_links()]:
 		drug = Drug_Detail.objects.filter(chem_name__iexact=request.GET['q'])[0]
 		prescripts = Drug_Detail.objects.filter(chem_name__iexact=request.GET['q'])
+		drug_stat = Drug_Stat.objects.filter(chem_name__iexact=chem)[0]
+
+		if chem in [f.chem_name for f in Fatal_Stat.objects.all()]:
+			fatal = Fatal_Stat.objects.filter(chem_name__iexact=chem)[0]
+			generic = False
+		elif drug_stat.chem_action in [f.chem_name for f in Fatal_Stat.objects.all()]:
+			fatal = Fatal_Stat.objects.filter(chem_name__iexact=drug_stat.chem_action)[0]
+			generic = True
+		else:
+			fatal=''
+			generic = False
 
 		nir_all_rx = 0
 		eng_all_rx = 0
@@ -80,16 +121,18 @@ def drug_search(request):
 		nir_all_rx_per = nir_all_rx/(drug.nir_patients/100000)
 		nir_rx_prob = nir_all_rx_per / (eng_all_rx_per+nir_all_rx_per)
 
-		gps = TopDrugGPs.objects.filter(chem_name__iexact=request.GET['q']).order_by('-rx_per_1k')[:10]
+		gps = get_city(TopDrugGPs.objects.filter(chem_name__iexact=request.GET['q']).order_by('-rx_per_1k')[:10])
 
-		return render_to_response('rx/drug.html',{'chem_name':request.GET['q'],'links':drug_links(), 'drug_detail':drug, 'nir_rx_prob':nir_rx_prob, 'eng_all_rx_per':int(eng_all_rx_per), 'nir_all_rx_per':int(nir_all_rx_per), 'gps':gps, 'latlon':latlon(gps), }) 
+
+
+		return render_to_response('rx/drug.html',{'fatal':fatal, 'generic':generic, 'chem_name':request.GET['q'],'links':drug_links(), 'drug_detail':drug, 'nir_rx_prob':nir_rx_prob, 'eng_all_rx_per':int(eng_all_rx_per), 'nir_all_rx_per':int(nir_all_rx_per), 'gps':gps, 'latlon':latlon(gps), 'drug_stat':drug_stat,}) 
 	else:
 		return render_to_response('rx/index.html', {'links':drug_links(), 'gps_search':gp_choice(), 'drug_search':drug_choice(), 'search_error':True})
 
 
 def gp_search_name(request):
 	if request.GET:
-		gps = TopDrugGPs.objects.distinct('code').filter(name__icontains=request.GET['q'])
+		gps = get_city(TopDrugGPs.objects.distinct('code').filter(name__icontains=request.GET['q']))
 		if gps:
 			mapcenter=[]
 			if len(latlon(gps))==1:
@@ -112,7 +155,7 @@ def gp_search_area(request):
 			post = PostGEO.objects.get(postcode_low__iexact=request.GET['q'].replace(' ',''))
 			
 			## Haversin formula for distance, closest 10 ##
-			gps = TopDrugGPs.objects.raw(''' SELECT *,
+			gps = get_city(TopDrugGPs.objects.raw(''' SELECT *,
 												3956 * 2 * ASIN(SQRT( POW(SIN((%s -
 												abs(gps.lat)) * pi()/180 / 2),2) + 
 												COS(%s * pi()/180 ) * COS(abs(gps.lat) * 
@@ -124,7 +167,7 @@ def gp_search_area(request):
 													FROM rx_topdruggps) as gps
 												where rank = 1
 												ORDER BY distance
-												''', [post.lat,post.lat,post.lon])[:10]	
+												''', [post.lat,post.lat,post.lon])[:10]	)
 
 			return render_to_response('rx/gp_post.html',{'links':drug_links(),'gps':gps,'latlon':latlon(gps)})
 		except:

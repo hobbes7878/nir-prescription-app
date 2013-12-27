@@ -24,7 +24,9 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 
 
 {% block content %}
+
 {% load humanize %}
+{% load rx_extras %}
 
 <style>
 </style>
@@ -33,12 +35,12 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 <div id="text_main">
 <div id="page_title_banner">	
 	<h1>{{drug_detail.chem_name}}</h1>
+	<span class="aka">
+	aka {{drug_stat.drug_names|title}}
+	</span>
 </div>
 
-
-
-
-<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.</p>
+{{drug_stat.drug_description|safe|linebreaks}}
 
 
 <script type="text/javascript">
@@ -54,28 +56,143 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 </script>
 
 <div id="interactive">
-	<div id="viz_title_div">
-	<h4>100 Prescriptions<span class="info" id="i100"><img src="{% static 'rx/image/i.png' %}" ></span></h4>	
-	</div>
+<!-- 	<div id="viz_title_div">
+<h4>100 Prescriptions<span class="info" id="i100"><img src="{% static 'rx/image/i.png' %}" ></span></h4>	
+</div> -->
 <script type="text/javascript" src="{% static 'rx/js/pill_graph.js' %}"></script>
 </div>
 
-<h2>Common Uses</h2>
 
-{{drug_detail.drug_uses|safe|linebreaks}}
+<hr class="styled_hr">
+<h3>100 Prescriptions</h3>
+<div id="bigint">
+{{nir_rx_prob|percentize}}
+</div>
 
-<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.</p>
+<p style="font-size:19px;">If a single GP had an equal number of registered patients from Northern Ireland and England, <span class="smallint">{{nir_rx_prob|percentize}}</span> out of every 100 prescriptions for {{drug_stat.chem_name}} would be filled by Northern Irish patients.</p>
+
+<p>
+{% if drug_stat.significance < .05 %}
+	That difference in per capita prescription rates is statistically significant, meaning the difference is unlikely explained by random chance. 
+{% else %}
+	That difference in per capita prescription rates is <u>not</u> statistically significant, meaning the difference could be explained by random chance.
+{% endif %} 
+<p>The graph at right models that difference for a random collection of 100 prescriptions.
+
+<hr class="styled_hr">
+<h2>Drug Facts</h2>
+
+
+<div class="fact_block">
+
+<div class="text_block">
+<div id='uses'>
+	<h5>Commonly Used to Treat</h5>
+	<div class="lab_pad">
+	{{drug_stat.drug_uses|safe}}
+	<span class="sub_source">
+		SOURCE: National Health Services
+	</span>
+	</div>
+</div>
+
+<div id='warnings'>
+	<h5>Common Warnings</h5>
+	<div class="lab_pad">
+	{{drug_stat.drug_warnings|safe|linebreaks}}
+	<span class="sub_source">
+		SOURCE: National Health Services
+	</span>
+	</div>
+</div>
+
+<div class="fatal_div">
+	{% if generic %}
+		<h5>Drug Fatalities*</h5>
+	{% else %}
+		<h5>Drug Fatalities</h5>
+	{% endif %}
+
+	<div class="lab_pad">
+	<span class="fatal_sub">Due to drug misuse or other drug-related cause</span>
+	{% if fatal.f2000 > 0 %}
+		<script type="text/javascript">
+		var fatal_data = {fatalities:[
+							{"year":"2000","value":{{fatal.f2000}} },
+							{"year":"2001","value":{{fatal.f2001}} },
+							{"year":"2002","value":{{fatal.f2002}} },
+							{"year":"2003","value":{{fatal.f2003}} },
+							{"year":"2004","value":{{fatal.f2004}} },
+							{"year":"2005","value":{{fatal.f2005}} },
+							{"year":"2006","value":{{fatal.f2006}} },
+							{"year":"2007","value":{{fatal.f2007}} },
+							{"year":"2008","value":{{fatal.f2008}} },
+							{"year":"2009","value":{{fatal.f2009}} },
+							{"year":"2010","value":{{fatal.f2010}} },
+							{"year":"2011","value":{{fatal.f2011}} },
+							{"year":"2012","value":{{fatal.f2012}} },
+						]};
+		</script>
+		<script type="text/javascript" src="{% static 'rx/js/fatality.js' %}"></script>
+		{% if generic %}
+		<span class='sub_label'>
+			*For all {{ drug_stat.chem_action|lower }} drugs <br>
+		</span>	
+		{% endif %}
+		<span style="padding-left:0px; " class="sub_source">
+			SOURCE: Northern Ireland Statistics and Research Agency
+		</span>
+	{% else %}
+	Not Recorded
+	{% endif %}
+	</div>
+</div>
+</div>
+<div class='text_block'>
+
+<div class="deprive_div">
+	<h5>Average GP Prescription Rates</h5>
+	<span class="deprive_sub">Prescriptions per 1,000 registered patients<br>By deprivation group</span>
+	<div class="lab_pad">
+	<svg class="chart"></svg>
+	<script type="text/javascript">
+	var data = [{{drug_stat.nir_deprive1_rx_rate|floatformat:1}}, {{drug_stat.nir_deprive2_rx_rate|floatformat:1}}, {{drug_stat.nir_deprive3_rx_rate|floatformat:1}}, {{drug_stat.nir_deprive4_rx_rate|floatformat:1}}];
+	</script>
+	<script type="text/javascript" src="{% static 'rx/js/deprive_chart.js' %}"></script>
+	</div>
+</div>
 
 
 
-<h2>Possible Risks</h2>
+<div id='popular'>
+<h5>Most Common Presentation</h5>
+	<div class="lab_pad">
+	{{drug_stat.nir_top_present|title}}
+	<br>
+	<span class="pop_text">
+	On average
+	<br>
+	<span class="small_bigint">
+	{{drug_stat.nir_top_rxs|monthly|floatformat:0|intcomma}}
+	</span>
+	<br>
+	prescriptions filled each month.
+	</span>
+	</div>
 
-{{drug_detail.drug_warnings|safe|linebreaks}}
 
-<p>His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+</div>
+</div>
+
+
+</div>
 
 
 
+
+
+
+<div class="top_rx">
 
 <div id="map">
 <script type="text/javascript">
@@ -99,38 +216,34 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 	{% for gp in gps %}	
 	/*var marker2 = L.marker([{{gp.lat}}, {{gp.lon}}]).addTo(map);*/
 	var marker = L.marker([{{gp.lat}}, {{gp.lon}}], {icon: icon}).addTo(map);
-	marker.bindPopup("<span class='popup_prac'>{{gp.gp_name|title}}</span><br>Postcode: {{gp.postcode}}");
+	marker.bindPopup("<span class='popup_prac'>{{gp.name|title|mcCap}}</span><br>{{gp.city|title}} - {{gp.postcode}}");
 	{% endfor %}
 </script>
 </div>
-
 
 <h3>Top Prescribers</h3>
 <div id="top_table">
 	<table>
 		<tr>
 			<th></th>
-			<th>Practice</th>
-			<th>Postcode</th>
-			<th>Presciptions per 1,000 Patients</th>
+			<th class="table_prac">Practice</th>
+			<th class="table_locl">Location</th>
+			<th class="table_prescript">Presciption Rate <span class="table_hed_sub">per 1,000 Registered Patients</span></th>
 		</tr>
 	{% for gp in gps %}	
 		<tr {% if forloop.counter|divisibleby:2 %}class='even'{% else %}class='odd'{% endif %}>
 			<td>{{forloop.counter}}</td>
-			<td style="width:220px"><a href="{% url 'rx.views.gp' gp.code %}">{{gp.name|title}}</a> </td>
-			<td>{{gp.postcode}}</td>
+			<td style="width:220px"><a href="{% url 'rx.views.gp' gp.code %}">{{gp.name|title|mcCap}}</a> </td>
+			<td>{{gp.city|title}}</td>
 			<td style="width:140px; text-align:center;">{{gp.rx_per_1k|floatformat:1|intcomma}}</td>
 		</tr>
 	{% endfor %}	
 	</table>
 
 </div>
+</div>
 
-<div id="100_dialog" class="help_dialogue" title="100 Prescriptions"><p>This graph models how many of 100 {{drug_detail.chem_name|lower}} prescriptions would be filled in Northern Ireland v. England.<br><br><p>The split is based on the distribution of prescriptions filled from April to June 2013 between the two countries and assumes equal populations for the purpose of a per capita comparison.<br><br><p>The graph is randomly modelled based on probabilty.</div>
-
-
-	
-
+<!-- <div id="100_dialog" class="help_dialog" title="100 Prescriptions"><p>This graph models how many of 100 {{drug_detail.chem_name|lower}} prescriptions would be filled in Northern Ireland v. England.<br><br><p>The split is based on the distribution of prescriptions filled from April to June 2013 between the two countries and assumes equal populations for the purpose of a per capita comparison.<br><br><p>The graph is randomly modelled based on probabilty.</div>
 
 <script>
 	$( "#100_dialog" ).dialog({ autoOpen: false, width: 540, maxHeight:500});
@@ -138,7 +251,7 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
   		$( "#100_dialog" ).dialog( "open" );
 	});
 </script>
-
+ -->
 
 
 </div>

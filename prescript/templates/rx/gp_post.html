@@ -18,6 +18,9 @@
 
 
 {% block content %}
+
+{% load rx_extras %}
+
 <!-- Temp style -->
 <style>
 </style>
@@ -35,9 +38,9 @@
 	<hr>
 		<ul class = "gplist_name">
 		{% for gp in gps %}
-			<li><a href="{% url 'rx.views.gp' gp.code %}">{{gp.name|title}}</a>
+			<li><a href="{% url 'rx.views.gp' gp.code %}">{{gp.name|mcCap|title}}</a>
 				<ul class="gplist_post">
-					<li>{{gp.postcode}}</li>
+					<li>{{gp.city|title}} - {{gp.postcode}}</li>
 				</ul>
 			</li> 
 		{% endfor %}
@@ -72,7 +75,7 @@
 		{% for gp in gps %}	
 		/*var marker2 = L.marker([{{gp.lat}}, {{gp.lon}}]).addTo(map);*/
 		var marker = L.marker([{{gp.lat}}, {{gp.lon}}], {icon: icon}).addTo(map);
-		marker.bindPopup("<span class='popup_prac'>{{gp.name|title}}</span><br>Postcode: {{gp.postcode}}");
+		marker.bindPopup("<span class='popup_prac'>{{gp.name|title|mcCap}}</span><br>{{gp.city|title}} - {{gp.postcode}}");
 		{% endfor %}
 	</script>
 	</div>

@@ -1,6 +1,7 @@
 from django.db import models
 
-# Create your models here.
+
+#Drug details, consolidated by prescription 
 class Drug_Detail(models.Model):
 	chem_name = models.CharField(max_length=250)
 	chem_class = models.CharField(blank=True, null=True, default=None, max_length=250)
@@ -28,19 +29,7 @@ class Drug_Detail(models.Model):
 	def __unicode__(self):
 		return self.chem_name
 
-# class GP(models.Model):
-# 	gp_name = models.CharField(max_length=250)
-# 	postcode = models.CharField(max_length=10)
-# 	patients = models.FloatField(null=True, default=0)
-# 	chem_name = models.CharField(max_length=250)
-# 	lat = models.FloatField()
-# 	lon = models.FloatField()
-# 	rank = models.IntegerField()
-# 	items_per = models.FloatField()
-# 	def __unicode__(self):
-# 		return self.chem_name + " - "+self.gp_name
-
-
+#Postcode for poorman's geocode
 class PostGEO(models.Model):
 	postcode = models.CharField(max_length=10)
 	postcode_low = models.CharField(max_length=10)
@@ -49,6 +38,7 @@ class PostGEO(models.Model):
 	def __unicode__(self):
 		return self.postcode
 
+#only NIR GPs for GP page
 class TopDrugGPs(models.Model):
 	code = models.CharField(max_length=10)
 	name = models.CharField(max_length=250)
@@ -69,3 +59,43 @@ class TopDrugGPs(models.Model):
 	def __unicode__(self):
 		return self.code + "-" + self.name + "-" + self.chem_name
 
+
+class Drug_Stat(models.Model):
+	chem_name = models.CharField(max_length=250, null=True)
+	nir_total_items = models.FloatField(null=True)
+	nir_total_cost = models.FloatField(null=True)
+	nir_top_present = models.CharField(max_length=250, null=True)
+	nir_top_rxs = models.FloatField(null=True)
+	nir_top_drug = models.CharField(max_length=250, null=True)
+	drug_names = models.CharField(max_length=250, null=True)
+	nir_fatalities = models.IntegerField(null=True)
+	significance = models.FloatField(default=False, null=True)
+	nir_deprive1_rx_rate = models.FloatField(null=True)
+	nir_deprive2_rx_rate = models.FloatField(null=True)
+	nir_deprive3_rx_rate = models.FloatField(null=True)
+	nir_deprive4_rx_rate = models.FloatField(null=True)
+	chem_class = models.CharField(max_length=250, null=True)
+	chem_action = models.CharField(max_length=250, null=True)
+	drug_description = models.TextField(blank=True, null=True, default=None)
+	drug_uses = models.TextField(blank=True, null=True, default=None)
+	drug_warnings = models.TextField(blank=True, null=True, default=None)
+	def __unicode__(self):
+		return self.chem_name
+
+class Fatal_Stat(models.Model):
+	chem_name = models.CharField(max_length=250, null=True)
+	f2000 = models.FloatField(null=True,blank=True)
+	f2001 = models.FloatField(null=True,blank=True)
+	f2002 = models.FloatField(null=True,blank=True)
+	f2003 = models.FloatField(null=True,blank=True)
+	f2004 = models.FloatField(null=True,blank=True)
+	f2005 = models.FloatField(null=True,blank=True)
+	f2006 = models.FloatField(null=True,blank=True)
+	f2007 = models.FloatField(null=True,blank=True)
+	f2008 = models.FloatField(null=True,blank=True)
+	f2009 = models.FloatField(null=True,blank=True)
+	f2010 = models.FloatField(null=True,blank=True)
+	f2011 = models.FloatField(null=True,blank=True)
+	f2012 = models.FloatField(null=True,blank=True)
+	def __unicode__(self):
+		return self.chem_name
