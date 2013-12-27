@@ -63,7 +63,7 @@
 	<ul>
 	   <li><a href="{% url 'rx.views.index' %}" ><span>Main</span></a></li>
 	   
-	   <li onclick="return true" class='has-sub'><a><span>Drugs</span></a>
+	   <li  class='has-sub'><a><span onclick="return true">Drugs</span></a>
 	      <ul class="scroll">
 	      {% for link in links %}
 	      	<li><a href="{% url 'rx.views.drug' link %}"><span>{{link}}</span></a></li>
