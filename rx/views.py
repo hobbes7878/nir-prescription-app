@@ -98,10 +98,10 @@ def drug_search(request):
 	if request.GET['q'].lower() in [str(e).lower() for e in drug_links()]:
 		drug = Drug_Detail.objects.filter(chem_name__iexact=request.GET['q'])[0]
 		prescripts = Drug_Detail.objects.filter(chem_name__iexact=request.GET['q'])
-		drug_stat = Drug_Stat.objects.filter(chem_name__iexact=chem)[0]
+		drug_stat = Drug_Stat.objects.filter(chem_name__iexact=request.GET['q'])[0]
 
-		if chem in [f.chem_name for f in Fatal_Stat.objects.all()]:
-			fatal = Fatal_Stat.objects.filter(chem_name__iexact=chem)[0]
+		if request.GET['q'] in [f.chem_name for f in Fatal_Stat.objects.all()]:
+			fatal = Fatal_Stat.objects.filter(chem_name__iexact=request.GET['q'])[0]
 			generic = False
 		elif drug_stat.chem_action in [f.chem_name for f in Fatal_Stat.objects.all()]:
 			fatal = Fatal_Stat.objects.filter(chem_name__iexact=drug_stat.chem_action)[0]
