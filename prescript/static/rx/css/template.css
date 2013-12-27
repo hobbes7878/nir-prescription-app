@@ -133,7 +133,9 @@ body {
   color: #cccccc;
 }
 #cssmenu li > a:hover,
-#cssmenu ul li:hover > a {
+#cssmenu li > a:focus,
+#cssmenu ul li:hover > a, 
+#cssmenu ul li:focus > a{
   background: #f2091d ;
   color: #FFFFFF;
   text-decoration: none;
@@ -150,7 +152,8 @@ body {
   
 
 }
-#cssmenu li:hover ul {
+#cssmenu li:hover ul,
+#cssmenu li:focus ul {
   display: block;
   z-index: 10000;
 
@@ -168,7 +171,8 @@ body {
   z-index: 9999;
 
 }
-#cssmenu li:hover li a {
+#cssmenu li:hover li a,
+#cssmenu li:focus li a {
   background: none;
 
 }
@@ -182,7 +186,9 @@ body {
   text-align: left;
 }
 #cssmenu li ul a:hover,
-#cssmenu li ul li:hover > a {
+#cssmenu li ul a:focus,
+#cssmenu li ul li:hover > a, 
+#cssmenu li ul li:focus > a {
   background: #f2091d ;
   border: 0px;
   color: #ffffff;
