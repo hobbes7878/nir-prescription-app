@@ -63,14 +63,14 @@
 	<ul>
 	   <li><a href="{% url 'rx.views.index' %}" ><span>Main</span></a></li>
 	   
-	   <li class='has-sub'><a><span>Drugs</span></a>
+	   <li onclick="return true" class='has-sub'><a><span>Drugs</span></a>
 	      <ul class="scroll">
 	      {% for link in links %}
 	      	<li><a href="{% url 'rx.views.drug' link %}"><span>{{link}}</span></a></li>
 	      {% endfor %}
 	      </ul>
 	   </li>
-	   <li><a><span>GPs</span></a>
+	   <li onclick="return true"><a><span>GPs</span></a>
 			<ul>
 		         <li><a href="{% url 'rx.views.gp_search_area' %}"><span>Search by Postcode</span></a></li>
 		         <li><a href="{% url 'rx.views.gp_search_name' %}"><span>Search by Name</span></a></li>
