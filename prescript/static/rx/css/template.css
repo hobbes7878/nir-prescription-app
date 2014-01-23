@@ -91,6 +91,15 @@ body {
   color: #231f20;
 }
 
+.logo_white{
+  height:35px;
+  padding:2.5px 8px;
+}
+.title_white{
+  height:35px;
+  padding:2.5px;
+  margin-left: -35px;
+}
 /* CSS MENU */
 #cssmenu { 
 
@@ -106,7 +115,7 @@ body {
 }
 #cssmenu ul {
   background: #333333;
-  height: 20px;
+  height: 40px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -116,6 +125,19 @@ body {
   padding: 0px;
   width: 150px;
 }
+#cssmenu li.logo_li{
+  width:180px;
+}
+#cssmenu li.title_li{
+  width:170px;
+}
+#cssmenu li.logo_li a{
+  padding:0px;
+}
+#cssmenu li.title_li a{
+  padding:0px;
+}
+
 #cssmenu li a {
   background: #333333 ;
   display: block;
@@ -126,11 +148,15 @@ body {
   text-align: center;
   text-decoration: none;
 }
+#cssmenu li a.top_line{
+  line-height: 40px;
+}
+
 #cssmenu > ul > li > a {
-  color: #cccccc;
+  color: white;
 }
 #cssmenu ul ul a {
-  color: #cccccc;
+  color: white;
 }
 #cssmenu li > a:hover,
 #cssmenu li > a:focus,
@@ -203,7 +229,7 @@ body {
 #cssmenu .scroll{
   overflow-x: hidden;
   overflow-y:scroll;
-  max-height: 200px;
+  max-height: 150px;
 }
 
 
@@ -216,6 +242,7 @@ body {
   font-style: italic;
   text-align: center;
   padding-bottom: 10px;
+
 }
 
 h1{
@@ -247,6 +274,7 @@ h5{
   font-family: 'Lora', "Times New Roman", serif;
   font-size: 20px;
   padding-bottom:30px;
+  color:#404040;
 }
 
 #page_title_banner{
@@ -363,3 +391,6 @@ hr.styled_hr {
     background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
     background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
 }
+
+/* Hide overflow in IE */
+svg { overflow: hidden; }

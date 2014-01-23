@@ -66,6 +66,8 @@ class Drug_Stat(models.Model):
 	nir_total_cost = models.FloatField(null=True)
 	nir_top_present = models.CharField(max_length=250, null=True)
 	nir_top_rxs = models.FloatField(null=True)
+	nir_top_amount = models.FloatField(null=True)
+	defined_daily_dose = models.FloatField(null=True)
 	nir_top_drug = models.CharField(max_length=250, null=True)
 	drug_names = models.CharField(max_length=250, null=True)
 	nir_fatalities = models.IntegerField(null=True)

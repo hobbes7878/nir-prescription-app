@@ -196,6 +196,7 @@ tr.even{
 .smallint{
 	font-size: 20px;
 	font-weight: bold;
+	color:black;
 }
 
 #bigint{
