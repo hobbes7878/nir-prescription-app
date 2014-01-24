@@ -65,7 +65,7 @@
 			</div>
 			<div class="gp_demodata2">
 				<span class="head_cap">
-					Area Deprivation<span class="info" id="ideprive"><img src="{% static 'rx/image/i.png' %}" ></span>
+					Area Deprivation<span class="info" id="ideprive">&nbsp;<img src="{% static 'rx/image/i.png' %}" ></span>
 				</span><br>
 				<span class="deprived">
 					{% if gp_info.deprive == '1' %}Least Deprived{% endif %}	
@@ -114,16 +114,16 @@
 		<tr class="upper_th">
 			<td style="width:23px"></td>
 			<td>Prescriptions</td>
-			<td></td>
-			<td class="over_hd" colspan="3">Prescription Rate</td>
+		
+			<td class="over_hd" colspan="3">Prescription Rate (Defined Daily Doses)</td>
 		</tr>
 		<tr class="lower_th">
 			<th>Drug</th>
 			<th>Written</th>
-			<th>Gross Cost<span class="info" id="icost"><img src="{% static 'rx/image/i.png' %}" ></span></th>
+			
 			<th><span class="table_sub"> Per 1,000 registered patients</span></th>
-			<th><span class="table_sub"> Rank within Deprivation Group<span class="info" id="idgroup"><img src="{% static 'rx/image/i.png' %}" ></span></span></th>
-			<th><span class="table_sub"> Rank among all N. Irish GPs<span class="info" ><img id="iagroup" src="{% static 'rx/image/i.png' %}" ></span></span></th>
+			<th><span class="table_sub"> Rank within Deprivation Group&nbsp;<span class="info" id="idgroup"><img src="{% static 'rx/image/i.png' %}" ></span></span></th>
+			<th><span class="table_sub"> Rank among all N. Irish GPs&nbsp;<span class="info" ><img id="iagroup" src="{% static 'rx/image/i.png' %}" ></span></span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -131,7 +131,7 @@
 		<tr  {% if forloop.counter|divisibleby:2 %}class='even'{% else %}class='odd'{% endif %} >
 			<td class="td_drug"><a href="{% url 'rx.views.drug' drug.chem_name %}">{{drug.chem_name}}</a></td>
 			<td class="td_rx">{{drug.prescripts|floatformat:0|intcomma}}</td>
-			<td class="td_cost">£{{drug.cost|floatformat:2|intcomma}}</td>
+			
 			<td class="td_rate">{{drug.rx_per_1k|floatformat:1}}</td>
 			<td class="td_dep_rank">{{drug.deprive_rank|ordinal}}<span class="table_sub"> / {{drug.deprive_group}}</span></td>
 			<td class="td_rank">{{drug.all_rank|ordinal}}<span class="table_sub"> / {{drug.all_prescribing_gps}}</span></td>
@@ -190,7 +190,6 @@
 
 <div id="deprive_dialog" class="help_dialog" title="Area Deprivation"><p>Area deprivation is assigned according to the employment and income deprivation scores assessed by the Northern Ireland Statistics and Research Agency at the postcode of each GP. <br><br>Groups are determined by quartiles of deprivation scores and range: Most-More-Less-Least deprived.<br><br>The graph below explains further how the groups were determined.<br><br><hr><br><img src="{% static 'rx/image/zgroup.png' %}"></div>
 
-<div id="cost_dialog" class="help_dialog" title="Gross Cost"><p>Gross cost is the cost of the medicines prescribed and dispensed.</div>
 
 <div id="dgroup_dialog" class="help_dialog" title="Deprivation Rank"><p>This GP's prescription rate ranked against all GPs within the same deprivation group that have prescribed this medicine.</div>
 

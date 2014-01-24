@@ -27,9 +27,9 @@ var stat_fade=400;
 
 
 
-var mapsvg = d3.select("#minimaps").append("svg")
+var mapsvg = d3.select("#minimaps_svg").append("svg")
 				.attr("width",map_svg_width)
-				.attr("height",220)
+				.attr("height",240)
 				.style("margin","0 auto")
 				.style("display","block");
 
@@ -278,11 +278,8 @@ function reset(){
 };
 
 function center(){
-	
-
 	map_stat_bigint
 		.attr("x",function(){ return (map_svg_width/2)+50-this.getBBox().width; })
-
 	map_stat_country
 		.attr("x",
 			function(){ return (map_svg_width/2)+50-map_stat_bigint[0][0].getBBox().width

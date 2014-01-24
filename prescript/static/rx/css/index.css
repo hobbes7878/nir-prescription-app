@@ -10,10 +10,55 @@
 }
 
 .center_limit{
-	width:700px;
+	width:750px;
 	margin:0 auto;
 	display:block;
 	font-family: 'Lora', "Times New Roman", serif;
   	font-size: 18px;
+  	color:#404040;
+}
+
+.drugs_list{
+	width:750px;
+	margin:0px auto 50px;
+	display:block;
+	font-family: 'Lora', "Times New Roman", serif;
+  	font-size: 16px;
+  	color:#404040;
+}
+.drugs_list li a{
+	font-size: 26px;
+	color:#800000;
+	text-decoration: none;
+	font-weight: 500;
+}
+.drugs_list li a:hover{
+	font-weight: 700;
+}
+
+.vizblocklock1{
+	max-width: 385px;
+	margin-top: 20px;
+	float:left;
+	padding: 20px;
+	display:block;
+	font-family: 'Lora', "Times New Roman", serif;
+  	font-size: 16px;
+  	color:#404040;
+}
+
+
+
+
+.vizblocklock2{
+	max-width: 385px;
+	clear:left;
+	float:right;
+	padding-left: 20px;
+	padding-bottom: 20px;
+	margin-top: 30px;
+	display:block;
+	font-family: 'Lora', "Times New Roman", serif;
+  	font-size: 16px;
   	color:#404040;
 }

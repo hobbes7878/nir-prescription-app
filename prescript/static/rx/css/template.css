@@ -370,7 +370,7 @@ h5{
 
 /* INFO BOXES */
 .ui-dialog{
-  background: rgba(255, 255, 25, 0.9) !important; 
+  background: rgba(255, 255, 255, 0.9) !important; 
 }
 .ui-dialog-content>p{
   color:darkblue;
@@ -395,3 +395,5 @@ hr.styled_hr {
 /* Hide overflow in IE */
 svg { overflow: hidden; }
 svg:not(:root) { overflow: hidden }
+
+

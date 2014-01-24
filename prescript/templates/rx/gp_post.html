@@ -38,7 +38,7 @@
 	<hr>
 		<ul class = "gplist_name">
 		{% for gp in gps %}
-			<li><a href="{% url 'rx.views.gp' gp.code %}">{{gp.name|mcCap|title}}</a>
+			<li><a href="{% url 'rx.views.gp' gp.code %}">{{gp.name|title|mcCap}}</a>
 				<ul class="gplist_post">
 					<li>{{gp.city|title}} - {{gp.postcode}}</li>
 				</ul>
