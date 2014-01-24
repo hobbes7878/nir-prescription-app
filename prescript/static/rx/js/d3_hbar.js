@@ -160,7 +160,6 @@ function update(data) {
             .style("opacity","0");
           svg.selectAll(".wal_points")
             .style("opacity","0");
-
           svg.selectAll(".instruct")
             .transition().duration(700)
             .style("opacity",0);
@@ -317,6 +316,7 @@ svg.append("rect")
 svg.append("text")
   .attr("class","instruct")
   .text("Click to pause/play.")
+  .style("font-weight","bold")
   .attr("x",-5)
   .attr("y",height+8)
   .style("opacity",0);

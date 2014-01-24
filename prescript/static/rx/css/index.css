@@ -1,0 +1,19 @@
+.minimap{
+	cursor:pointer;
+	background-color: pink;
+	fill:pink;
+}
+.minimap svg{
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+}
+
+.center_limit{
+	width:700px;
+	margin:0 auto;
+	display:block;
+	font-family: 'Lora', "Times New Roman", serif;
+  	font-size: 18px;
+  	color:#404040;
+}
