@@ -394,3 +394,4 @@ hr.styled_hr {
 
 /* Hide overflow in IE */
 svg { overflow: hidden; }
+svg:not(:root) { overflow: hidden }

@@ -55,11 +55,27 @@
   font-style: italic;
 }
 .pointer{
-  stroke:red;
-  stroke-width:2px;
+  stroke:white;
+  stroke-width:1.5px;
   opacity:0;
-  fill:red;
+  fill:#B22222; /* Hard-coded into js for key */
 }
+
+.eng_points{
+  stroke:white;
+  stroke-width:1.5px;
+  opacity:0;
+  fill:#4682B4;
+}
+
+.wal_points{
+  stroke:white;
+  stroke-width:1.5px;
+  opacity:0;
+  fill:#228B22;
+}
+
+
 .pause{
   stroke:grey;
   stroke-width:3px;

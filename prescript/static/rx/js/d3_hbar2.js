@@ -21,7 +21,7 @@ var svg2 = d3.select("#vizblock2").append("svg")
 
    
 //Formatting
-var percent = d3.format("+1%");
+var percent = d3.format("1");
   xAxis2.tickFormat(percent);
 
 
@@ -85,20 +85,7 @@ var update2 =function(data) {
     labs2.exit()
       .remove();  
 
-    var ENG2 = svg2.selectAll(".ENG2")
-      .data(data.data);
-    ENG2.enter()
-      .append("text")
-      .attr("class","ENG2")
-      .attr("x",0)
-      .attr("y",height2+10);
-    
-    ENG2
-      .text("ENG")
-      .transition().duration(1000)
-      .attr("x",x2(0)-11.5);
 
-    ENG2.exit().remove();
 
 
     var bars2 = svg2.selectAll(".bar2")
@@ -125,7 +112,7 @@ var update2 =function(data) {
               else
                 { 
                   update2(eval("dataset2.data".concat(i2)));
-                  if(i2 < 37){i2=i2+1}else{i2=1};
+                  if(i2 < 3){i2=i2+1}else{i2=1};
                   interval2 = setInterval(cycle2,5000) , 
                   clicker2=1,
                   playing2.transition().duration(600)
@@ -141,6 +128,10 @@ var update2 =function(data) {
             .style("fill","black");
           svg2.select(".pointer2."+ d.name)
             .style("opacity","1");
+          svg2.select(".eng_points2."+ d.name)
+            .style("opacity","1");
+          svg2.select(".wal_points2."+ d.name)
+            .style("opacity","1");
           svg2.selectAll(".instruct2")
             .transition().duration(700)
             .style("opacity",1);
@@ -151,6 +142,10 @@ var update2 =function(data) {
             .transition().duration(100)
             .style("opacity","0");
           svg2.selectAll(".pointer2")
+            .style("opacity","0");
+          svg2.selectAll(".eng_points2")
+            .style("opacity","0");
+          svg2.selectAll(".wal_points2")
             .style("opacity","0");
           svg2.selectAll(".instruct2")
             .transition().duration(700)
@@ -188,6 +183,38 @@ var update2 =function(data) {
     tips2.exit()
     .remove();
 
+
+    /*English Pointers*/
+    var eng_points2 = svg2.selectAll(".eng_points2")
+      .data(data.data);
+
+    eng_points2.enter().append("polygon")
+      .attr("class",function(d){return "eng_points2 "+d.name;});
+
+    eng_points2
+      .transition()
+      .duration(1000)
+      .attr("points",function(d){ return x2(d.eng)+",-2 "+(x2(d.eng)-9)+",-20 "+(x2(d.eng)+9)+",-20";});
+
+    eng_points2.exit().remove();
+
+
+    /*Welsch Pointers*/
+    var wal_points2 = svg2.selectAll(".wal_points2")
+      .data(data.data);
+
+    wal_points2.enter().append("polygon")
+      .attr("class",function(d){return "wal_points2 "+d.name;});
+
+    wal_points2
+      .transition()
+      .duration(1000)
+      .attr("points",function(d){ return x2(d.wal)+",-2 "+(x2(d.wal)-9)+",-20 "+(x2(d.wal)+9)+",-20";});
+
+    wal_points2.exit().remove();
+
+
+
     var pointers2 = svg2.selectAll(".pointer2")
       .data(data.data);
 
@@ -197,7 +224,7 @@ var update2 =function(data) {
     pointers2
       .transition()
       .duration(1000)
-      .attr("points",function(d){return x2(d.value)+",-2 "+(x2(d.value)-5)+",-10 "+(x2(d.value)+5)+",-10";});
+      .attr("points",function(d){return x2(d.value)+",-2 "+(x2(d.value)-9)+",-20 "+(x2(d.value)+9)+",-20";});
 
     pointers2.exit().remove();
 
@@ -258,8 +285,8 @@ var i2 = 1,
     clicker2 = 1;
 
 update2(eval("dataset2.data".concat(i2)));
-if(i2 < 37){i2=i2+1}else{i2=1};
-var cycle2 = function(){update2(eval("dataset2.data".concat(i2)));if(i2 < 37){i2=i2+1}else{i2=1};};
+if(i2 < 3){i2=i2+1}else{i2=1};
+var cycle2 = function(){update2(eval("dataset2.data".concat(i2)));if(i2 < 3){i2=i2+1}else{i2=1};};
 
 var interval2 = setInterval(cycle2,5000);
 
@@ -302,6 +329,50 @@ svg2.append("rect")
 svg2.append("polygon")
   .attr("class", "play2")
   .attr("points",(width2/2+20)+","+(height2/2)+" "+(width2/2-20)+","+(height2/2-20)+" "+(width2/2-20)+","+(height2/2+20));
+
+
+var key_bar_x2 = 220;
+var key_bar_y2 = height2-15;
+
+svg2.append("polygon")
+  .style("fill","#B22222")
+  .attr("class","instruct2")
+  .style("opacity",0)
+  .attr("points",(key_bar_x2+0)+","+(key_bar_y2+12)+" "+(key_bar_x2+15)+","+(key_bar_y2+12)+" "+(key_bar_x2+15)+","+(key_bar_y2+25)+" "+(key_bar_x2+0)+","+(key_bar_y2+25));
+svg2.append("text")
+  .attr("class","instruct2")
+  .attr("x",key_bar_x2+17)
+  .attr("y",key_bar_y2+22)
+  .style("fill", "black")
+  .style("opacity",0)
+  .text("NIR");
+
+svg2.append("polygon")
+  .style("fill","#4682B4")
+  .attr("class","instruct2")
+  .style("opacity",0)
+  .attr("points",(key_bar_x2+45)+","+(key_bar_y2+12)+" "+(key_bar_x2+60)+","+(key_bar_y2+12)+" "+(key_bar_x2+60)+","+(key_bar_y2+25)+" "+(key_bar_x2+45)+","+(key_bar_y2+25)); 
+svg2.append("text")
+  .attr("class","instruct2")
+  .attr("x",key_bar_x2+62)
+  .attr("y",key_bar_y2+22)
+  .style("fill", "black")
+  .style("opacity",0)
+  .text("ENG");
+
+svg2.append("polygon")
+  .style("fill","#228B22")
+  .attr("class","instruct2")
+  .style("opacity",0)
+  .attr("points",(key_bar_x2+90)+","+(key_bar_y2+12)+" "+(key_bar_x2+105)+","+(key_bar_y2+12)+" "+(key_bar_x2+105)+","+(key_bar_y2+25)+" "+(key_bar_x2+90)+","+(key_bar_y2+25)); 
+svg2.append("text")
+  .attr("class","instruct2")
+  .attr("x",key_bar_x2+107)
+  .attr("y",key_bar_y2+22)
+  .style("fill", "black")
+  .style("opacity",0)
+  .text("WAL");
+
 
 var pausing2 = svg2.selectAll(".pause2");
 var playing2 = svg2.selectAll(".play2");
