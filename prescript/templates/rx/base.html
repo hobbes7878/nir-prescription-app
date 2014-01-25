@@ -84,12 +84,22 @@
 	   </li>
 	   <li><a href='.' class="top_line"><span><img style="height:20px; width:30px; padding:10px; display:inline;" src="{% static 'rx/image/share.png' %}"></span></a>
 	      <ul>
-	         <li><a href="http://twitter.com/home?status=Drugs%20{{ request.get_full_path }}"><span>Share to Twitter</span></a></li>
-	         <li><a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]={{ request.get_full_path }}&p[images][0]=&p[title]=Link&p[summary]="><span>Share to Facebook</span></a></li>
+	         <li><a onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=700,height=500,toolbar=1,resizable=0'); return false;" href="http://twitter.com/home?status=The%20Detail%20-%20The%20Script%20Report:%20Prescription%20Drugs%20in%20Northern%20Ireland%20{{share_url}}%20via@TheDetailTV" ><span>Share to Twitter</span></a></li>
+	         <li><a onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=700,height=500,toolbar=1,resizable=0'); return false;" href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]={{share_url}}&p[images][0]=&p[title]=The%20Detail%20-%20The%20Script%20Report:%20Prescription%20Drugs%20in%20Northern%20Ireland&p[summary]="><span>Share to Facebook</span></a></li>
+<li><a onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=700,height=500,toolbar=1,resizable=0'); return false;" href="https://plus.google.com/share?url={{share_url}}"><span>Share to Google+</span></a></li>
+<li><a href="mailto:?subject=The Detail - The Script Report: Prescription Drugs in Northern Ireland&amp;body=Check out the report: {{share_url}}." title="Share by Email"><span>Email this story</span></a></li>
+
+
 	      </ul>
 	   </li>
 	</ul>
 	</div>
+
+
+
 
 
 <!--Sticky script for menu bar-->

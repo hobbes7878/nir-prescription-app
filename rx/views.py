@@ -54,13 +54,15 @@ def get_city(gps):
 		gp.city = re.sub(r'.+ ([A-Za-z]+) BT\d.+',r'\1',address)
 	return gps
 
+def share_url(request):
+	return request.build_absolute_uri()
 
 ###########
 ## VIEWS ##
 ###########
 
 def index(request):
-	return render_to_response('rx/index.html', {'links':drug_links(), 'gps_search':gp_choice(), 'drug_search':drug_choice(), 'search_error':False}, context_instance=RequestContext(request))
+	return render_to_response('rx/index.html', {'links':drug_links(), 'gps_search':gp_choice(), 'drug_search':drug_choice(), 'search_error':False,'share_url':share_url(request)}, context_instance=RequestContext(request))
 
 def drug(request, chem):
 	drug = Drug_Detail.objects.filter(chem_name__iexact=chem)[0]
@@ -92,7 +94,7 @@ def drug(request, chem):
 
 	gps = get_city(TopDrugGPs.objects.filter(chem_name__iexact=chem).order_by('-rx_per_1k')[:10])
 	
-	return render_to_response('rx/drug.html',{'fatal':fatal, 'generic':generic, 'chem_name':chem,'links':drug_links(), 'drug_detail':drug, 'nir_rx_prob':nir_rx_prob, 'eng_all_rx_per':int(eng_all_rx_per), 'nir_all_rx_per':int(nir_all_rx_per), 'gps':gps, 'latlon':latlon(gps),'drug_stat':drug_stat,}) 
+	return render_to_response('rx/drug.html',{'share_url':share_url(request),'fatal':fatal, 'generic':generic, 'chem_name':chem,'links':drug_links(), 'drug_detail':drug, 'nir_rx_prob':nir_rx_prob, 'eng_all_rx_per':int(eng_all_rx_per), 'nir_all_rx_per':int(nir_all_rx_per), 'gps':gps, 'latlon':latlon(gps),'drug_stat':drug_stat,}) 
 
 def drug_search(request):
 	if request.GET['q'].lower() in [str(e).lower() for e in drug_links()]:
@@ -125,9 +127,9 @@ def drug_search(request):
 
 
 
-		return render_to_response('rx/drug.html',{'fatal':fatal, 'generic':generic, 'chem_name':request.GET['q'],'links':drug_links(), 'drug_detail':drug, 'nir_rx_prob':nir_rx_prob, 'eng_all_rx_per':int(eng_all_rx_per), 'nir_all_rx_per':int(nir_all_rx_per), 'gps':gps, 'latlon':latlon(gps), 'drug_stat':drug_stat,}) 
+		return render_to_response('rx/drug.html',{'share_url':share_url(request),'fatal':fatal, 'generic':generic, 'chem_name':request.GET['q'],'links':drug_links(), 'drug_detail':drug, 'nir_rx_prob':nir_rx_prob, 'eng_all_rx_per':int(eng_all_rx_per), 'nir_all_rx_per':int(nir_all_rx_per), 'gps':gps, 'latlon':latlon(gps), 'drug_stat':drug_stat,}) 
 	else:
-		return render_to_response('rx/index.html', {'links':drug_links(), 'gps_search':gp_choice(), 'drug_search':drug_choice(), 'search_error':True})
+		return render_to_response('rx/index.html', {'share_url':share_url(request),'links':drug_links(), 'gps_search':gp_choice(), 'drug_search':drug_choice(), 'search_error':True})
 
 
 def gp_search_name(request):
@@ -137,14 +139,14 @@ def gp_search_name(request):
 			mapcenter=[]
 			if len(latlon(gps))==1:
 				mapcenter = latlon(gps)[0]
-			return render_to_response('rx/gp_search.html', {'gps':gps, 'latlon':latlon(gps), 'mapcenter':mapcenter, 'links':drug_links()})
+			return render_to_response('rx/gp_search.html', {'share_url':share_url(request),'gps':gps, 'latlon':latlon(gps), 'mapcenter':mapcenter, 'links':drug_links()})
 		else:
 			if request.META['HTTP_REFERER'][-10:] == 'prescript/':
-				return render_to_response('rx/index.html', {'links':drug_links(), 'gps_search':gp_choice(), 'drug_search':drug_choice(), 'search_error':True})
+				return render_to_response('rx/index.html', {'share_url':share_url(request),'links':drug_links(), 'gps_search':gp_choice(), 'drug_search':drug_choice(), 'search_error':True})
 			else:
-			 	return render_to_response('rx/gp_search.html',{'links':drug_links(), 'gps_search':gp_choice(),'search_error':True})
+			 	return render_to_response('rx/gp_search.html',{'share_url':share_url(request),'links':drug_links(), 'gps_search':gp_choice(),'search_error':True})
 	else:
-		return render_to_response('rx/gp_search.html',{'links':drug_links(), 'gps_search':gp_choice(),})
+		return render_to_response('rx/gp_search.html',{'share_url':share_url(request),'links':drug_links(), 'gps_search':gp_choice(),})
 
 
 
@@ -169,11 +171,11 @@ def gp_search_area(request):
 												ORDER BY distance
 												''', [post.lat,post.lat,post.lon])[:10]	)
 
-			return render_to_response('rx/gp_post.html',{'links':drug_links(),'gps':gps,'latlon':latlon(gps)})
+			return render_to_response('rx/gp_post.html',{'share_url':share_url(request),'links':drug_links(),'gps':gps,'latlon':latlon(gps)})
 		except:
-			return render_to_response('rx/gp_post.html',{'links':drug_links(),'search_error':True})
+			return render_to_response('rx/gp_post.html',{'share_url':share_url(request),'links':drug_links(),'search_error':True})
 	else: 
-		return render_to_response('rx/gp_post.html',{'links':drug_links()})
+		return render_to_response('rx/gp_post.html',{'share_url':share_url(request),'links':drug_links()})
 
 
 
@@ -210,7 +212,7 @@ def gp(request,gp_code):
 	all_gps = len(TopDrugGPs.objects.distinct('code'))
 	top_drugs_sorted = sorted(top_drugs, key=operator.attrgetter('deprive_rank'))
 
-	return render_to_response('rx/gp.html', { 'links':drug_links(), 'gp_code':gp_code, 'top_drugs':top_drugs_sorted, 'gp_info':gp_info, 'all_gps':all_gps })
+	return render_to_response('rx/gp.html', {'share_url':share_url(request), 'links':drug_links(), 'gp_code':gp_code, 'top_drugs':top_drugs_sorted, 'gp_info':gp_info, 'all_gps':all_gps })
 
 
 
