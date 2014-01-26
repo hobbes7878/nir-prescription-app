@@ -27,9 +27,9 @@ var percent = d3.format("1");
 
     
 function update(data) {
-
+  //THIS IS KINDA FuCKED TO MAKE SURE MAX of ENG, WAL, and NIR are in the mix 
   //Make sure 0 is in the domain if both numbers are positive or negative.
-  var x_extent = d3.extent(data.data, function(d) { return +d.value ; });
+  var x_extent = d3.extent(data.data, function(d) { return Math.max(+d.value,+d.eng,+d.wal) ; });
       if(x_extent[0]*x_extent[1]<0){
         //opposite signs
         x.domain(x_extent).nice();
@@ -125,7 +125,7 @@ function update(data) {
               else
                 { 
                   update(eval("dataset.data".concat(i)));
-                  if(i < 3){i=i+1}else{i=1};
+                  if(i < Object.keys(dataset).length){i=i+1}else{i=1};
                   interval = setInterval(cycle,5000) , 
                   clicker=1,
                   playing.transition().duration(600)
@@ -136,6 +136,9 @@ function update(data) {
             }
           )
       .on("mouseover",function(d){
+          var selected_bar = this;
+          svg.selectAll(".bar")
+            .style("fill-opacity",function(){ return (this == selected_bar) ? 1.0:0.4; });
           svg.select(".tip."+ d.name)
             .style("opacity","1")
             .style("fill","black");
@@ -148,8 +151,12 @@ function update(data) {
           svg.selectAll(".instruct")
             .transition().duration(700)
             .style("opacity",1);
+          svg.select(".tipkey")
+            .style("opacity","1");
           })
       .on("mouseout",function(d){
+          svg.selectAll(".bar")
+            .style("fill-opacity","1");
           svg.select(".tip."+ d.name)
             .style("fill","grey")
             .transition().duration(100)
@@ -163,6 +170,8 @@ function update(data) {
           svg.selectAll(".instruct")
             .transition().duration(700)
             .style("opacity",0);
+          svg.select(".tipkey")
+            .style("opacity","0");
           })
       ;
     
@@ -292,8 +301,8 @@ var i = 1,
     clicker = 1;
 
 update(eval("dataset.data".concat(i)));
-if(i < 3){i=i+1}else{i=1};
-var cycle = function(){update(eval("dataset.data".concat(i)));if(i < 3){i=i+1}else{i=1};};
+if(i < Object.keys(dataset).length){i=i+1}else{i=1};
+var cycle = function(){update(eval("dataset.data".concat(i)));if(i < Object.keys(dataset).length){i=i+1}else{i=1};};
 
 var interval = setInterval(cycle,5000);
 
@@ -379,6 +388,17 @@ svg.append("text")
   .style("fill", "black")
   .style("opacity",0)
   .text("WAL");
+
+svg.append("text")
+  .attr("class","tipkey")
+  .attr("x",250)
+  .attr("y",-42)
+  .style("fill","#800000")
+  .style("font-size","12px")
+  .style("font-weight",800)
+  .style("font-family","sans-serif")
+  .style("opacity",0)
+  .text("NIR");
 
 
 var pausing = svg.selectAll(".pause");

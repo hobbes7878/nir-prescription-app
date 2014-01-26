@@ -1,0 +1,25 @@
+h1{
+	font-family:sans-serif;
+	font-size:90px;	
+}
+
+h2{
+	font-family: font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+	font-size: 60px;
+	font-style: italic;
+	margin:0px;
+}
+
+p{
+	font-family: serif;
+	font-size: 24px;
+}
+
+.ie{
+	font-size: 12px;
+}
+a.good{font-size: 30px;}
+
+.ie a{
+	font-size:9px;
+}

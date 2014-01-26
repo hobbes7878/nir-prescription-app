@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from rx.models import Drug_Detail, PostGEO, TopDrugGPs, Drug_Stat, Fatal_Stat
@@ -57,13 +57,41 @@ def get_city(gps):
 def share_url(request):
 	return request.build_absolute_uri()
 
+
+#https://djangosnippets.org/snippets/1147/
+def no_ie(redirect):
+    """
+    Protects a view from the terror that is Microsoft Internet Explorer
+    by redirecting the request to 'redirect'.
+    
+    Usage:
+    
+    @no_ie('/ie-compatible-page/')
+    def my view(request):
+       ...
+    
+    """
+    def view_wrapper(view):
+        def dec(request, *args, **kwargs):
+        	#Check MSIE version number, too
+            if request.META['HTTP_USER_AGENT'].find('MSIE') > 0:
+	            if int(re.search(r'MSIE (\d+)\.',request.META['HTTP_USER_AGENT']).group(1)) < 9 :
+	                return HttpResponseRedirect(redirect)
+            return view(request, *args, **kwargs)
+        return dec
+    return view_wrapper
+
+
+
+
 ###########
 ## VIEWS ##
 ###########
-
+@no_ie('/prescript/redirect/')
 def index(request):
 	return render_to_response('rx/index.html', {'links':drug_links(), 'gps_search':gp_choice(), 'drug_search':drug_choice(), 'search_error':False,'share_url':share_url(request)}, context_instance=RequestContext(request))
 
+@no_ie('/prescript/redirect/')
 def drug(request, chem):
 	drug = Drug_Detail.objects.filter(chem_name__iexact=chem)[0]
 	prescripts = Drug_Detail.objects.filter(chem_name__iexact=chem)
@@ -96,6 +124,7 @@ def drug(request, chem):
 	
 	return render_to_response('rx/drug.html',{'share_url':share_url(request),'fatal':fatal, 'generic':generic, 'chem_name':chem,'links':drug_links(), 'drug_detail':drug, 'nir_rx_prob':nir_rx_prob, 'eng_all_rx_per':int(eng_all_rx_per), 'nir_all_rx_per':int(nir_all_rx_per), 'gps':gps, 'latlon':latlon(gps),'drug_stat':drug_stat,}) 
 
+@no_ie('/prescript/redirect/')
 def drug_search(request):
 	if request.GET['q'].lower() in [str(e).lower() for e in drug_links()]:
 		drug = Drug_Detail.objects.filter(chem_name__iexact=request.GET['q'])[0]
@@ -131,7 +160,7 @@ def drug_search(request):
 	else:
 		return render_to_response('rx/index.html', {'share_url':share_url(request),'links':drug_links(), 'gps_search':gp_choice(), 'drug_search':drug_choice(), 'search_error':True})
 
-
+@no_ie('/prescript/redirect/')
 def gp_search_name(request):
 	if request.GET:
 		gps = get_city(TopDrugGPs.objects.distinct('code').filter(name__icontains=request.GET['q']))
@@ -150,7 +179,7 @@ def gp_search_name(request):
 
 
 
-
+@no_ie('/prescript/redirect/')
 def gp_search_area(request):
 	if request.GET:
 		try:
@@ -178,7 +207,7 @@ def gp_search_area(request):
 		return render_to_response('rx/gp_post.html',{'share_url':share_url(request),'links':drug_links()})
 
 
-
+@no_ie('/prescript/redirect/')
 def gp(request,gp_code):
 	top_drugs = TopDrugGPs.objects.filter(code=gp_code).order_by('code','drug_gp_rank')
 	for td in top_drugs:
@@ -217,4 +246,4 @@ def gp(request,gp_code):
 
 
 def redirect(request):
-	return render_to_response('rx/redirect.html')	
+	return render_to_response('rx/redirect.html',{})	

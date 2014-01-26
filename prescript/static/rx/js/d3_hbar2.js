@@ -27,9 +27,9 @@ var percent = d3.format("1");
 
     
 var update2 =function(data) {
-
+  //THIS IS KINDA FuCKED TO MAKE SURE MAX of ENG, WAL, and NIR are in the mix s
   //Make sure 0 is in the domain if both numbers are positive or negative.
-  var x_extent2 = d3.extent(data.data, function(d) { return +d.value ; });
+  var x_extent2 = d3.extent(data.data, function(d) { return Math.max(+d.value,+d.eng,+d.wal) ; });
       if(x_extent2[0]*x_extent2[1]<0){
         //opposite signs
         x2.domain(x_extent2).nice();
@@ -112,7 +112,7 @@ var update2 =function(data) {
               else
                 { 
                   update2(eval("dataset2.data".concat(i2)));
-                  if(i2 < 3){i2=i2+1}else{i2=1};
+                  if(i2 < Object.keys(dataset2).length){i2=i2+1}else{i2=1};
                   interval2 = setInterval(cycle2,5000) , 
                   clicker2=1,
                   playing2.transition().duration(600)
@@ -123,6 +123,9 @@ var update2 =function(data) {
             }
           )
       .on("mouseover",function(d){
+          var selected_bar2 = this;
+          svg2.selectAll(".bar2")
+            .style("fill-opacity",function(){ return (this == selected_bar2) ? 1.0:0.4; });
           svg2.select(".tip2."+ d.name)
             .style("opacity","1")
             .style("fill","black");
@@ -135,8 +138,12 @@ var update2 =function(data) {
           svg2.selectAll(".instruct2")
             .transition().duration(700)
             .style("opacity",1);
+          svg2.select(".tipkey2")
+            .style("opacity","1");
           })
       .on("mouseout",function(d){
+          svg2.selectAll(".bar2")
+            .style("fill-opacity","1");
           svg2.select(".tip2."+ d.name)
             .style("fill","grey")
             .transition().duration(100)
@@ -150,6 +157,8 @@ var update2 =function(data) {
           svg2.selectAll(".instruct2")
             .transition().duration(700)
             .style("opacity",0);
+          svg2.select(".tipkey2")
+            .style("opacity","0");
           })
       ;
     
@@ -285,8 +294,8 @@ var i2 = 1,
     clicker2 = 1;
 
 update2(eval("dataset2.data".concat(i2)));
-if(i2 < 3){i2=i2+1}else{i2=1};
-var cycle2 = function(){update2(eval("dataset2.data".concat(i2)));if(i2 < 3){i2=i2+1}else{i2=1};};
+if(i2 < Object.keys(dataset2).length){i2=i2+1}else{i2=1};
+var cycle2 = function(){update2(eval("dataset2.data".concat(i2)));if(i2 < Object.keys(dataset2).length){i2=i2+1}else{i2=1};};
 
 var interval2 = setInterval(cycle2,5000);
 
@@ -372,6 +381,17 @@ svg2.append("text")
   .style("fill", "black")
   .style("opacity",0)
   .text("WAL");
+
+svg2.append("text")
+  .attr("class","tipkey2")
+  .attr("x",250)
+  .attr("y",-42)
+  .style("fill","#800000")
+  .style("font-size","12px")
+  .style("font-weight",800)
+  .style("font-family","sans-serif")
+  .style("opacity",0)
+  .text("NIR");
 
 
 var pausing2 = svg2.selectAll(".pause2");

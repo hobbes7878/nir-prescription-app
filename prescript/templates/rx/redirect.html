@@ -1,16 +1,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+{% load staticfiles %}
+<link rel="stylesheet"  media="all" type="text/css" href="{% static 'rx/css/redirect.css' %}">
+<link rel="icon" type="image/png" href="{% static 'rx/image/favicon.ico' %}">
 </head>
 <body>
-<a href="http://www.thedetail.tv"><img src="images/detail.jpg" align="left" height="150px" ></a>
 
-<h1>Oops!</h1>
-<p><i>You've been redirected because the page you requested can only be viewed using a WebKit-based browser such as Google Chrome or Apple Safari.</p>
+<h4>The devil's in <a href="http://www.thedetail.tv"><img src="{% static 'rx/image/thedetaillogo.png' %}" display="inline" width="100px" ></a>s...</h4>
+<img src="{% static 'rx/image/devil.png' %}" align="left" width="150px" >
 
-<a href="www.google.com/chrome">Click here to get Google Chrome.</a>
+<h1>Whoops!</h1>
+
+<p>You've been redirected because your browser is incompatible with our site.</p>
+
+<h2>DON'T DESPAIR, PILGRIM!</h2>
+<p class="ie">You can update your version of Internet Explorer <a href="http://windows.microsoft.com/en-us/internet-explorer/ie-11-worldwide-languages">here.</a></p>
+
+
+<p>OR you can get a browser better suited to purpose:</p>
+<img src="{% static 'rx/image/chrome.jpg' %}" align="left" width="40px" ><a class="good" href="https://www.google.com/intl/en/chrome/browser/">Click here to get Google Chrome.</a>
 <br><br>
-<a href="http://support.apple.com/downloads/#safari">Click here to get Apple Safari.</a>
+<img src="{% static 'rx/image/safari.png' %}" align="left" width="40px" ><a class="good" href="http://support.apple.com/downloads/#safari">Mac? Get Apple Safari here.</a>
 
 </body>
 
