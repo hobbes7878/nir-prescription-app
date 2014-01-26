@@ -11,7 +11,9 @@ var f_x = d3.time.scale()
 var f_y = d3.scale.linear()
     .range([height, 0]);
 
-var tickVals = [new Date("2000 01"),new Date("2004 01"),new Date("2008 01"),new Date("2012 01")];
+
+parser.parse("2000")
+var tickVals = [parser.parse("2000"),parser.parse("2004"),parser.parse("2008"),parser.parse("2012")];
 
 var f_xAxis = d3.svg.axis()
     .scale(f_x)
@@ -36,7 +38,7 @@ var svg = d3.select(".fatal_div .lab_pad").append("svg")
   f_x.domain(d3.extent(fatal_data.fatalities, function(d) { return parser.parse(d.year); }));
   f_y.domain([0, d3.max(fatal_data.fatalities, function(d) { return d.value; })]);
 
-  console.log(f_x.domain())
+
 
   svg.append("g")
       .attr("class", "x axis")
