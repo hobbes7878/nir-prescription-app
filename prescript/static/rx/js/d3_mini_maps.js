@@ -108,8 +108,8 @@ var nir = g.append("svg:image")
 				map_stat_bigint.text(nir_ddd).style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				center()
 				mapsvg.select(".nir_map")
+					.attr("xlink:href", nir_map_hi)
 					.transition().duration(80).attr("x",nir_x-2).attr("y",all_y+2)
-						.attr("xlink:href", nir_map_hi)
 					.transition().duration(80).attr("x",nir_x).attr("y",all_y)
 			});
 
@@ -128,8 +128,8 @@ var ice = g.append("svg:image")
 				map_stat_bigint.text(ice_ddd).style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				center()
 				mapsvg.select(".ice_map")
+					.attr("xlink:href", ice_map_hi)
 					.transition().duration(80).attr("x",ice_x-2).attr("y",all_y+2)
-						.attr("xlink:href", ice_map_hi)
 					.transition().duration(80).attr("x",ice_x).attr("y",all_y)
 			});
 
@@ -147,8 +147,8 @@ var aus = g.append("svg:image")
 				map_stat_bigint.text(aus_ddd).style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				center()
 				mapsvg.select(".aus_map")
+					.attr("xlink:href", aus_map_hi)
 					.transition().duration(80).attr("x",aus_x-2).attr("y",all_y+2)
-						.attr("xlink:href", aus_map_hi)
 					.transition().duration(80).attr("x",aus_x).attr("y",all_y)
 			});
 
@@ -166,8 +166,8 @@ var can = g.append("svg:image")
 				map_stat_bigint.text(can_ddd).style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				center()
 				mapsvg.select(".can_map")
+					.attr("xlink:href", can_map_hi)
 					.transition().duration(80).attr("x",can_x-2).attr("y",all_y+2)
-						.attr("xlink:href", can_map_hi)
 					.transition().duration(80).attr("x",can_x).attr("y",all_y)
 			});
 
@@ -185,8 +185,8 @@ var den = g.append("svg:image")
 				map_stat_bigint.text(den_ddd).style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				center()
 				mapsvg.select(".den_map")
+					.attr("xlink:href", den_map_hi)
 					.transition().duration(80).attr("x",den_x-2).attr("y",all_y+2)
-						.attr("xlink:href", den_map_hi)
 					.transition().duration(80).attr("x",den_x).attr("y",all_y)
 			});
 
@@ -204,8 +204,8 @@ var swe = g.append("svg:image")
 				map_stat_bigint.text(swe_ddd).style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				center()
 				mapsvg.select(".swe_map")
+					.attr("xlink:href", swe_map_hi)
 					.transition().duration(80).attr("x",swe_x-2).attr("y",all_y+2)
-						.attr("xlink:href", swe_map_hi)
 					.transition().duration(80).attr("x",swe_x).attr("y",all_y)
 			});
 
@@ -223,8 +223,8 @@ var por = g.append("svg:image")
 				map_stat_bigint.text(por_ddd).style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				center()
 				mapsvg.select(".por_map")
+					.attr("xlink:href", por_map_hi)
 					.transition().duration(80).attr("x",por_x-2).attr("y",all_y+2)
-						.attr("xlink:href", por_map_hi)
 					.transition().duration(80).attr("x",por_x).attr("y",all_y)
 			});
 
@@ -242,8 +242,8 @@ var uk = g.append("svg:image")
 				map_stat_bigint.text(uk_ddd).style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				center()
 				mapsvg.select(".uk_map")
-					.transition().duration(80).attr("x",uk_x-2).attr("y",all_y+2)
-						.attr("xlink:href", uk_map_hi)
+					.attr("xlink:href", uk_map_hi)
+					.transition().duration(80).attr("x",uk_x-2).attr("y",all_y+2)	
 					.transition().duration(80).attr("x",uk_x).attr("y",all_y)
 			});
 
