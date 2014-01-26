@@ -7,19 +7,8 @@
 <link rel="stylesheet"  media="all" type="text/css" href="{% static 'rx/css/jquery-ui.min.css' %}">
 <link rel="stylesheet"  media="all" type="text/css" href="{% static 'rx/css/index.css' %}">
 
-<!--[if IE]>
-<script type="text/javascript">
-window.location = "{% url 'rx.views.redirect' %}";
-</script>
-<![endif]-->
 
-<script type="text/javascript">
-if ( $.browser.webkit ) {
-  
-  } else {
-  	window.location = "{% url 'rx.views.redirect' %}"
-  }
-</script>
+
 
 
 {% endblock %}
