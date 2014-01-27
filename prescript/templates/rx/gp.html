@@ -76,7 +76,7 @@
 				</span>
 				<div class="gp_demodata_mini">
 				<span class="head_cap_mini">
-					Depression Prevalence
+					Depression<span class="info" id="iprevale">&nbsp;<img src="{% static 'rx/image/i.png' %}" ></span> Prevalence
 				</span>
 				</div>
 				<span class="deprived_mini" >
@@ -204,6 +204,8 @@
 
 <div id="deprive_dialog" class="help_dialog" title="Area Deprivation"><p>Area deprivation is assigned according to the employment and income deprivation scores assessed by the Northern Ireland Statistics and Research Agency at the postcode of each GP. <br><br>Groups are determined by quartiles of deprivation scores and range Most-More-Less-Least deprived.</div>
 
+<div id="prevale_dialog" class="help_dialog" title="Depression Prevalence"><p>Depression prevalence is a measure of the percentage of patients ever having been coded for depression by a GP. It is assessed as part of the Quality and Outcomes Framework program, which is a voluntary incentive scheme included in the General Medical Services Contract. Read more <a href="http://www.dhsspsni.gov.uk/statistics_and_research-qof-prevalence">here</a>.</div>
+
 
 <div id="dgroup_dialog" class="help_dialog" title="Deprivation Rank"><p>This GP's prescription rate ranked against all GPs within the same deprivation group that have prescribed this medicine in Northern Ireland.</div>
 
@@ -219,6 +221,9 @@ $(window).load(function () {
 	$( "#deprive_dialog" ).dialog({ autoOpen: false, width: 540, maxHeight:500});
 	$( "#ideprive" ).click(function() {
   		$( "#deprive_dialog" ).dialog( "open" );
+	});
+	$( "#iprevale" ).click(function() {
+  		$( "#prevale_dialog" ).dialog( "open" );
 	});
 
 	$( "#cost_dialog" ).dialog({ autoOpen: false, width: 340, height:120  });
