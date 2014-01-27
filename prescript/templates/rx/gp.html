@@ -121,7 +121,7 @@
 			<th>Drug</th>
 			<th>Written</th>
 			
-			<th><span class="table_sub"> Per 1,000 registered patients</span></th>
+			<th><span class="table_sub"> Per 1,000 registered patients per month</span></th>
 			<th><span class="table_sub"> Rank within Deprivation Group&nbsp;<span class="info" id="idgroup"><img src="{% static 'rx/image/i.png' %}" ></span></span></th>
 			<th><span class="table_sub"> Rank among all N. Irish GPs&nbsp;<span class="info" ><img id="iagroup" src="{% static 'rx/image/i.png' %}" ></span></span></th>
 		</tr>
@@ -132,7 +132,7 @@
 			<td class="td_drug"><a href="{% url 'rx.views.drug' drug.chem_name %}">{{drug.chem_name}}</a></td>
 			<td class="td_rx">{{drug.prescripts|floatformat:0|intcomma}}</td>
 			
-			<td class="td_rate">{{drug.rx_per_1k|floatformat:1}}</td>
+			<td class="td_rate">{{drug.ddd_per_1k|floatformat:1}}</td>
 			<td class="td_dep_rank">{{drug.deprive_rank|ordinal}}<span class="table_sub"> / {{drug.deprive_group}}</span></td>
 			<td class="td_rank">{{drug.all_rank|ordinal}}<span class="table_sub"> / {{drug.all_prescribing_gps}}</span></td>
 		</tr>
@@ -168,10 +168,10 @@
 	        							headers :{
 	        								1: {sorter:'cleanNumber'},
 	        								2: {sorter:'cleanNumber'},
+	        								3: {sorter:'ordinalNumber'},
 	        								4: {sorter:'ordinalNumber'},
-	        								5: {sorter:'ordinalNumber'},
 	        							},
-	        							sortList: [[4,0]], 
+	        							sortList: [[3,0]], 
 	        							scrollHeight: 232,
 	        							widgets: ['zebra', 'scroller']} ); 
 	    } 

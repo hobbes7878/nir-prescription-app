@@ -5,6 +5,7 @@ from django.template import RequestContext
 from rx.models import Drug_Detail, PostGEO, TopDrugGPs, Drug_Stat, Fatal_Stat
 import operator
 import re
+import string
 
 
 
@@ -42,8 +43,10 @@ def latlon(gps):
 #Regex gets placename from address fields 
 def get_city(gps):
 	for gp in gps:
-		#compiles address, removes extra spaces
-		add =(gp.add1 +" "+ gp.add2 +" "+ gp.add3+" "+gp.postcode).replace("  "," ").replace("  "," ")
+		#compiles address, removes puncs and extra spaces
+		add =add = ''.join(char for char in (gp.add1 +" "+ gp.add2 +" "+ gp.add3+" "+gp.postcode) if char not in string.punctuation).replace("  "," ").replace("  "," ")
+
+
 		#removes common street names
 		streets = [' street ',' st ',' rd ',' road' ,' ave ',' avenue ', ' estate ']
 		for street in streets:
@@ -152,7 +155,7 @@ def drug_search(request):
 		nir_all_rx_per = nir_all_rx/(drug.nir_patients/100000)
 		nir_rx_prob = nir_all_rx_per / (eng_all_rx_per+nir_all_rx_per)
 
-		gps = get_city(TopDrugGPs.objects.filter(chem_name__iexact=request.GET['q']).order_by('-rx_per_1k')[:10])
+		gps = get_city(TopDrugGPs.objects.filter(chem_name__iexact=request.GET['q']).order_by('-ddd_per_1k')[:10])
 
 
 
@@ -239,7 +242,7 @@ def gp(request,gp_code):
 
 	gp_info = top_drugs[0]
 	all_gps = len(TopDrugGPs.objects.distinct('code'))
-	top_drugs_sorted = sorted(top_drugs, key=operator.attrgetter('deprive_rank'))
+	top_drugs_sorted = top_drugs #sorted(top_drugs, key=operator.attrgetter('deprive_rank'))
 
 	return render_to_response('rx/gp.html', {'share_url':share_url(request), 'links':drug_links(), 'gp_code':gp_code, 'top_drugs':top_drugs_sorted, 'gp_info':gp_info, 'all_gps':all_gps })
 

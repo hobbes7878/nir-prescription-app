@@ -13,6 +13,12 @@ def percentize(value):
 def mcCap(value):
 	return re.sub(r'( Mc)([a-z])', lambda match: match.group(1) + match.group(2).upper(), value)
 
+@register.filter(is_safe=True)
+@stringfilter
+def drdr(value):
+	return value
+
+
 @register.filter
 def monthly(value):
 	months=3

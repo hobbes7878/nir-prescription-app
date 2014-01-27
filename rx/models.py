@@ -54,8 +54,9 @@ class TopDrugGPs(models.Model):
 	drug_all_rank = models.IntegerField() #will be DDD rank
 	chem_name = models.CharField(max_length=250)
 	prescripts = models.FloatField()
-	cost = models.FloatField()
-	rx_per_1k = models.FloatField() #will be DDD per 1k
+	qof = models.FloatField()
+	ddd_per_1k = models.FloatField()
+	rx_per_1k = models.FloatField()
 	def __unicode__(self):
 		return self.code + "-" + self.name + "-" + self.chem_name
 
