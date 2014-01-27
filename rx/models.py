@@ -53,6 +53,7 @@ class TopDrugGPs(models.Model):
 	drug_gp_rank = models.IntegerField() #DDD rank
 	drug_all_rank = models.IntegerField() #DDD rank
 	chem_name = models.CharField(max_length=250)
+	action = models.CharField(max_length=250)
 	prescripts = models.FloatField()
 	qof = models.FloatField()
 	ddd_per_1k = models.FloatField() #already per month..

@@ -138,6 +138,10 @@ th{
 	color:#333333;
 }
 
+.rx_writ{
+	font-size: 16px;
+}
+
 .table_sub:hover{
 	border-bottom-color: darkred;
 }
@@ -213,7 +217,7 @@ td a:hover{
 .td_rx{
 	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
 	font-size: 20px;
-	width:85px;
+	width:70px;
 	padding-left: 10px;
 }
 
@@ -258,3 +262,6 @@ td a:hover{
 .h_break{
 	clear:left;
 }
+
+
+
