@@ -50,12 +50,12 @@ class TopDrugGPs(models.Model):
 	lon = models.FloatField()
 	deprive = models.CharField(max_length=2)
 	patients = models.IntegerField()
-	drug_gp_rank = models.IntegerField() #will be DDD rank
-	drug_all_rank = models.IntegerField() #will be DDD rank
+	drug_gp_rank = models.IntegerField() #DDD rank
+	drug_all_rank = models.IntegerField() #DDD rank
 	chem_name = models.CharField(max_length=250)
 	prescripts = models.FloatField()
 	qof = models.FloatField()
-	ddd_per_1k = models.FloatField()
+	ddd_per_1k = models.FloatField() #already per month..
 	rx_per_1k = models.FloatField()
 	def __unicode__(self):
 		return self.code + "-" + self.name + "-" + self.chem_name

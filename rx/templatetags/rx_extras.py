@@ -21,5 +21,5 @@ def drdr(value):
 
 @register.filter
 def monthly(value):
-	months=3
+	months=6
 	return int(value/months)
