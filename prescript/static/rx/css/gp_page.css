@@ -228,7 +228,7 @@ td a:hover{
 .td_dep_rank{
 	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
 	font-size: 20px;
-	width:135px;	
+	width:100px;	
 	padding-left: 10px;
 	color:darkred;
 	text-align: center;
@@ -237,7 +237,7 @@ td a:hover{
 .td_rank{
 	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
 	font-size: 20px;
-	width:135px;	
+	width:100px;	
 	padding-left: 10px;
 	color:darkred;
 	text-align: center;
