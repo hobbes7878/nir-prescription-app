@@ -214,6 +214,13 @@ td a:hover{
 	width:145px;
 
 }
+.td_act{
+	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+	font-size: 12px;
+	color:darkgrey;
+
+}
+
 .td_rx{
 	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
 	font-size: 20px;
