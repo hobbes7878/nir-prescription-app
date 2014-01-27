@@ -126,12 +126,14 @@
 	<thead class="zero">
 		<tr class="upper_th">
 			<td style="width:20px"></td>
-			<td class="rx_writ">Prescriptions</td>
+			<td></td>
+			<td ><span class="rx_writ">Prescriptions</span></td>
 		
 			<td class="over_hd" colspan="3">Prescription Rate (Defined Daily Doses)</td>
 		</tr>
 		<tr class="lower_th">
 			<th>Drug</th>
+			<th class="rx_writ">Class</th>
 			<th class="rx_writ">Written</th>
 			
 			<th><span class="table_sub"> Per 1,000 registered patients per month</span></th>
@@ -143,6 +145,7 @@
 	{% for drug in top_drugs %}
 		<tr  {% if forloop.counter|divisibleby:2 %}class='even'{% else %}class='odd'{% endif %} >
 			<td class="td_drug"><a href="{% url 'rx.views.drug' drug.chem_name %}">{{drug.chem_name}}</a></td>
+			<td>{{drug.action}}</td>
 			<td class="td_rx">{{drug.prescripts|floatformat:0|intcomma}}</td>
 			
 			<td class="td_rate">{{drug.ddd_per_1k|floatformat:1|intcomma}}</td>
