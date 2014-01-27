@@ -52,8 +52,8 @@
 .gp_demodata_mini{
 	float:left;
 	max-width:75px;
-	padding:0px 0px;
-	border-left:2px solid grey;
+	padding-top:7px;
+	border-right:2px solid grey;
 	height:40px;
 }
 
@@ -66,6 +66,7 @@
 .head_cap_mini{
 	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
 	font-size: 12px;
+	margin:auto 0px;
 	color:darkred;	
 }
 
