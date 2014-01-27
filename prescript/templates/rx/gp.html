@@ -104,7 +104,7 @@
 </div>
 
 <br>
-<h4>Top Prescriptions: Antidepressant, Anti-anxiety & Analgesic Drugs</h4>
+<h4 class="h_break">Top Prescriptions: Antidepressant, Anti-anxiety & Analgesic Drugs</h4>
 <div id="table_container">
 <div id="table_div">
 	<script type="text/javascript" src="{% static 'rx/js/jquery.tablesorter.js' %}"></script>
@@ -112,7 +112,7 @@
 <table id="top_drug" class="tablesorter">	
 	<thead class="zero">
 		<tr class="upper_th">
-			<td style="width:23px"></td>
+			<td style="width:20px"></td>
 			<td>Prescriptions</td>
 		
 			<td class="over_hd" colspan="3">Prescription Rate (Defined Daily Doses)</td>
@@ -171,7 +171,8 @@
 	        								3: {sorter:'ordinalNumber'},
 	        								4: {sorter:'ordinalNumber'},
 	        							},
-	        							sortList: [[3,0]], 
+	        							sortInitialOrder: 'desc',
+	        							sortList: [[2,0]], 
 	        							scrollHeight: 232,
 	        							widgets: ['zebra', 'scroller']} ); 
 	    } 

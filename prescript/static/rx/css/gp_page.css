@@ -27,7 +27,7 @@
 }
 #gp_name{
 	float:left;
-	max-width:300px;
+	max-width:320px;
 	font-family: Monaco, Consolas, "Lucida Console", monospace;
 	font-size: 44px;
 	text-align: right;
@@ -235,3 +235,6 @@ td a:hover{
 	z-index: 99999990;
 }
 
+.h_break{
+	clear:left;
+}
