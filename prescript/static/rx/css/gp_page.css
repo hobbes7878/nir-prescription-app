@@ -27,7 +27,7 @@
 }
 #gp_name{
 	float:left;
-	max-width:320px;
+	max-width:300px;
 	font-family: Monaco, Consolas, "Lucida Console", monospace;
 	font-size: 44px;
 	text-align: right;
