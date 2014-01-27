@@ -189,26 +189,21 @@ td a:hover{
 .td_rx{
 	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
 	font-size: 20px;
-	width:100px;
+	width:90px;
 }
 
-.td_cost{
-	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
-	font-size: 20px;
-	width:100px;
-}
 
 .td_rate{
 	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
 	font-size: 20px;
-	width:135px;	
+	width:145px;	
 	padding-left: 10px;
 	text-align: center;
 }
 .td_dep_rank{
 	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
 	font-size: 20px;
-	width:150px;	
+	width:140px;	
 	padding-left: 10px;
 	color:darkred;
 	text-align: center;
