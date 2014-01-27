@@ -59,6 +59,7 @@
 	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
 	font-size: 12px;
 	color:darkred;	
+	line-height: 1px;
 }
 
 .big_int{
@@ -70,6 +71,7 @@
 	font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
 	font-size: 22px;
 	font-weight: bold;
+	line-height: 80%;
 }
 
 
