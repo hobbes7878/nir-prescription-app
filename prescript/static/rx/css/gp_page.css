@@ -217,7 +217,8 @@ td a:hover{
 .td_act{
 	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
 	font-size: 12px;
-	color:darkgrey;
+	color:#555555;
+	font-style: italic;
 
 }
 
