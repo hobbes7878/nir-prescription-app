@@ -141,6 +141,10 @@ th{
 .rx_writ{
 	font-size: 16px;
 }
+.rx_class{
+	font-size: 16px;
+	width:100px;
+}
 
 .table_sub:hover{
 	border-bottom-color: darkred;
