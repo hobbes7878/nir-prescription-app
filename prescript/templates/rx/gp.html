@@ -76,14 +76,14 @@
 				</span>
 				<div class="gp_demodata_mini">
 				<span class="head_cap_mini">
-					Depression<span class="info" id="iprevale">&nbsp;<img src="{% static 'rx/image/i.png' %}" ></span> Prevalence
+					Depression Prevalence
 				</span>
 				</div>
 				<span class="deprived_mini" >
 				{% if gp_info.qof > 0 %}
-				&nbsp;{{gp_info.qof|percentize}}%
+				&nbsp;{{gp_info.qof|percentize}}%<span class="info" id="iprevale">&nbsp;<img src="{% static 'rx/image/i.png' %}" ></span> 
 				{% else %}
-				Not Available
+				Not Available<span class="info" id="iprevale">&nbsp;<img src="{% static 'rx/image/i.png' %}" ></span> 
 				{% endif %}
 				</span>
 			</div>
