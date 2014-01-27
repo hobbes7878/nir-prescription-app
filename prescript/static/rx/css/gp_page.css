@@ -146,6 +146,10 @@ th{
 	width:100px !important;
 }
 
+.rx_chem{
+	width:175px !important;
+}
+
 .table_sub:hover{
 	border-bottom-color: darkred;
 }
