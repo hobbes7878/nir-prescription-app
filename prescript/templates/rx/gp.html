@@ -74,12 +74,14 @@
 					{% if gp_info.deprive == '3' %}More Deprived{% endif %}	
 					{% if gp_info.deprive == '4' %}Most Deprived{% endif %}	
 				</span>
+				<div class="gp_demodata_mini">
 				<span class="head_cap_mini">
-					Depression <br>Prevalence
+					Depression Prevalence
 				</span>
+				</div>
 				<span class="deprived" style="font-size:24px;">
 				{% if gp_info.qof > 0 %}
-				|&nbsp;{{gp_info.qof|percentize}}%
+				&nbsp;{{gp_info.qof|percentize}}%
 				{% else %}
 				Not Available
 				{% endif %}
