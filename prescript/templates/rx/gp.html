@@ -81,9 +81,9 @@
 				</div>
 				<span class="deprived_mini" >
 				{% if gp_info.qof > 0 %}
-				&nbsp;{{gp_info.qof|percentize}}%<span class="info" id="iprevale">&nbsp;<img src="{% static 'rx/image/i.png' %}" ></span> 
+				&nbsp;{{gp_info.qof|percentize}}%<span style="margin-left:-5px;" class="info" id="iprevale">&nbsp;<img src="{% static 'rx/image/i.png' %}" ></span> 
 				{% else %}
-				Not Available<span class="info" id="iprevale">&nbsp;<img src="{% static 'rx/image/i.png' %}" ></span> 
+				NA<span class="info" id="iprevale">&nbsp;<img src="{% static 'rx/image/i.png' %}" ></span> 
 				{% endif %}
 				</span>
 			</div>
