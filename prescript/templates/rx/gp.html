@@ -126,7 +126,7 @@
 	<thead class="zero">
 		<tr class="upper_th">
 			<td style="width:20px"></td>
-			<td>	</td>
+			<td></td>
 			<td >Prescriptions</td>
 		
 			<td class="over_hd" colspan="3">Prescription Rate (Defined Daily Doses)</td>
@@ -182,13 +182,13 @@
 	    { 
 	        $("#top_drug").tablesorter({
 	        							headers :{
-	        								1: {sorter:'cleanNumber'},
 	        								2: {sorter:'cleanNumber'},
-	        								3: {sorter:'ordinalNumber'},
+	        								3: {sorter:'cleanNumber'},
 	        								4: {sorter:'ordinalNumber'},
+	        								5: {sorter:'ordinalNumber'},
 	        							},
 	        							
-	        							sortList: [[2,1]], 
+	        							sortList: [[3,1]], 
 	        							scrollHeight: 232,
 	        							widgets: ['zebra', 'scroller']} ); 
 	    } 
