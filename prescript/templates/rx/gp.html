@@ -79,7 +79,7 @@
 				</span>
 				<span class="deprived">
 				{% if gp_info.qof > 0 %}
-				{{gp_info.qof|floatformat:1|percentize}}
+				{{gp_info.qof|percentize|floatformat:1}}
 				{% else %}
 				Not Available
 				{% endif %}
