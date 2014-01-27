@@ -29,35 +29,6 @@ var dataset = {
         ]
     }, 
     "data10": {
-        "chem": "Fluoxetine", 
-        "data": [
-            {
-                "eng": "228.2", 
-                "name": "Least", 
-                "value": "665.1", 
-                "wal": "419.2"
-            }, 
-            {
-                "eng": "266.2", 
-                "name": "Less", 
-                "value": "702.7", 
-                "wal": "526.7"
-            }, 
-            {
-                "eng": "288.6", 
-                "name": "More", 
-                "value": "800.3", 
-                "wal": "559.8"
-            }, 
-            {
-                "eng": "296.9", 
-                "name": "Most", 
-                "value": "975.1", 
-                "wal": "604.7"
-            }
-        ]
-    }, 
-    "data11": {
         "chem": "Citalopram", 
         "data": [
             {
@@ -86,7 +57,7 @@ var dataset = {
             }
         ]
     }, 
-    "data12": {
+    "data11": {
         "chem": "Dosulepin", 
         "data": [
             {
@@ -115,7 +86,7 @@ var dataset = {
             }
         ]
     }, 
-    "data13": {
+    "data12": {
         "chem": "Venlafaxine", 
         "data": [
             {
@@ -144,7 +115,7 @@ var dataset = {
             }
         ]
     }, 
-    "data14": {
+    "data13": {
         "chem": "Lofepramine", 
         "data": [
             {
@@ -173,7 +144,7 @@ var dataset = {
             }
         ]
     }, 
-    "data15": {
+    "data14": {
         "chem": "Bupropion", 
         "data": [
             {
@@ -202,7 +173,7 @@ var dataset = {
             }
         ]
     }, 
-    "data16": {
+    "data15": {
         "chem": "Phenelzine", 
         "data": [
             {
@@ -231,36 +202,7 @@ var dataset = {
             }
         ]
     }, 
-    "data17": {
-        "chem": "Tryptophan", 
-        "data": [
-            {
-                "eng": null, 
-                "name": "Least", 
-                "value": null, 
-                "wal": null
-            }, 
-            {
-                "eng": null, 
-                "name": "Less", 
-                "value": null, 
-                "wal": null
-            }, 
-            {
-                "eng": null, 
-                "name": "More", 
-                "value": null, 
-                "wal": null
-            }, 
-            {
-                "eng": null, 
-                "name": "Most", 
-                "value": null, 
-                "wal": null
-            }
-        ]
-    }, 
-    "data18": {
+    "data16": {
         "chem": "Reboxetine", 
         "data": [
             {
@@ -289,7 +231,7 @@ var dataset = {
             }
         ]
     }, 
-    "data19": {
+    "data17": {
         "chem": "Moclobemide", 
         "data": [
             {
@@ -315,6 +257,64 @@ var dataset = {
                 "name": "Most", 
                 "value": "6.5", 
                 "wal": "10.9"
+            }
+        ]
+    }, 
+    "data18": {
+        "chem": "Duloxetine", 
+        "data": [
+            {
+                "eng": "28.9", 
+                "name": "Least", 
+                "value": "114.3", 
+                "wal": "88.3"
+            }, 
+            {
+                "eng": "34.9", 
+                "name": "Less", 
+                "value": "126.2", 
+                "wal": "102"
+            }, 
+            {
+                "eng": "37.7", 
+                "name": "More", 
+                "value": "131.3", 
+                "wal": "123"
+            }, 
+            {
+                "eng": "43.1", 
+                "name": "Most", 
+                "value": "144.5", 
+                "wal": "126.1"
+            }
+        ]
+    }, 
+    "data19": {
+        "chem": "Paroxetine", 
+        "data": [
+            {
+                "eng": "53.6", 
+                "name": "Least", 
+                "value": "87.3", 
+                "wal": "111.6"
+            }, 
+            {
+                "eng": "61.1", 
+                "name": "Less", 
+                "value": "96.7", 
+                "wal": "120.7"
+            }, 
+            {
+                "eng": "63.9", 
+                "name": "More", 
+                "value": "92.9", 
+                "wal": "154.1"
+            }, 
+            {
+                "eng": "71.4", 
+                "name": "Most", 
+                "value": "132.2", 
+                "wal": "136"
             }
         ]
     }, 
@@ -348,64 +348,6 @@ var dataset = {
         ]
     }, 
     "data20": {
-        "chem": "Duloxetine", 
-        "data": [
-            {
-                "eng": "28.9", 
-                "name": "Least", 
-                "value": "114.3", 
-                "wal": "88.3"
-            }, 
-            {
-                "eng": "34.9", 
-                "name": "Less", 
-                "value": "126.2", 
-                "wal": "102"
-            }, 
-            {
-                "eng": "37.7", 
-                "name": "More", 
-                "value": "131.3", 
-                "wal": "123"
-            }, 
-            {
-                "eng": "43.1", 
-                "name": "Most", 
-                "value": "144.5", 
-                "wal": "126.1"
-            }
-        ]
-    }, 
-    "data21": {
-        "chem": "Paroxetine", 
-        "data": [
-            {
-                "eng": "53.6", 
-                "name": "Least", 
-                "value": "87.3", 
-                "wal": "111.6"
-            }, 
-            {
-                "eng": "61.1", 
-                "name": "Less", 
-                "value": "96.7", 
-                "wal": "120.7"
-            }, 
-            {
-                "eng": "63.9", 
-                "name": "More", 
-                "value": "92.9", 
-                "wal": "154.1"
-            }, 
-            {
-                "eng": "71.4", 
-                "name": "Most", 
-                "value": "132.2", 
-                "wal": "136"
-            }
-        ]
-    }, 
-    "data22": {
         "chem": "Escitalopram", 
         "data": [
             {
@@ -434,7 +376,7 @@ var dataset = {
             }
         ]
     }, 
-    "data23": {
+    "data21": {
         "chem": "Agomelatine", 
         "data": [
             {
@@ -463,7 +405,7 @@ var dataset = {
             }
         ]
     }, 
-    "data24": {
+    "data22": {
         "chem": "Nortriptyline", 
         "data": [
             {
@@ -492,7 +434,7 @@ var dataset = {
             }
         ]
     }, 
-    "data25": {
+    "data23": {
         "chem": "Mianserin", 
         "data": [
             {
@@ -521,7 +463,7 @@ var dataset = {
             }
         ]
     }, 
-    "data26": {
+    "data24": {
         "chem": "Sertraline", 
         "data": [
             {
@@ -550,7 +492,7 @@ var dataset = {
             }
         ]
     }, 
-    "data27": {
+    "data25": {
         "chem": "Trazodone", 
         "data": [
             {
@@ -754,31 +696,31 @@ var dataset = {
         ]
     }, 
     "data9": {
-        "chem": "Isocarboxazid", 
+        "chem": "Fluoxetine", 
         "data": [
             {
-                "eng": "4.2", 
+                "eng": "228.2", 
                 "name": "Least", 
-                "value": null, 
-                "wal": "8.1"
+                "value": "665.1", 
+                "wal": "419.2"
             }, 
             {
-                "eng": "4.3", 
+                "eng": "266.2", 
                 "name": "Less", 
-                "value": null, 
-                "wal": "6.8"
+                "value": "702.7", 
+                "wal": "526.7"
             }, 
             {
-                "eng": "3", 
+                "eng": "288.6", 
                 "name": "More", 
-                "value": null, 
-                "wal": "15.7"
+                "value": "800.3", 
+                "wal": "559.8"
             }, 
             {
-                "eng": "4.6", 
+                "eng": "296.9", 
                 "name": "Most", 
-                "value": "0", 
-                "wal": "9.4"
+                "value": "975.1", 
+                "wal": "604.7"
             }
         ]
     }

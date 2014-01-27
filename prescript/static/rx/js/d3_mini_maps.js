@@ -92,6 +92,24 @@ var map_stat_sub2 = map_textbox.append("text")
 var g = mapsvg.append("g");
 
 
+var source_ni = g.append("text")
+		.attr("x",495)
+		.attr("y",75)
+		.attr("font-size", "11px")
+		.attr("font-family", "'Lora'")
+		.attr("fill", "grey")
+		.text("SOURCE: Analysis of GP Prescribing Data by The Detail")
+		.attr("display","none");
+
+var source_ot = g.append("text")
+		.attr("x",495)
+		.attr("y",75)
+		.attr("font-size", "11px")
+		.attr("font-family", "'Lora'")
+		.attr("fill", "grey")
+		.text("SOURCE: OECD Health at a Glance 2013")
+		.attr("display","none");
+
 
 
 var nir = g.append("svg:image")
@@ -104,6 +122,7 @@ var nir = g.append("svg:image")
 			.attr("fill","orange")
 			.on("click", function(){
 				reset()
+				source_ni.attr("display","block");
 				map_stat_country.text("Northern Ireland").style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				map_stat_bigint.text(nir_ddd).style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				center()
@@ -124,6 +143,7 @@ var ice = g.append("svg:image")
 			.attr("fill","orange")
 			.on("click", function(){
 				reset()
+				source_ot.attr("display","block");
 				map_stat_country.text("Iceland").style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				map_stat_bigint.text(ice_ddd).style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				center()
@@ -143,6 +163,7 @@ var aus = g.append("svg:image")
 			.attr("fill","orange")
 			.on("click", function(){
 				reset()
+				source_ot.attr("display","block");
 				map_stat_country.text("Australia").style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				map_stat_bigint.text(aus_ddd).style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				center()
@@ -162,6 +183,7 @@ var can = g.append("svg:image")
 			.attr("fill","orange")
 			.on("click", function(){
 				reset()
+				source_ot.attr("display","block");
 				map_stat_country.text("Canada").style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				map_stat_bigint.text(can_ddd).style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				center()
@@ -181,6 +203,7 @@ var den = g.append("svg:image")
 			.attr("fill","orange")
 			.on("click", function(){
 				reset()
+				source_ot.attr("display","block");
 				map_stat_country.text("Denmark").style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				map_stat_bigint.text(den_ddd).style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				center()
@@ -200,6 +223,7 @@ var swe = g.append("svg:image")
 			.attr("fill","orange")
 			.on("click", function(){
 				reset()
+				source_ot.attr("display","block");
 				map_stat_country.text("Sweden").style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				map_stat_bigint.text(swe_ddd).style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				center()
@@ -219,6 +243,7 @@ var por = g.append("svg:image")
 			.attr("fill","orange")
 			.on("click", function(){
 				reset()
+				source_ot.attr("display","block");
 				map_stat_country.text("Portugal").style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				map_stat_bigint.text(por_ddd).style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				center()
@@ -238,6 +263,7 @@ var uk = g.append("svg:image")
 			.attr("fill","orange")
 			.on("click", function(){
 				reset()
+				source_ot.attr("display","block");
 				map_stat_country.text("United Kingdom").style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				map_stat_bigint.text(uk_ddd).style("opacity",0).transition().duration(stat_fade).style("opacity",1);
 				center()
@@ -274,6 +300,9 @@ function reset(){
 				
 				map_stat_sub1.text("daily doses per");
 				map_stat_sub2.text("1,000 people per day");
+
+				source_ni.attr("display","none");
+				source_ot.attr("display","none");
 
 };
 
