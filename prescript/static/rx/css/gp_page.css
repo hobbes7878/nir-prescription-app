@@ -52,7 +52,7 @@
 .gp_demodata_mini{
 	float:left;
 	max-width:75px;
-	margin-top:7px;
+	margin-top:10px;
 	border-right:2px solid grey;
 	height:40px;
 }
@@ -65,8 +65,8 @@
 }
 .head_cap_mini{
 	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-	font-size: 16px;
-	margin-top:20px;
+	font-size: 12px;
+	margin:auto 0px;
 	color:darkred;	
 }
 
@@ -80,6 +80,12 @@
 	font-size: 22px;
 	font-weight: bold;
 	line-height: 80%;
+}
+.deprived_mini{
+	font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+	font-size: 24px;
+	font-weight: bold;
+	margin:auto 0px;
 }
 
 
