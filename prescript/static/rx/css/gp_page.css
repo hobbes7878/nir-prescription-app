@@ -54,7 +54,7 @@
 	max-width:70px;
 	margin-top:10px;
 	margin-bottom: 10px;
-	border-right:2px solid grey;
+	border-right:1px solid grey;
 	height:36px;
 }
 
@@ -87,7 +87,7 @@
 	font-size: 26px;
 	font-weight: bold;
 	margin-top:20px;
-	line-height: 70px;
+	line-height: 55px;
 }
 
 
