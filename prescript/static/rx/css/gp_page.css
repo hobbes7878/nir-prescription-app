@@ -51,10 +51,11 @@
 
 .gp_demodata_mini{
 	float:left;
-	max-width:75px;
+	max-width:70px;
 	margin-top:10px;
+	margin-bottom: 10px;
 	border-right:2px solid grey;
-	height:40px;
+	max-height:30px;
 }
 
 
@@ -85,7 +86,7 @@
 	font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
 	font-size: 24px;
 	font-weight: bold;
-	margin:auto 0px;
+	margin-top:20px;
 }
 
 
