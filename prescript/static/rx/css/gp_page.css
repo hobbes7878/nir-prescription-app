@@ -102,6 +102,11 @@
 	border: 2px solid #000000;
 }
 
+
+
+
+
+
 #table_container{
 	width: 100%;
 	margin:0 auto;
@@ -113,6 +118,7 @@
 }
 
 table{
+	table-layout: fixed;
 
 }
 
@@ -176,15 +182,13 @@ thead.zero td{
 	background: #42526C;
 	color:white;
 	font-size: 16px;
-
 }
 
 
 #top_drug{
 	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
 	font-size: 14px;
-	border-spacing: 0px;
-	
+	border-spacing: 0px;	
 }
 
 #top_drug caption{
@@ -195,6 +199,7 @@ thead.zero td{
 	text-align: left;
 	font-style: italic;
 }
+
 tbody{
 	max-height:50px;
 	overflow-y:scroll;
