@@ -1,4 +1,4 @@
-var margin2 = {top: 60, right: 45, bottom: 10, left: 10},
+var margin2 = {top: 60, right: 45, bottom: 10, left: 15},
     width2 = 380 - margin2.left - margin2.right,
     height2 = 280 - margin2.top - margin2.bottom;
 
@@ -384,7 +384,7 @@ svg2.append("text")
 
 svg2.append("text")
   .attr("class","tipkey2")
-  .attr("x",250)
+  .attr("x",248)
   .attr("y",-42)
   .style("fill","#800000")
   .style("font-size","12px")
@@ -392,6 +392,30 @@ svg2.append("text")
   .style("font-family","sans-serif")
   .style("opacity",0)
   .text("NIR");
+
+svg2.append("text")
+  .attr("class","tipkey2")
+  .attr("x",-5)
+  .attr("y",200)
+  .style("fill","#555555")
+  .style("font-size","13px")
+  .style("font-weight",600)
+  .style("font-style","italic")
+  .style("font-family","sans-serif")
+  .text("GPs by Local Deprivation Level")
+  .attr("transform","rotate(-90,-5,200)");
+
+svg2.append("text")
+  .attr("class","tipkey2")
+  .attr("x",260)
+  .attr("y",-22)
+  .style("fill","#555555")
+  .style("font-size","12px")
+  .style("font-weight",600)
+  .style("font-style","italic")
+  .style("font-family","sans-serif")
+  .text("Daily Doses");
+
 
 
 var pausing2 = svg2.selectAll(".pause2");
