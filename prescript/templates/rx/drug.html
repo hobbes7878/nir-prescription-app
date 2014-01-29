@@ -174,10 +174,10 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 	<svg class="chart"></svg>
 	<script type="text/javascript">
 	var data = [
-			{{drug_stat.nir_deprive1_ddd_rate|monthly|floatformat:1}}, 
-			{{drug_stat.nir_deprive2_ddd_rate|monthly|floatformat:1}}, 
-			{{drug_stat.nir_deprive3_ddd_rate|monthly|floatformat:1}}, 
-			{{drug_stat.nir_deprive4_ddd_rate|monthly|floatformat:1}}
+			{{drug_stat.nir_deprive1_ddd_rate|monthly|sigdig}}, 
+			{{drug_stat.nir_deprive2_ddd_rate|monthly|sigdig}}, 
+			{{drug_stat.nir_deprive3_ddd_rate|monthly|sigdig}}, 
+			{{drug_stat.nir_deprive4_ddd_rate|monthly|sigdig}}
 		];
 	</script>
 	<script type="text/javascript" src="{% static 'rx/js/deprive_chart.js' %}"></script>
@@ -198,7 +198,7 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 	{{drug_stat.nir_top_rxs|monthly|floatformat:0|intcomma}}
 	</span>
 	<br>
-	prescriptions filled in <br>Northern Ireland each month.
+	prescriptions are filled in <br>Northern Ireland each month.
 	</span>
 	</div>
 
