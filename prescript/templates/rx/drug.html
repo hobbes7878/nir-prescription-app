@@ -37,7 +37,7 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 
 
 <div id="page_title_banner">	
-	<h1>{{drug_detail.chem_name}}</h1>
+	<h1>{{drug_stat.chem_name}}</h1>
 	<span class="aka">
 	aka {{drug_stat.drug_names|title}}
 	</span>
@@ -48,14 +48,33 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 
 <script type="text/javascript">
   var NIR_probability={{nir_rx_prob}}
-      drug="{{drug_detail.chem_name}}"
-      chem_type = "{{drug_detail.chem_class}}"
-      drug_use = "{{drug_detail.chem_action|lower}}"
-      NIR_qt_per_100k = 125780
-      ENG_qt_per_100k = "{{nir_rx_prob}}"
-      qt_unit = "capsules"
-      NIR_rx_per_100k = "{{nir_all_rx_per}}"
-      ENG_rx_per_100k = "{{eng_all_rx_per}}";
+      drug="{{drug_stat.chem_name}}"
+      chem_type = "{{drug_stat.chem_class}}"
+      drug_use = "{{drug_stat.chem_action|lower}}"
+      NIR_ddd_per_100k = 
+      {% if drug_stat.nir_ddd_per_100k < 10 %}
+      "{{drug_stat.nir_ddd_per_100k|monthly|floatformat:1}}"
+      {% else %}
+      "{{drug_stat.nir_ddd_per_100k|monthly|floatformat:0}}"
+      {% endif %}
+      ENG_ddd_per_100k = 
+      {% if drug_stat.eng_ddd_per_100k < 10 %}
+      "{{drug_stat.eng_ddd_per_100k|monthly|floatformat:1}}"
+      {% else %}
+      "{{drug_stat.eng_ddd_per_100k|monthly|floatformat:0}}"
+      {% endif %}
+      NIR_rx_per_100k = 
+      {% if drug_stat.nir_rx_per_100k < 10 %}
+      "{{drug_stat.nir_rx_per_100k|monthly|floatformat:1}}"
+      {% else %}
+      "{{drug_stat.nir_rx_per_100k|monthly|floatformat:0}}"
+      {% endif %}
+      ENG_rx_per_100k = 
+      {% if drug_stat.eng_rx_per_100k < 10 %}
+      "{{drug_stat.eng_rx_per_100k|monthly|floatformat:1}}"
+      {% else %}
+      "{{drug_stat.eng_rx_per_100k|monthly|floatformat:0}}"
+      {% endif %};
 </script>
 
 <div id="interactive">
@@ -67,20 +86,16 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 
 
 <hr class="styled_hr"> 
-<h3>100 Prescriptions</h3>
+<h3>100 Doses</h3>
+<p>To get a sense of how Northern Irish prescription rates compare, consider a hypothetical based on the difference in rates between England and Northern Ireland.</p>
+
 <div id="bigint">
 {{nir_rx_prob|percentize}}
 </div>
 
-<p style="font-size:19px;">If a single GP had an equal number of registered patients from Northern Ireland and England, <span class="smallint">{{nir_rx_prob|percentize}}</span> out of every 100 prescriptions for {{drug_stat.chem_name}} would be filled by Northern Irish patients.</p>
+<p style="font-size:19px;">If a single GP had an equal number of registered patients from Northern Ireland and England, <span class="smallint">{{nir_rx_prob|percentize}}</span> out of every 100 doses of {{drug_stat.chem_name}} would be prescribed to Northern Irish patients.</p>
 
-<p>
-{% if drug_stat.significance < .05 %}
-	That difference in per capita prescription rates is statistically significant, meaning the difference is unlikely explained by random chance. 
-{% else %}
-	That difference in per capita prescription rates is <u>not</u> statistically significant, meaning the difference could be explained by random chance.
-{% endif %} 
-<p>The graph at right models that difference for a random collection of 100 prescriptions.
+<p>The graph at right models that difference for a random collection of 100 doses.
 
 <hr class="styled_hr">
 <h2>Drug Facts</h2>
@@ -145,8 +160,7 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 		<span style="padding-left:0px; " class="sub_source">
 			SOURCE: Northern Ireland Statistics and Research Agency
 		</span>
-	{% else %}
-	Not Recorded
+	{% else %}<br>Not Recorded
 	{% endif %}
 	</div>
 </div>
@@ -154,12 +168,17 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 <div class='text_block'>
 
 <div class="deprive_div">
-	<h5>Average GP Prescription Rates</h5>
-	<span class="deprive_sub">Prescriptions per 1,000 registered patients<br>By deprivation group</span>
+	<h5>Monthly Prescription Rates</h5>
+	<span class="deprive_sub">Daily Doses <span style="font-weight:bold;">per 100,000</span> registered <br>patients by deprivation level</span>
 	<div class="lab_pad">
 	<svg class="chart"></svg>
 	<script type="text/javascript">
-	var data = [{{drug_stat.nir_deprive1_rx_rate|floatformat:1}}, {{drug_stat.nir_deprive2_rx_rate|floatformat:1}}, {{drug_stat.nir_deprive3_rx_rate|floatformat:1}}, {{drug_stat.nir_deprive4_rx_rate|floatformat:1}}];
+	var data = [
+			{{drug_stat.nir_deprive1_ddd_rate|monthly|floatformat:1}}, 
+			{{drug_stat.nir_deprive2_ddd_rate|monthly|floatformat:1}}, 
+			{{drug_stat.nir_deprive3_ddd_rate|monthly|floatformat:1}}, 
+			{{drug_stat.nir_deprive4_ddd_rate|monthly|floatformat:1}}
+		];
 	</script>
 	<script type="text/javascript" src="{% static 'rx/js/deprive_chart.js' %}"></script>
 	</div>
@@ -179,7 +198,7 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 	{{drug_stat.nir_top_rxs|monthly|floatformat:0|intcomma}}
 	</span>
 	<br>
-	prescriptions filled each month.
+	prescriptions filled in <br>Northern Ireland each month.
 	</span>
 	</div>
 
@@ -231,14 +250,14 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 			<th></th>
 			<th class="table_prac">Practice</th>
 			<th class="table_locl">Location</th>
-			<th class="table_prescript">Presciption Rate <span class="table_hed_sub">per 1,000 Registered Patients</span></th>
+			<th class="table_prescript">Daily Doses<br><span class="table_hed_sub">per 1,000 Registered <br>Patients per Month</span></th>
 		</tr>
 	{% for gp in gps %}	
 		<tr {% if forloop.counter|divisibleby:2 %}class='even'{% else %}class='odd'{% endif %}>
 			<td>{{forloop.counter}}</td>
 			<td style="width:220px"><a href="{% url 'rx.views.gp' gp.code %}">{{gp.name|title|mcCap}}</a> </td>
 			<td>{{gp.city|title}}</td>
-			<td style="width:140px; text-align:center;">{{gp.rx_per_1k|floatformat:1|intcomma}}</td>
+			<td style="width:140px; text-align:center;">{{gp.ddd_per_1k|floatformat:0|intcomma}}</td>
 		</tr>
 	{% endfor %}	
 	</table>
@@ -246,15 +265,6 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 </div>
 </div>
 
-<!-- <div id="100_dialog" class="help_dialog" title="100 Prescriptions"><p>This graph models how many of 100 {{drug_detail.chem_name|lower}} prescriptions would be filled in Northern Ireland v. England.<br><br><p>The split is based on the distribution of prescriptions filled from April to June 2013 between the two countries and assumes equal populations for the purpose of a per capita comparison.<br><br><p>The graph is randomly modelled based on probabilty.</div>
-
-<script>
-	$( "#100_dialog" ).dialog({ autoOpen: false, width: 540, maxHeight:500});
-	$( "#i100" ).click(function() {
-  		$( "#100_dialog" ).dialog( "open" );
-	});
-</script>
- -->
 
 
 </div>

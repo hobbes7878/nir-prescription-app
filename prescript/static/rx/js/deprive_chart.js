@@ -1,6 +1,8 @@
-var width = 180,
+var width = 150,
     barHeight = 20,
     margin_left = 50;
+
+var thousands = d3.format(",");
 
 var x = d3.scale.linear()
     .domain([0, d3.max(data)])
@@ -9,6 +11,7 @@ var x = d3.scale.linear()
 var chart = d3.select(".chart")
     .attr("width", width+margin_left)
     .attr("height", barHeight * data.length+15);
+
 
 var bar = chart.selectAll("g")
     .data(data)
@@ -24,7 +27,7 @@ bar.append("text")
     .attr("x", function(d) { return x(d) - 3; })
     .attr("y", barHeight / 2)
     .attr("dy", ".35em")
-    .text(function(d) { return d; });
+    .text(function(d) { return thousands(d); });
 
 chart.append("text")
 	.attr("class","dep_chart_lab")

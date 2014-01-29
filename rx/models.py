@@ -1,7 +1,7 @@
 from django.db import models
 
 
-#Drug details, consolidated by prescription 
+#DEPRECATED!!! 
 class Drug_Detail(models.Model):
 	chem_name = models.CharField(max_length=250)
 	chem_class = models.CharField(blank=True, null=True, default=None, max_length=250)
@@ -62,27 +62,46 @@ class TopDrugGPs(models.Model):
 		return self.code + "-" + self.name + "-" + self.chem_name
 
 
+
+
 class Drug_Stat(models.Model):
-	chem_name = models.CharField(max_length=250, null=True)
-	nir_total_items = models.FloatField(null=True)
-	nir_total_cost = models.FloatField(null=True)
-	nir_top_present = models.CharField(max_length=250, null=True)
-	nir_top_rxs = models.FloatField(null=True)
-	nir_top_amount = models.FloatField(null=True)
-	defined_daily_dose = models.FloatField(null=True)
-	nir_top_drug = models.CharField(max_length=250, null=True)
-	drug_names = models.CharField(max_length=250, null=True)
-	nir_fatalities = models.IntegerField(null=True)
-	significance = models.FloatField(default=False, null=True)
-	nir_deprive1_rx_rate = models.FloatField(null=True)
-	nir_deprive2_rx_rate = models.FloatField(null=True)
-	nir_deprive3_rx_rate = models.FloatField(null=True)
-	nir_deprive4_rx_rate = models.FloatField(null=True)
-	chem_class = models.CharField(max_length=250, null=True)
-	chem_action = models.CharField(max_length=250, null=True)
+	#CHEM INFO
+	chem_name = models.CharField(max_length=250, null=True,default=None)
+	chem_class = models.CharField(max_length=250, null=True,default=None)
+	chem_action = models.CharField(max_length=250, null=True,default=None)
+
+	#Manual Fill
+	brand_names = models.TextField(max_length=250, null=True,default=None)
 	drug_description = models.TextField(blank=True, null=True, default=None)
 	drug_uses = models.TextField(blank=True, null=True, default=None)
 	drug_warnings = models.TextField(blank=True, null=True, default=None)
+
+	#NIR RAW TOTALS
+	nir_total_rx = models.FloatField(null=True,default=None)
+	nir_total_ddd = models.FloatField(null=True,default=None)
+
+	#NIR TOP PRESENTATION
+	nir_top_present = models.CharField(max_length=250, null=True,default=None)
+	nir_top_rxs = models.FloatField(null=True,default=None)
+
+	#COMPARATIVE RATES
+	#Totals
+	nir_ddd_per_100k = models.FloatField(null=True,default=None)
+	eng_ddd_per_100k = models.FloatField(null=True,default=None)
+	wal_ddd_per_100k = models.FloatField(null=True,default=None)
+	nir_rx_per_100k = models.FloatField(null=True,default=None)
+	eng_rx_per_100k = models.FloatField(null=True,default=None)
+	wal_rx_per_100k = models.FloatField(null=True,default=None)
+	#Deprivation
+	nir_deprive1_rx_rate = models.FloatField(null=True,default=None)
+	nir_deprive2_rx_rate = models.FloatField(null=True,default=None)
+	nir_deprive3_rx_rate = models.FloatField(null=True,default=None)
+	nir_deprive4_rx_rate = models.FloatField(null=True,default=None)
+	nir_deprive1_ddd_rate = models.FloatField(null=True,default=None)
+	nir_deprive2_ddd_rate = models.FloatField(null=True,default=None)
+	nir_deprive3_ddd_rate = models.FloatField(null=True,default=None)
+	nir_deprive4_ddd_rate = models.FloatField(null=True,default=None)
+	
 	def __unicode__(self):
 		return self.chem_name
 

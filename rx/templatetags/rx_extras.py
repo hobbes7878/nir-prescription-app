@@ -1,6 +1,7 @@
 from django import template
 from django.template.defaultfilters import stringfilter
 import re
+from rx.models import TopDrugGPs
 
 register = template.Library()
 
@@ -22,4 +23,9 @@ def drdr(value):
 @register.filter
 def monthly(value):
 	months=6
-	return int(value/months)
+	return value/months
+
+@register.filter
+def per_nir_gps(value):
+	all_nir_gps = 349
+	return value/all_nir_gps

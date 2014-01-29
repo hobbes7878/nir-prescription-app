@@ -16,7 +16,7 @@ import string
 
 #Top menu drug links
 def drug_links():
-	links = Drug_Detail.objects.distinct('chem_name')
+	links = Drug_Stat.objects.distinct('chem_name')
 	return links
 #GP search name options
 def gp_choice():
@@ -28,7 +28,7 @@ def gp_choice():
 	return gp_search
 #Drug seach name options
 def drug_choice():
-	drugs = Drug_Detail.objects.distinct('chem_name')
+	drugs = Drug_Stat.objects.distinct('chem_name')
 	drugs_list=[]
 	for dg in drugs:
 		drugs_list.append(dg.chem_name)
@@ -96,9 +96,10 @@ def index(request):
 
 @no_ie('/prescript/redirect/')
 def drug(request, chem):
-	drug = Drug_Detail.objects.filter(chem_name__iexact=chem)[0]
-	prescripts = Drug_Detail.objects.filter(chem_name__iexact=chem)
+
 	drug_stat = Drug_Stat.objects.filter(chem_name__iexact=chem)[0]
+
+	nir_rx_prob = drug_stat.nir_ddd_per_100k / (drug_stat.nir_ddd_per_100k+drug_stat.eng_ddd_per_100k)
 
 	if chem in [f.chem_name for f in Fatal_Stat.objects.all()]:
 		fatal = Fatal_Stat.objects.filter(chem_name__iexact=chem)[0]
@@ -109,30 +110,19 @@ def drug(request, chem):
 	else:
 		fatal=''
 		generic = False
-		
 
-
-	nir_all_rx = 0
-	eng_all_rx = 0
-
-	for pr in prescripts:
-		nir_all_rx += pr.nir_items
-		eng_all_rx += pr.eng_items
-
-	eng_all_rx_per = eng_all_rx/(drug.eng_patients/100000)
-	nir_all_rx_per = nir_all_rx/(drug.nir_patients/100000)
-	nir_rx_prob = nir_all_rx_per / (eng_all_rx_per+nir_all_rx_per)
-
-	gps = get_city(TopDrugGPs.objects.filter(chem_name__iexact=chem).order_by('-rx_per_1k')[:10])
+	gps = get_city(TopDrugGPs.objects.filter(chem_name__iexact=chem).order_by('-ddd_per_1k')[:10])
 	
-	return render_to_response('rx/drug.html',{'share_url':share_url(request),'fatal':fatal, 'generic':generic, 'chem_name':chem,'links':drug_links(), 'drug_detail':drug, 'nir_rx_prob':nir_rx_prob, 'eng_all_rx_per':int(eng_all_rx_per), 'nir_all_rx_per':int(nir_all_rx_per), 'gps':gps, 'latlon':latlon(gps),'drug_stat':drug_stat,}) 
+	return render_to_response('rx/drug.html',{'share_url':share_url(request),'fatal':fatal, 'generic':generic, 'chem_name':chem,'links':drug_links(), 'nir_rx_prob':nir_rx_prob, 'gps':gps, 'latlon':latlon(gps),'drug_stat':drug_stat,}) 
 
 @no_ie('/prescript/redirect/')
 def drug_search(request):
 	if request.GET['q'].lower() in [str(e).lower() for e in drug_links()]:
-		drug = Drug_Detail.objects.filter(chem_name__iexact=request.GET['q'])[0]
-		prescripts = Drug_Detail.objects.filter(chem_name__iexact=request.GET['q'])
+
+
 		drug_stat = Drug_Stat.objects.filter(chem_name__iexact=request.GET['q'])[0]
+
+		nir_rx_prob = drug_stat.nir_ddd_per_100k / (drug_stat.nir_ddd_per_100k+drug_stat.eng_ddd_per_100k)
 
 		if request.GET['q'] in [f.chem_name for f in Fatal_Stat.objects.all()]:
 			fatal = Fatal_Stat.objects.filter(chem_name__iexact=request.GET['q'])[0]
@@ -144,22 +134,9 @@ def drug_search(request):
 			fatal=''
 			generic = False
 
-		nir_all_rx = 0
-		eng_all_rx = 0
-
-		for pr in prescripts:
-			nir_all_rx += pr.nir_items
-			eng_all_rx += pr.eng_items
-
-		eng_all_rx_per = eng_all_rx/(drug.eng_patients/100000)
-		nir_all_rx_per = nir_all_rx/(drug.nir_patients/100000)
-		nir_rx_prob = nir_all_rx_per / (eng_all_rx_per+nir_all_rx_per)
-
 		gps = get_city(TopDrugGPs.objects.filter(chem_name__iexact=request.GET['q']).order_by('-ddd_per_1k')[:10])
 
-
-
-		return render_to_response('rx/drug.html',{'share_url':share_url(request),'fatal':fatal, 'generic':generic, 'chem_name':request.GET['q'],'links':drug_links(), 'drug_detail':drug, 'nir_rx_prob':nir_rx_prob, 'eng_all_rx_per':int(eng_all_rx_per), 'nir_all_rx_per':int(nir_all_rx_per), 'gps':gps, 'latlon':latlon(gps), 'drug_stat':drug_stat,}) 
+		return render_to_response('rx/drug.html',{'share_url':share_url(request),'fatal':fatal, 'generic':generic, 'chem_name':request.GET['q'],'links':drug_links(), 'nir_rx_prob':nir_rx_prob, 'gps':gps, 'latlon':latlon(gps), 'drug_stat':drug_stat,}) 
 	else:
 		return render_to_response('rx/index.html', {'share_url':share_url(request),'links':drug_links(), 'gps_search':gp_choice(), 'drug_search':drug_choice(), 'search_error':True})
 

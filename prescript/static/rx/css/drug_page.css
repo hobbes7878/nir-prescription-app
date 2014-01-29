@@ -80,7 +80,16 @@
 	stroke:white;
 	stroke-opacity:.1;
 	text-anchor:middle;
+}
 
+.vizsub{
+
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-size: 11px;
+	fill:black;
+	stroke:white;
+	stroke-opacity:.1;
+	text-anchor:middle;
 }
 
 
@@ -108,6 +117,9 @@
 
 }
 
+
+
+
 .graphic_box1{
 	position:absolute;
 }
@@ -130,6 +142,7 @@
 #top_table{
 	float: left;
 	width:500px;
+	margin-top: -20px;
 	padding: 0px 10px;
 	
 }
@@ -156,6 +169,7 @@ tr.even{
 	font-weight: 500;
 }
 #top_table .table_prescript{
+	padding-left: 30px;
 
 }
 

@@ -9,9 +9,6 @@ var w = 400,
     foci = [{x: 120, y: 160}, {x: 240, y: 250}];
 
 
-
-
-
 var vis = d3.select("#interactive").append("svg:svg")
   .attr("width", w)
   .attr("height", h);
@@ -103,10 +100,19 @@ var draw = setInterval(
 
   vis.append("text")
   .attr("class","viztitle")
-  .text("Number of Prescriptions Filled")
+  .text("Number of Daily Doses")
   .style("font-size","13px")
   .attr("x",-400)
-  .attr("y",40)
+  .attr("y",38)
+  .transition().duration(1200)
+  .attr("x",305)
+
+  vis.append("text")
+  .attr("class","viztitle")
+  .text("Prescribed Monthly")
+  .style("font-size","13px")
+  .attr("x",-400)
+  .attr("y",50)
   .transition().duration(1200)
   .attr("x",305)
 
@@ -114,39 +120,39 @@ var draw = setInterval(
   .attr("class","vizlabel")
   .text("N. Ireland")
   .attr("x",-400)
-  .attr("y",62)
+  .attr("y",67)
   .transition().duration(1200)
   .attr("x",260);
 
   vis.append("text")
   .attr("class","vizlabel")
   .attr("x",-400)
-  .attr("y",62)
+  .attr("y",67)
   .transition().duration(1200)
   .text("England")
   .attr("x",350);
 
   vis.append("text")
   .attr("class","vizstat")
-  .text(comma(NIR_rx_per_100k))
+  .text(comma(NIR_ddd_per_100k))
   .attr("x",-400)
-  .attr("y",88)
+  .attr("y",93)
   .transition().duration(1200)
   .attr("x",260);
 
   vis.append("text")
   .attr("class","vizstat")
-  .text(comma(ENG_rx_per_100k))
+  .text(comma(ENG_ddd_per_100k))
   .attr("x",-400)
-  .attr("y",88)
+  .attr("y",93)
   .transition().duration(1200)
   .attr("x",350);
 
   vis.append("text")
-  .attr("class","vizdate")
-  .text("per 100K people")
+  .attr("class","vizsub")
+  .text("per 100,000 people")
   .attr("x",-400)
-  .attr("y",103)
+  .attr("y",108)
   .transition().duration(1200)
   .attr("x",305)
 
@@ -157,25 +163,26 @@ var draw = setInterval(
 /*Slider*/
 box = vis.append("g")
 text1 = vis.append("g")
-text2 = vis.append("g")
+
 text3 = vis.append("g")
+
+var stage1out = 16000
+
+    stage3in  = 18000
+    stage3out = 30000;
 
 box.append("rect")
    .transition().duration(1200)
    .attr("y",20)
-   .transition().delay(12000).duration(1200)
+   .transition().delay(stage1out).duration(1200)
    .attr("y",800).remove();
 
-box.append("rect")
-   .transition().delay(13000).duration(1200)
-   .attr("y",20)
-   .transition().delay(22000).duration(1200)
-   .attr("y",800).remove();
+
 
 box.append("rect")
-   .transition().delay(23000).duration(1200)
+   .transition().delay(stage3in).duration(1200)
    .attr("y",20)
-   .transition().delay(36000).duration(1200)
+   .transition().delay(stage3out).duration(1200)
    .attr("y",800).remove();
 
 
@@ -192,7 +199,7 @@ box.selectAll("rect")
 
 box.append("text")
   .attr("class","viztitle")
-  .text("100 prescriptions")
+  .text("100 Doses")
   .style("font-size","15px")
   .style("font-style","italic")
   .style("font-weight","normal")
@@ -201,54 +208,92 @@ box.append("text")
   .attr("y",40)
   .transition().duration(1200)
   .attr("x",305)
-  .transition().delay(12000).duration(1200)
+  .transition().delay(stage1out).duration(1200)
   .attr("x",800).remove();
 
 text1.append("text")
   .text("The graph models how")
-  .attr("y",57);
+  .attr("y",55);
 text1.append("text")
-  .text("many might be filled in")
-  .attr("y",69);
+  .text("many might be prescribed in")
+  .attr("y",67);
 text1.append("text")
-  .text("N. Ireland vs. England,")
-  .attr("y",81);
+  .text("Northern Ireland vs. England,")
+  .attr("y",79);
 text1.append("text")
   .text("based on the distribution")
-  .attr("y",93);
+  .attr("y",91);
 text1.append("text")
-  .text("per capita from April to")
-  .attr("y",105);
+  .text("per person from April to")
+  .attr("y",103);
 text1.append("text")
-  .text("June 2013.")
-  .attr("y",117);
+  .text("September 2013.")
+  .attr("y",115);
 
-text2.append("text")
-  .text(drug)
-  .attr("class","viztitle2")
-  .attr("y",57);
-text2.append("text")
-  .text("is a "+ chem_type+".")
-  .attr("class","viztext")
-  .attr("y",67);
-text2.append("text")
-  .text("It's primarily used as a")
-  .attr("class","viztext")
-  .attr("y",77);
-text2.append("text")
-  .text(drug_use+".")
-  .attr("class","viztext")
-  .attr("y",87);
+
+
+
 
 text3.append("text")
-  .text("Drug: "+ qt_unit)
-  .attr("y",57);
+  .attr("class","viztitle")
+  .text("Number of Monthly")
+  .style("font-size","13px")
+  .attr("x",-400).transition().delay(stage3in-1200).duration(1200)
+  .attr("y",38)
+  .transition().duration(1200)
+  .attr("x",305)
+
 text3.append("text")
-  .text("Drug: "+ NIR_qt_per_100k)
-  .attr("y",67);
+  .attr("class","viztitle")
+  .text("Prescriptions")
+  .style("font-size","13px")
+  .attr("x",-400).transition().delay(stage3in-1200).duration(1200)
+  .attr("y",50)
+  .transition().duration(1200)
+  .attr("x",305)
+
 text3.append("text")
-  .text("Drug: "+ ENG_qt_per_100k)
-  .attr("y",77);
+  .attr("class","vizlabel")
+  .text("N. Ireland")
+  .attr("x",-400).transition().delay(stage3in-1200).duration(1200)
+  .attr("y",67)
+  .transition().duration(1200)
+  .attr("x",260);
+
+text3.append("text")
+  .attr("class","vizlabel")
+  .attr("x",-400).transition().delay(stage3in-1200).duration(1200)
+  .attr("y",67)
+  .transition().duration(1200)
+  .text("England")
+  .attr("x",350);
+
+text3.append("text")
+  .attr("class","vizstat")
+  .text(comma(NIR_rx_per_100k))
+  .attr("x",-400).transition().delay(stage3in-1200).duration(1200)
+  .attr("y",93)
+  .transition().duration(1200)
+  .attr("x",260);
+
+text3.append("text")
+  .attr("class","vizstat")
+  .text(comma(ENG_rx_per_100k))
+  .attr("x",-400).transition().delay(stage3in-1200).duration(1200)
+  .attr("y",93)
+  .transition().duration(1200)
+  .attr("x",350);
+
+text3.append("text")
+  .attr("class","vizsub")
+  .text("per 100,000 people")
+  .attr("x",-400).transition().delay(stage3in-1200).duration(1200)
+  .attr("y",108)
+  .transition().duration(1200)
+  .attr("x",305)
+
+
+
 
 /*Text Transitions*/
 text1.selectAll("text")
@@ -256,21 +301,11 @@ text1.selectAll("text")
   .attr("x",-400)
   .transition().duration(1200)
   .attr("x",232)
-  .transition().delay(12000).duration(1200)
+  .transition().delay(stage1out).duration(1200)
   .attr("x",800).remove();
 
-text2.selectAll("text")
-  .attr("x",-400)
-  .transition().delay(13000).duration(1200)
-  .attr("x",238)
-  .transition().delay(22000).duration(1200)
-  .attr("x",800).remove();
 
 
 text3.selectAll("text")
-  .attr("class","viztext")
-  .attr("x",-400)
-  .transition().delay(23000).duration(1200)
-  .attr("x",232)
-  .transition().delay(36000).duration(1200)
+  .transition().delay(stage3out).duration(1200)
   .attr("x",800).remove();
