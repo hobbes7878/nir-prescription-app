@@ -1,3 +1,16 @@
+
+
+.top_info{
+	width:850px;
+	margin:0px auto 10px;
+	display:block;
+	font-family: 'Lora', "Times New Roman", serif;
+  	font-size: 16px;
+  	color:#404040;
+}
+
+
+
 #viz_title_div{
 	float:left;
 	width:400px;

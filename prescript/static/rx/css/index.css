@@ -1,3 +1,33 @@
+
+
+
+#warning{
+	float:left;
+	clear:both;
+	margin:0px 20px 20px;
+	padding:0px 10px;
+	color:#800000;
+	font-family: monospace;
+	font-size: 12px;
+}
+
+#warning td{
+	vertical-align:middle;
+}
+
+.warn_head{
+	background-color: #800000;
+	font-family: monospace;
+	color:white;
+	font-size: 50px;
+	font-weight: bold;
+	width: 210px;
+	padding:5px;
+	line-height: 75%;
+	
+}
+
+
 .minimap{
 	cursor:pointer;
 	background-color: pink;
@@ -9,6 +39,10 @@
 	display:block;
 }
 
+
+
+
+
 .center_limit{
 	width:750px;
 	margin:0 auto;
@@ -19,12 +53,15 @@
 }
 
 .drugs_list{
-	width:750px;
+	width:650px;
 	margin:0px auto 50px;
 	display:block;
 	font-family: 'Lora', "Times New Roman", serif;
   	font-size: 16px;
   	color:#404040;
+}
+.drugs_list ul{
+	list-style-position:inside;
 }
 .drugs_list li a{
 	font-size: 26px;

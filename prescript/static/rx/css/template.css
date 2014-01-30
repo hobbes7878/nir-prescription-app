@@ -397,3 +397,30 @@ svg { overflow: hidden; }
 svg:not(:root) { overflow: hidden }
 
 
+
+
+#warning{
+  float:left;
+  clear:both;
+  margin:20px 20px 20px;
+  padding:0px 10px;
+  color:#800000;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+#warning td{
+  vertical-align:middle;
+}
+
+.warn_head{
+  background-color: #800000;
+  font-family: monospace;
+  color:white;
+  font-size: 50px;
+  font-weight: bold;
+  width: 210px;
+  padding:5px;
+  line-height: 75%;
+  
+}

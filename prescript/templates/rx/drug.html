@@ -39,12 +39,16 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 <div id="page_title_banner">	
 	<h1>{{drug_stat.chem_name}}</h1>
 	<span class="aka">
-	aka {{drug_stat.drug_names|title}}
+	{% if drug_stat.brand_names == ' '  %}
+	{% else %}
+	aka {{drug_stat.brand_names}}
+	{% endif %}
 	</span>
 </div>
 
+<div class="top_info">
 {{drug_stat.drug_description|safe|linebreaks}}
-
+</div>
 
 <script type="text/javascript">
   var NIR_probability={{nir_rx_prob}}
@@ -87,15 +91,15 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 
 <hr class="styled_hr"> 
 <h3>100 Doses</h3>
-<p>To get a sense of how Northern Irish prescription rates compare, consider a hypothetical based on the difference in rates between England and Northern Ireland.</p>
+<p>To get a sense of how Northern Irish prescription rates for {{drug_stat.chem_name}} compare, consider a hypothetical based on the difference in rates between England and Northern Ireland.</p>
 
 <div id="bigint">
 {{nir_rx_prob|percentize}}
 </div>
 
-<p style="font-size:19px;">If a single GP had an equal number of registered patients from Northern Ireland and England, <span class="smallint">{{nir_rx_prob|percentize}}</span> out of every 100 doses of {{drug_stat.chem_name}} would be prescribed to Northern Irish patients.</p>
+<p style="font-size:19px;">If a single GP had an equal number of registered patients from Northern Ireland and England, <span class="smallint">{{nir_rx_prob|percentize}}</span> out of every 100 daily doses of {{drug_stat.chem_name}} would be prescribed to Northern Irish patients.</p>
 
-<p>The graph at right models that difference for a random collection of 100 doses.
+<p>The graph at right models that difference for a random collection of 100 daily doses.
 
 <hr class="styled_hr">
 <h2>Drug Facts</h2>
@@ -109,7 +113,7 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 	<div class="lab_pad">
 	{{drug_stat.drug_uses|safe}}
 	<span class="sub_source">
-		SOURCE: National Health Services
+	SOURCE: National Health Services
 	</span>
 	</div>
 </div>
