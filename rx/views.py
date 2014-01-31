@@ -107,6 +107,9 @@ def drug(request, chem):
 	elif drug_stat.chem_action in [f.chem_name for f in Fatal_Stat.objects.all()]:
 		fatal = Fatal_Stat.objects.filter(chem_name__iexact=drug_stat.chem_action)[0]
 		generic = True
+	elif drug_stat.chem_class in [f.chem_name for f in Fatal_Stat.objects.all()]:
+		fatal = Fatal_Stat.objects.filter(chem_name__iexact=drug_stat.chem_class)[0]
+		generic = True
 	else:
 		fatal=''
 		generic = False
