@@ -16,7 +16,7 @@ import string
 
 #Top menu drug links
 def drug_links():
-	links = Drug_Stat.objects.distinct('chem_name')
+	links = Drug_Stat.objects.distinct('chem_name','chem_action')
 	return links
 #GP search name options
 def gp_choice():

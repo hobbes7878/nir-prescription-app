@@ -100,6 +100,8 @@ body {
   padding:2.5px;
   margin-left: -35px;
 }
+
+
 /* CSS MENU */
 #cssmenu { 
 
@@ -186,17 +188,18 @@ body {
 }
 
 #cssmenu li li {
-  background: ;
+  background:#333333 ;
   display: block;
-  float: none;
+  padding-left: 3px;
   margin: 0px;
   padding: 0px;
   width: 150px;
-  max-height: 25px;
-  overflow: hidden;
+  height: 25px;
   z-index: 9999;
-
+  color:white;
+  font-size: 14px;
 }
+
 #cssmenu li:hover li a,
 #cssmenu li:focus li a {
   background: none;
@@ -220,8 +223,6 @@ body {
   color: #ffffff;
   text-decoration: none;
   z-index: 9998;
-
-
 }
 #cssmenu p {
   clear: left;
@@ -231,6 +232,12 @@ body {
   overflow-y:scroll;
   max-height: 150px;
 }
+
+
+
+
+
+
 
 
 
@@ -282,7 +289,13 @@ h5{
   text-align: center;
 }
 
-
+#text_main a{
+  color:#000080;
+  text-decoration: none;
+}
+#text_main a:hover{
+  text-decoration: underline;
+}
 
 
 /* Search box */

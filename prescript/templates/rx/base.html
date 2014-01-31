@@ -30,6 +30,7 @@
 <script type="text/javascript" src="{% static 'rx/js/jquery-ui.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'rx/js/jquery.sticky.js' %}"></script>
 <script type="text/javascript" src="{% static 'rx/js/underscore.js' %}"></script>
+<script type="text/javascript" src="{% static 'rx/js/jquery.stickysectionheaders.js' %}"></script>
 
 {% block header %}{% endblock %}
 
@@ -86,9 +87,31 @@
 	   
 	   <li  class='has-sub'><a class="top_line"><span onclick="return true">Drugs</span></a>
 	      <ul class="scroll">
+			
+	      <li>&nbsp;Antidepressant</li> 
+	      
 	      {% for link in links %}
-	      	<li><a href="{% url 'rx.views.drug' link %}"><span>{{link}}</span></a></li>
+	      {% if link.chem_action == 'Antidepressant' %}
+	      	<li>  <a href="{% url 'rx.views.drug' link.chem_name %}"><span>{{link.chem_name}}</span></a></li>
+	      {% endif %}
 	      {% endfor %}
+		  
+
+
+	       <li>&nbsp;Anti-Anxiety</li> 
+	      
+	      {% for link in links %}
+	      {% if link.chem_action == 'Anxiolytic' %}
+	      	<li>  <a href="{% url 'rx.views.drug' link.chem_name %}"><span>{{link.chem_name}}</span></a></li>
+	      {% endif %}
+	      {% endfor %}
+		  
+
+
+	   
+	      
+
+			
 	      </ul>
 	   </li>
 	   <li onclick="return true" ><a class="top_line"><span>GPs</span></a>
@@ -124,6 +147,17 @@
   $(document).ready(function(){
     $("#cssmenu").sticky({topSpacing:0});
   });
+
+
+  $('.scroll').stickySectionHeaders({
+  stickyClass     : 'sticky',
+  headlineSelector: '.drugsub'
+});
+
+
+</script>
+<script>
+  
 </script>
 
 <!-- ******** TEMPLATING End ******** -->
