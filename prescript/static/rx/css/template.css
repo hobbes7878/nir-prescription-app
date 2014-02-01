@@ -230,7 +230,7 @@ body {
 #cssmenu .scroll{
   overflow-x: hidden;
   overflow-y:scroll;
-  max-height: 150px;
+  max-height: 200px;
 }
 
 

@@ -59,7 +59,7 @@
 		<p>The Defined Daily Dose is the assumed average maintenance dose per day for a drug used for its main indication in adults.</p>
 	</blockquote> 
 
-	<p>The Detail used the Defined Daily Dose (or just "daily dose") to make different drugs prescribed at different strengths comparable. For example, diazepam has a Defined Daily Dose of 10mg. So 10 diazepam pills at the 20mg dosage are evaluated the same as 5 pills at 40mg: 40 daily doses. 
+	<p>The Detail used the Defined Daily Dose (or just "daily dose") to make different drugs prescribed at different strengths comparable. For example, diazepam has a Defined Daily Dose of 10mg. So 10 diazepam pills at the 10mg dosage are evaluated the same as 5 pills at 20mg: 10 daily doses. 
 	<p>The daily dose is a statistical average and not a prescribing guide. Doctors prescribe different daily regimens based on individual patients and their particular conditions.
 </td>
 </tr>
@@ -71,10 +71,10 @@
 	<p>The Detail grouped GPs into four categories based on the level of deprivation in their local community to make the most exacting comparisons possible of their prescription rates.
 	<p>The groups range:
 	<ul>
-	<li>Least Deprived GPs are in some of the wealthiest areas</li>
-	<li>Less Deprived</li>
-	<li>More Deprived</li>
-	<li>Most Deprived GPs are in some of the poorest areas</li>
+	<li>LEAST deprived GPs are in wealthier areas</li>
+	<li>LESS deprived</li>
+	<li>MORE deprived</li>
+	<li>MOST deprived GPs are in some of the poorest areas</li>
 	</ul> 
 </td>
 </tr>
@@ -93,7 +93,7 @@
 	<form method="get" action="drugs/">
 {% endif %}
 	<div id="tfheader" class="searchbox">
-        	<input type="text" id="tfq" class="tftextinput2" name="q" size="21" maxlength="120" value="Search for a drug by name"><input type="submit" value=">" class="tfbutton2">
+        	<input type="text" id="tfq" class="tftextinput2" name="q" size="21" maxlength="120" value="Search for drugs by name"><input type="submit" value=">" class="tfbutton2">
 	</div>
 	</form>
 {% if search_error %}
@@ -102,7 +102,7 @@
 	<form method="get" action="gp_search_name/">
 {% endif %}
 	<div id="tfheader2" class="searchbox">
-    		<input type="text" id="tfr" class="tftextinput2" name="q" size="21" maxlength="120" value="Search for a GP by name"><input type="submit" value=">" class="tfbutton2">
+    		<input type="text" id="tfr" class="tftextinput2" name="q" size="21" maxlength="120" value="Search for GPs by name"><input type="submit" value=">" class="tfbutton2">
 	</div>
 	</form>
 {% if search_error %}
@@ -134,18 +134,27 @@ This graph shows the average monthly rate antidepressants are prescribed by GPs 
 <script type="text/javascript" src="{% static 'rx/js/d3_hbar.js' %}"></script>
 
 <h2>Antidepressants</h2>
-<p>The fall (bababadalgharag htakamminarr onnkonnbronntonner-ronntuonnth unntrovarrhou nawnskawntoohooh oordenenthur — nuk!) of a once wallstrait oldparr is retaled early in bed and later on life down through all christian minstrelsy. The great fall of the offwall entailed at such short notice the pftjschute of Finnegan, erse solid man, that the humptyhillhead of humself prumptly sends an unquiring one well to the west in quest of his tumptytumtoes: and their upturnpikepointandplace is at the knock out in the park where oranges have been laid to rust upon the green since dev-linsfirst loved livvy.</p>
+<p>Northern Irish patients consume more antidepressants than all other categories of prescription medication in our study combined – almost 7.5 million daily doses per month. In the six months The Detail studied, GPs prescribed enough of the drugs to give every man, woman, and child in the country a 27-day supply at the Defined Daily Dosage limits. By comparison, English GPs prescribed enough for 10 daily doses per registered patient. Wales doled out 19. 
+
+<p>The difference between each country's antidepressant prescription rate was actually greatest among GPs in least deprived areas. Northern Ireland consumed more than two and a half times the antidepressants than GPs in similar economic areas in England, per head. Wales was consistently closer to Northern Irish prescription rates, but still averaged over 25 percent fewer doses consumed per head across all deprivation groups.
+
+<p>GPs in least deprived areas of Northern Ireland tend to prescribe larger amounts of anti-anxiety drugs – 21 daily doses per patient in least deprived areas up to about 28 in most deprived. 
+
+<p>According to the most recent data available for 10 years, antidepressants are directly responsible for the deaths of about 21 people in Northern Ireland each year.
 
 
 <!-- <object type="image/svg+xml" data="{% static 'rx/image/nir_opt.svg' %}" class="map"></object> -->
 <div id="minimaps">
 	<h4>International Antidepressant Consumption</h4>
 	<div class="center_limit">
-	<p>The fall (bababadalgharag htakamminarr onnkonnbronntonner-ronntuonnth unntrovarrhou nawnskawntoohooh oordenenthur — nuk!) of a once wallstrait oldparr is retaled early in bed and later on life down through all christian minstrelsy. The great fall of the offwall entailed at such short notice the pftjschute of Finnegan, erse solid man, that the humptyhillhead of humself prumptly sends an unquiring one well to the west in quest of his tumptytumtoes: and their upturnpikepointandplace is at the knock out in the park where oranges have been laid to rust upon the green since dev-linsfirst loved livvy.</p>
+	<p><a href="http://www.psychologytoday.com/blog/side-effects/201311/the-oecd-warns-antidepressant-overprescribing">In a widely publicized report</a> last November, the Organization for Economic Co-operation and Development compared international antidepressant prescribing rates. The report cited the number of defined daily doses per 1,000 people per day, which is a measure designed to approximate the number of patients regularly using a medication per thousand.
+
+	<p>In the report, the United Kingdom ranked 7th highest in the world at 71 daily doses per thousand people per day. Topping the list was Iceland at 106 daily doses per thousand per day.
+
 	</div>
 	<div id="minimaps_svg"></div>
 		<div class="center_limit">
-	<p>The fall (bababadalgharag htakamminarr onnkonnbronntonner-ronntuonnth unntrovarrhou nawnskawntoohooh oordenenthur — nuk!) of a once wallstrait oldparr is retaled early in bed and later on life down through all christian minstrelsy.</p>
+	<p>The Detail’s analysis indicates, if Northern Ireland were considered apart from the rest of UK, it would take the top spot internationally in the OECD report at 129 daily doses per thousand per day. Wales would lag behind at 105.5.</p>
 	</div>
 </div>
 
@@ -172,7 +181,7 @@ var nir_map_black = "{% static 'rx/image/nir_black.png' %}"
 
 
 <div class="drugs_list">
-<h4>More information on common antidepressants like:</h4>
+<h4>For information on common antidepressants like:</h4>
 <ul>
 	<li>
 		<a href="{% url 'rx.views.drug' 'Venlafaxine' %}">Venlafaxine</a> also prescribed under the brands Vensir, Efexor and Venlalic
@@ -218,7 +227,13 @@ The average monthly rate anti-anxiety drugs are prescribed by GPs in Northern Ir
 
 
 <h2 style='clear:left;'>Anti-anxiety Drugs</h2>
-<p>What clashes here of wills gen wonts, oystrygods gaggin fishy-gods! Brékkek Kékkek Kékkek Kékkek! Kóax Kóax Kóax! Ualu Ualu Ualu! Quaouauh! Where the Baddelaries partisans are still out to mathmaster Malachus Micgranes and the Verdons cata-pelting the camibalistics out of the Whoyteboyce of Hoodie Head. Assiegates and boomeringstroms. Sod’s brood, be me fear! Sanglorians, save! Arms apeal with larms, appalling. Killykill-killy: a toll, a toll. What chance cuddleys, what cashels aired and ventilated! What bidimetoloves sinduced by what tegotetab-solvers! What true feeling for their’s hayair with what strawng voice of false jiccup! O here here how hoth sprowled met the duskt the father of fornicationists but, (O my shining stars and body!) how hath fanespanned most high heaven the skysign of soft advertisement! But was iz? Iseut? Ere were sewers? The oaks of ald now they lie in peat yet elms leap where askes lay. Phall if you but will, rise you must: and none so soon either shall the pharce for the nunce come to a setdown secular phoenish.</p>
+<p>According to prescribing data, about 800,000 daily doses of anti-anxiety drugs are consumed by Northern Irish patients each month.
+
+<p>GPs in least deprived areas of Northern Ireland tend to prescribe slightly larger amounts of anti-anxiety drugs – 2.25 daily doses per head in least deprived areas up to 2.75 in most deprived. 
+
+<p>Again, Northern Ireland out-prescribes England and Wales by the widest margins among GPs in least deprived areas — over five and a half times the rate in England and almost twice the rate in Wales.
+
+<p>Benzodiazepines, a class of drugs commonly featured among anti-anxiety medicines, were found responsible for the deaths of 290 people between 2003 and 2012.
 
 <div class="drugs_list">
 <h4>See more data on common anti-anxiety drugs like:</h4>
@@ -241,10 +256,16 @@ The average monthly rate anti-anxiety drugs are prescribed by GPs in Northern Ir
 
 <h2 style='clear:left;'>Opioid Painkillers and Sedatives</h2>
 
-<p>Bygmester Finnegan, of the Stuttering Hand, freemen’s mau-rer, lived in the broadest way immarginable in his rushlit toofar — back for messuages before joshuan judges had given us numbers or Helviticus committed deuteronomy (one yeastyday he sternely struxk his tete in a tub for to watsch the future of his fates but ere he swiftly stook it out again, by the might of moses, the very wat-er was eviparated and all the guenneses had met their exodus so that ought to show you what a pentschanjeuchy chap he was!) and during mighty odd years this man of hod, cement and edi-fices in Toper’s Thorp piled buildung supra buildung pon the banks for the livers by the Soangso. He addle liddle phifie Annie ugged the little craythur. Wither hayre in honds tuck up your part inher. Oftwhile balbulous, mithre ahead, with goodly trowel in grasp and ivoroiled overalls which he habitacularly fondseed, like Haroun Childeric Eggeberth he would caligulate by multiplicab-les the alltitude and malltitude until he seesaw by neatlight of the liquor wheretwin ’twas born, his roundhead staple of other days to rise in undress maisonry upstanded (joygrantit!), a waalworth of a skyerscape of most eyeful hoyth entowerly, erigenating from next to nothing and celescalating the himals and all, hierarchitec-titiptitoploftical, with a burning bush abob off its baubletop and with larrons o’toolers clittering up and tombles a’buckets clottering down.</p>
+<p>Opioids include very strong painkillers like morphine and oxycodone. They are often used in palliative care for pain relief in patients with serious illness. They are normally prescribed under close supervision and can carry a high risk of dependence with severe side-effects, especially on overdose. Sedatives are also habit-forming medications. Both types of drugs are regularly abused and traded on the black market.
+
+<p>About 850,000 daily doses of opioid analgesics are consumed by Northern Irish patients each month. Approximately 1.4 million daily doses of sedatives are consumed monthly.
+
+<p>The differences between Northern Irish and other UK country prescription rates did not show as clear a trend for opioid painkillers and sedatives as those for antidepressants and anti-anxiety medicines.
+
+<p>Opioid analgesics are prescribed in slightly greater quantities among GPs in most deprived areas. Sedatives showed no clear trend between prescription rates and deprivation. 
 
 <div class="drugs_list">
-<h4>More about common opioid painkillers and sedatives like:</h4>
+<h4>More on common opioid painkillers and sedatives:</h4>
 <ul>
 	<li>
 		<a href="{% url 'rx.views.drug' 'Tramadol' %}">Tramadol</a> also prescribed under the brands Maxitram, Mabron and Zydol
@@ -278,14 +299,14 @@ window.onload = function(){
 	//Add listener to submit button
 	if(submitbutton.addEventListener){
 		submitbutton.addEventListener("click", function() {
-			if (submitbutton.value == 'Search for a drug by name'){
+			if (submitbutton.value == 'Search for drugs by name'){
 				submitbutton.value = '';
 			}
 		});
 	}
 	if(submitbutton2.addEventListener){
 		submitbutton2.addEventListener("click", function() {
-			if (submitbutton2.value == 'Search for a GP by name'){
+			if (submitbutton2.value == 'Search for GPs by name'){
 				submitbutton2.value = '';
 			}
 		});
