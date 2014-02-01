@@ -89,7 +89,6 @@
 	      <ul class="scroll">
 			
 	      <li>&nbsp;Antidepressant</li> 
-	      
 	      {% for link in links %}
 	      {% if link.chem_action == 'Antidepressant' %}
 	      	<li>  <a href="{% url 'rx.views.drug' link.chem_name %}"><span>{{link.chem_name}}</span></a></li>
@@ -97,15 +96,29 @@
 	      {% endfor %}
 		  
 
-
 	       <li>&nbsp;Anti-Anxiety</li> 
-	      
 	      {% for link in links %}
 	      {% if link.chem_action == 'Anxiolytic' %}
 	      	<li>  <a href="{% url 'rx.views.drug' link.chem_name %}"><span>{{link.chem_name}}</span></a></li>
 	      {% endif %}
 	      {% endfor %}
 		  
+
+		  <li>&nbsp;Opioid Painkiller</li> 
+	      {% for link in links %}
+	      {% if link.chem_action == 'Opioid Analgesic' %}
+	      	<li>  <a href="{% url 'rx.views.drug' link.chem_name %}"><span>{{link.chem_name}}</span></a></li>
+	      {% endif %}
+	      {% endfor %}
+
+		
+
+		  <li>&nbsp;Sedative</li> 
+	      {% for link in links %}
+	      {% if link.chem_action == 'Hypnotics' %}
+	      	<li>  <a href="{% url 'rx.views.drug' link.chem_name %}"><span>{{link.chem_name}}</span></a></li>
+	      {% endif %}
+	      {% endfor %}
 
 
 	   

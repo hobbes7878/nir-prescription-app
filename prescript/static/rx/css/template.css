@@ -207,7 +207,7 @@ body {
 }
 #cssmenu li ul a {
   display: block;
-  height: 35px;
+  height: 25px;
   font-size: 12px;
   font-style: normal;
   margin: 0px;
@@ -289,11 +289,11 @@ h5{
   text-align: center;
 }
 
-#text_main a{
+#text_main p a{
   color:#000080;
   text-decoration: none;
 }
-#text_main a:hover{
+#text_main p a:hover{
   text-decoration: underline;
 }
 

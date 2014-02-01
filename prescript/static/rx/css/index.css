@@ -99,3 +99,64 @@
   	font-size: 16px;
   	color:#404040;
 }
+
+
+#instruct_table{
+	width:800px;
+	margin:0px auto;
+	border-collapse: separate;
+}
+
+
+#instruct_table td{
+	padding-bottom: 20px;
+}
+
+
+.instruct_td_head{
+	text-align: right;
+	font:50px monospace;
+	font-weight: bold;
+	color:#800000;
+	
+}
+
+.instruct_td_text{
+	font:16px 'Lora', "Times New Roman", serif;
+	color:#404040;
+	padding-left: 10px;
+	vertical-align: top;
+}
+
+
+#instruct_table  p{
+	font:15px 'Lora', "Times New Roman", serif;
+	color:#404040;
+	font-size: 15px;
+	padding:7px 0px;
+}
+
+#instruct_table ul{
+	list-style-position:inside;
+}
+
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 5px 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+  font-size: 14px;
+}
