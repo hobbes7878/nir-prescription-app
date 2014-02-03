@@ -1,89 +1,244 @@
-.bar.positive {
-  stroke:black;
-  stroke-width:1;
-  stroke-right-width:4;
-  border-left-width: 0;
+#chart1{
+  float:left;
+  clear:both;
+  margin:25px;
+
+
 }
-.bar.negative {
-  stroke:black;
-  stroke-width:1;
-  border-right-width: 0;
+#chart2{
+  float:left;
+   margin:25px;
 }
-.bar:hover{
-  stroke:orange;
-  stroke-width:2;
+
+
+.y1.axis text {
+  font: 14px serif;
 }
-.axis text {
-  font: 14px Garamond, serif;
-}
-.axis path,
-.axis line {
+
+.y1.axis path,
+.y1.axis line {
   fill: none;
-  stroke:black;
-  stroke-width:1px;
+  stroke: #000;
   shape-rendering: crispEdges;
 }
-.x.axis line{
-  stroke: #000;
+
+.x1.axis text{
+  font-size: 0px;
 }
-.y.axis line{
+
+
+
+.bar1 {
+  fill-opacity: .9;
   stroke:black;
+  stroke-width:1px;
+
 }
-.title {
-  font: bold 22px monospace;
+.bar1:hover{
+  stroke:red;
+  stroke-width:2px;
 }
-.enter {
+.pointer1{
+  fill:red;
+  stroke:#800000;
+  stroke-width:1px;
 }
-.update {
-  fill: #333;
+
+
+.A_NIR{
+  fill:steelblue;
 }
-.exit {
-  fill: brown;
+.B_ENG{
+  fill:#800000;
 }
-.tip{
-  font:  24px monospace, Garamond, serif;
-  opacity:0;
+.C_WAL{
+  fill:orange;
 }
-.lab{
-  font: 16px Garamond, serif;
+
+.x1.axis path {
+  display: none;
 }
-.ENG{
-  font: 12px Garamond, serif;
+
+.graph_back1{
+  fill:rgba(84,84,84,0.25);
 }
-.instruct{
-  font: 12px Arial, sans-serif; 
+
+#drug_drop1{
+  font-family: 'Times New Roman',serif;
+  font-size: 24px;
+  color:black;
+  width:200px;
+  background-color: white;
+  margin-left: 10px;
+  cursor:pointer;
+  max-height: 100px;
+  overflow-y:scroll;
+}
+.key1{
+  font-family: arial, sans-serif;
+  font-size: 12px;
+  color:black;
   font-style: italic;
 }
-.pointer{
-  stroke:white;
-  stroke-width:1.5px;
-  opacity:0;
-  fill:#B22222; /* Hard-coded into js for key */
-}
 
-.eng_points{
-  stroke:white;
-  stroke-width:1.5px;
-  opacity:0;
-  fill:#4682B4;
-}
 
-.wal_points{
-  stroke:white;
-  stroke-width:1.5px;
-  opacity:0;
-  fill:#228B22;
+
+.range_guide_back1{
+  fill:#999999;
+  fill-opacity:.5;
+}
+.range_guide1{
+  fill:rgba(255,0,0,.6);
+
 }
 
 
-.pause{
-  stroke:grey;
-  stroke-width:3px;
-  fill:white;
-  opacity: 0;
+/* Chart2 */
+.y2.axis text {
+  font: 14px serif;
 }
-.play{
-  stroke:grey;
-  stroke-width:3px;
-  fill:white;
-  opacity:0;
+
+.y2.axis path,
+.y2.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x2.axis text{
+  font-size: 0px;
+}
+
+
+
+.bar2 {
+  fill-opacity: .9;
+  stroke:black;
+  stroke-width:1px;
+
+}
+.bar2:hover{
+  stroke:red;
+  stroke-width:2px;
+}
+.pointer2{
+  fill:red;
+  stroke:#800000;
+  stroke-width:1px;
+}
+
+
+.A_NIR{
+  fill:steelblue;
+}
+.B_ENG{
+  fill:#800000;
+}
+.C_WAL{
+  fill:orange;
+}
+
+.x2.axis path {
+  display: none;
+}
+
+.graph_back2{
+  fill:rgba(84,84,84,0.25);
+}
+
+#drug_drop2{
+  font-family: 'Times New Roman',serif;
+  font-size: 24px;
+  color:black;
+  width:200px;
+  background-color: white;
+  margin-left: 10px;
+  cursor:pointer;
+  max-height: 100px;
+  overflow-y:scroll;
+}
+.key2{
+  font-family: arial, sans-serif;
+  font-size: 12px;
+  color:black;
+  font-style: italic;
+}
+
+
+
+.range_guide_back2{
+  fill:#999999;
+  fill-opacity:.5;
+}
+.range_guide2{
+  fill:rgba(255,0,0,.6);
+
+}
+
+.chart_button_left {
+  background-color:#ffffff;
+  -webkit-border-top-left-radius:15px;
+  -moz-border-radius-topleft:15px;
+  border-top-left-radius:15px;
+  -webkit-border-top-right-radius:0px;
+  -moz-border-radius-topright:0px;
+  border-top-right-radius:0px;
+  -webkit-border-bottom-right-radius:0px;
+  -moz-border-radius-bottomright:0px;
+  border-bottom-right-radius:0px;
+  -webkit-border-bottom-left-radius:15px;
+  -moz-border-radius-bottomleft:15px;
+  border-bottom-left-radius:15px;
+  text-indent:-1.21px;
+  border:1px solid black;
+  display:inline-block;
+  color:black;
+  font-family:Times New Roman;
+  font-size:24px;
+  font-style:normal;
+  height:35px;
+  line-height:35px;
+  width:121px;
+  text-decoration:none;
+  text-align:center;
+}.chart_button_left:hover {
+  background-color:#cccccc;
+}.chart_button_left:active {
+  position:relative;
+  top:1px;
+}
+
+
+.chart_button_right {
+  background-color:#ffffff;
+  -webkit-border-top-left-radius:0px;
+  -moz-border-radius-topleft:0px;
+  border-top-left-radius:0px;
+  -webkit-border-top-right-radius:15px;
+  -moz-border-radius-topright:15px;
+  border-top-right-radius:15px;
+  -webkit-border-bottom-right-radius:15px;
+  -moz-border-radius-bottomright:15px;
+  border-bottom-right-radius:15px;
+  -webkit-border-bottom-left-radius:0px;
+  -moz-border-radius-bottomleft:0px;
+  border-bottom-left-radius:0px;
+  text-indent:-1.21px;
+  border:1px solid black;
+  display:inline-block;
+  color:black;
+  font-family:Times New Roman;
+  font-size:24px;
+  font-style:normal;
+  height:35px;
+  line-height:35px;
+  width:121px;
+  text-decoration:none;
+  text-align:center;
+}.chart_button_right:hover {
+  background-color:#cccccc;
+}.chart_button_right:active {
+  position:relative;
+  top:1px;
+}
+/* This button was generated using CSSButtonGenerator.com */

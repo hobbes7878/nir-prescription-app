@@ -1,234 +1,759 @@
-var dataset2 = {
-    "data1": {
+var rawdata2 =
+[
+    {
         "chem": "Meprobamate", 
-        "data": [
-            {
-                "eng": "1.7", 
-                "name": "Least", 
-                "value": "3.2", 
-                "wal": "3.3"
-            }, 
-            {
-                "eng": "2.2", 
-                "name": "Less", 
-                "value": "6.1", 
-                "wal": "5.8"
-            }, 
-            {
-                "eng": "2.6", 
-                "name": "More", 
-                "value": "3.1", 
-                "wal": "5.4"
-            }, 
-            {
-                "eng": "3.4", 
-                "name": "Most", 
-                "value": "8.3", 
-                "wal": "2.6"
-            }
-        ]
+        "data": {
+            "grouped": [
+                {
+                    "country": "A_NIR", 
+                    "deprive": "All", 
+                    "value": 4.9
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "All", 
+                    "value": 2.3
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "All", 
+                    "value": 4.5
+                }
+            ], 
+            "ungrouped": [
+                {
+                    "country": "A_NIR", 
+                    "deprive": "A_Most", 
+                    "value": 8.3
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "A_Most", 
+                    "value": 3.4
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "A_Most", 
+                    "value": 2.6
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "B_More", 
+                    "value": 3.1
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "B_More", 
+                    "value": 2.6
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "B_More", 
+                    "value": 5.4
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "C_Less", 
+                    "value": 6.1
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "C_Less", 
+                    "value": 2.2
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "C_Less", 
+                    "value": 5.8
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "D_Least", 
+                    "value": 3.2
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "D_Least", 
+                    "value": 1.7
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "D_Least", 
+                    "value": 3.3
+                }
+            ]
+        }
     }, 
-    "data2": {
+    {
+        "chem": "All", 
+        "data": {
+            "grouped": [
+                {
+                    "country": "A_NIR", 
+                    "deprive": "All", 
+                    "value": 432.1
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "All", 
+                    "value": 98.3
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "All", 
+                    "value": 259.5
+                }
+            ], 
+            "ungrouped": [
+                {
+                    "country": "A_NIR", 
+                    "deprive": "A_Most", 
+                    "value": 488.1
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "A_Most", 
+                    "value": 122.7
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "A_Most", 
+                    "value": 272.6
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "B_More", 
+                    "value": 460.5
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "B_More", 
+                    "value": 98.6
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "B_More", 
+                    "value": 315.0
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "C_Less", 
+                    "value": 396.4
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "C_Less", 
+                    "value": 93.4
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "C_Less", 
+                    "value": 229.5
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "D_Least", 
+                    "value": 388.0
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "D_Least", 
+                    "value": 72.6
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "D_Least", 
+                    "value": 227.3
+                }
+            ]
+        }
+    }, 
+    {
         "chem": "Diazepam", 
-        "data": [
-            {
-                "eng": "46.3", 
-                "name": "Least", 
-                "value": "317.9", 
-                "wal": "176.4"
-            }, 
-            {
-                "eng": "61.9", 
-                "name": "Less", 
-                "value": "323.9", 
-                "wal": "175.6"
-            }, 
-            {
-                "eng": "64.4", 
-                "name": "More", 
-                "value": "387.7", 
-                "wal": "238.4"
-            }, 
-            {
-                "eng": "81.5", 
-                "name": "Most", 
-                "value": "395.7", 
-                "wal": "206.1"
-            }
-        ]
+        "data": {
+            "grouped": [
+                {
+                    "country": "A_NIR", 
+                    "deprive": "All", 
+                    "value": 355.5
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "All", 
+                    "value": 64.7
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "All", 
+                    "value": 197.9
+                }
+            ], 
+            "ungrouped": [
+                {
+                    "country": "A_NIR", 
+                    "deprive": "A_Most", 
+                    "value": 395.7
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "A_Most", 
+                    "value": 81.5
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "A_Most", 
+                    "value": 206.1
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "B_More", 
+                    "value": 387.7
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "B_More", 
+                    "value": 64.4
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "B_More", 
+                    "value": 238.4
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "C_Less", 
+                    "value": 323.9
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "C_Less", 
+                    "value": 61.9
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "C_Less", 
+                    "value": 175.6
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "D_Least", 
+                    "value": 317.9
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "D_Least", 
+                    "value": 46.3
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "D_Least", 
+                    "value": 176.4
+                }
+            ]
+        }
     }, 
-    "data3": {
+    {
         "chem": "Lorazepam", 
-        "data": [
-            {
-                "eng": "13.1", 
-                "name": "Least", 
-                "value": "22.1", 
-                "wal": "28.9"
-            }, 
-            {
-                "eng": "15.5", 
-                "name": "Less", 
-                "value": "25.9", 
-                "wal": "28.8"
-            }, 
-            {
-                "eng": "15.5", 
-                "name": "More", 
-                "value": "21.8", 
-                "wal": "38.6"
-            }, 
-            {
-                "eng": "17.7", 
-                "name": "Most", 
-                "value": "21.4", 
-                "wal": "33.7"
-            }
-        ]
+        "data": {
+            "grouped": [
+                {
+                    "country": "A_NIR", 
+                    "deprive": "All", 
+                    "value": 22.8
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "All", 
+                    "value": 15.7
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "All", 
+                    "value": 32.3
+                }
+            ], 
+            "ungrouped": [
+                {
+                    "country": "A_NIR", 
+                    "deprive": "A_Most", 
+                    "value": 21.4
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "A_Most", 
+                    "value": 17.7
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "A_Most", 
+                    "value": 33.7
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "B_More", 
+                    "value": 21.8
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "B_More", 
+                    "value": 15.5
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "B_More", 
+                    "value": 38.6
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "C_Less", 
+                    "value": 25.9
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "C_Less", 
+                    "value": 15.5
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "C_Less", 
+                    "value": 28.8
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "D_Least", 
+                    "value": 22.1
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "D_Least", 
+                    "value": 13.1
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "D_Least", 
+                    "value": 28.9
+                }
+            ]
+        }
     }, 
-    "data4": {
+    {
         "chem": "Hydroxyzine", 
-        "data": [
-            {
-                "eng": "5.6", 
-                "name": "Least", 
-                "value": "10.6", 
-                "wal": "5.5"
-            }, 
-            {
-                "eng": "6.9", 
-                "name": "Less", 
-                "value": "10.8", 
-                "wal": "7.9"
-            }, 
-            {
-                "eng": "8.2", 
-                "name": "More", 
-                "value": "10.7", 
-                "wal": "9.9"
-            }, 
-            {
-                "eng": "11.2", 
-                "name": "Most", 
-                "value": "16.8", 
-                "wal": "9.5"
-            }
-        ]
+        "data": {
+            "grouped": [
+                {
+                    "country": "A_NIR", 
+                    "deprive": "All", 
+                    "value": 12.1
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "All", 
+                    "value": 8.1
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "All", 
+                    "value": 8.2
+                }
+            ], 
+            "ungrouped": [
+                {
+                    "country": "A_NIR", 
+                    "deprive": "A_Most", 
+                    "value": 16.8
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "A_Most", 
+                    "value": 11.2
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "A_Most", 
+                    "value": 9.5
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "B_More", 
+                    "value": 10.7
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "B_More", 
+                    "value": 8.2
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "B_More", 
+                    "value": 9.9
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "C_Less", 
+                    "value": 10.8
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "C_Less", 
+                    "value": 6.9
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "C_Less", 
+                    "value": 7.9
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "D_Least", 
+                    "value": 10.6
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "D_Least", 
+                    "value": 5.6
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "D_Least", 
+                    "value": 5.5
+                }
+            ]
+        }
     }, 
-    "data5": {
+    {
         "chem": "Buspirone", 
-        "data": [
-            {
-                "eng": "2.4", 
-                "name": "Least", 
-                "value": "17.8", 
-                "wal": "8.1"
-            }, 
-            {
-                "eng": "3", 
-                "name": "Less", 
-                "value": "19.8", 
-                "wal": "6.2"
-            }, 
-            {
-                "eng": "4.2", 
-                "name": "More", 
-                "value": "19", 
-                "wal": "11.7"
-            }, 
-            {
-                "eng": "6.2", 
-                "name": "Most", 
-                "value": "30.5", 
-                "wal": "8.7"
-            }
-        ]
+        "data": {
+            "grouped": [
+                {
+                    "country": "A_NIR", 
+                    "deprive": "All", 
+                    "value": 21.7
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "All", 
+                    "value": 4.1
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "All", 
+                    "value": 8.7
+                }
+            ], 
+            "ungrouped": [
+                {
+                    "country": "A_NIR", 
+                    "deprive": "A_Most", 
+                    "value": 30.5
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "A_Most", 
+                    "value": 6.2
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "A_Most", 
+                    "value": 8.7
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "B_More", 
+                    "value": 19.0
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "B_More", 
+                    "value": 4.2
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "B_More", 
+                    "value": 11.7
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "C_Less", 
+                    "value": 19.8
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "C_Less", 
+                    "value": 3.0
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "C_Less", 
+                    "value": 6.2
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "D_Least", 
+                    "value": 17.8
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "D_Least", 
+                    "value": 2.4
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "D_Least", 
+                    "value": 8.1
+                }
+            ]
+        }
     }, 
-    "data6": {
+    {
         "chem": "Oxazepam", 
-        "data": [
-            {
-                "eng": "2.2", 
-                "name": "Least", 
-                "value": "4.8", 
-                "wal": "4.3"
-            }, 
-            {
-                "eng": "2.7", 
-                "name": "Less", 
-                "value": "5.7", 
-                "wal": "5.8"
-            }, 
-            {
-                "eng": "3.2", 
-                "name": "More", 
-                "value": "9.6", 
-                "wal": "8.5"
-            }, 
-            {
-                "eng": "3.6", 
-                "name": "Most", 
-                "value": "7", 
-                "wal": "7.9"
-            }
-        ]
+        "data": {
+            "grouped": [
+                {
+                    "country": "A_NIR", 
+                    "deprive": "All", 
+                    "value": 6.8
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "All", 
+                    "value": 2.9
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "All", 
+                    "value": 6.7
+                }
+            ], 
+            "ungrouped": [
+                {
+                    "country": "A_NIR", 
+                    "deprive": "A_Most", 
+                    "value": 7.0
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "A_Most", 
+                    "value": 3.6
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "A_Most", 
+                    "value": 7.9
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "B_More", 
+                    "value": 9.6
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "B_More", 
+                    "value": 3.2
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "B_More", 
+                    "value": 8.5
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "C_Less", 
+                    "value": 5.7
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "C_Less", 
+                    "value": 2.7
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "C_Less", 
+                    "value": 5.8
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "D_Least", 
+                    "value": 4.8
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "D_Least", 
+                    "value": 2.2
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "D_Least", 
+                    "value": 4.3
+                }
+            ]
+        }
     }, 
-    "data7": {
+    {
         "chem": "Chlordiazepoxide", 
-        "data": [
-            {
-                "eng": "1.9", 
-                "name": "Least", 
-                "value": "10.5", 
-                "wal": "4.1"
-            }, 
-            {
-                "eng": "2.3", 
-                "name": "Less", 
-                "value": "9.4", 
-                "wal": "5"
-            }, 
-            {
-                "eng": "2.9", 
-                "name": "More", 
-                "value": "13", 
-                "wal": "5.2"
-            }, 
-            {
-                "eng": "3.5", 
-                "name": "Most", 
-                "value": "13.2", 
-                "wal": "6.3"
-            }
-        ]
+        "data": {
+            "grouped": [
+                {
+                    "country": "A_NIR", 
+                    "deprive": "All", 
+                    "value": 11.4
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "All", 
+                    "value": 2.6
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "All", 
+                    "value": 5.2
+                }
+            ], 
+            "ungrouped": [
+                {
+                    "country": "A_NIR", 
+                    "deprive": "A_Most", 
+                    "value": 13.2
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "A_Most", 
+                    "value": 3.5
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "A_Most", 
+                    "value": 6.3
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "B_More", 
+                    "value": 13.0
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "B_More", 
+                    "value": 2.9
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "B_More", 
+                    "value": 5.2
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "C_Less", 
+                    "value": 9.4
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "C_Less", 
+                    "value": 2.3
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "C_Less", 
+                    "value": 5.0
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "D_Least", 
+                    "value": 10.5
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "D_Least", 
+                    "value": 1.9
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "D_Least", 
+                    "value": 4.1
+                }
+            ]
+        }
     }, 
-    "data8": {
+    {
         "chem": "Clobazam", 
-        "data": [
-            {
-                "eng": "5.1", 
-                "name": "Least", 
-                "value": "9.4", 
-                "wal": "8.6"
-            }, 
-            {
-                "eng": "6.2", 
-                "name": "Less", 
-                "value": "9.7", 
-                "wal": "10"
-            }, 
-            {
-                "eng": "6.9", 
-                "name": "More", 
-                "value": "9.3", 
-                "wal": "12"
-            }, 
-            {
-                "eng": "9.3", 
-                "name": "Most", 
-                "value": "13.3", 
-                "wal": "10.8"
-            }
-        ]
+        "data": {
+            "grouped": [
+                {
+                    "country": "A_NIR", 
+                    "deprive": "All", 
+                    "value": 10.4
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "All", 
+                    "value": 6.9
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "All", 
+                    "value": 10.4
+                }
+            ], 
+            "ungrouped": [
+                {
+                    "country": "A_NIR", 
+                    "deprive": "A_Most", 
+                    "value": 13.3
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "A_Most", 
+                    "value": 9.3
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "A_Most", 
+                    "value": 10.8
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "B_More", 
+                    "value": 9.3
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "B_More", 
+                    "value": 6.9
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "B_More", 
+                    "value": 12.0
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "C_Less", 
+                    "value": 9.7
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "C_Less", 
+                    "value": 6.2
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "C_Less", 
+                    "value": 10.0
+                }, 
+                {
+                    "country": "A_NIR", 
+                    "deprive": "D_Least", 
+                    "value": 9.4
+                }, 
+                {
+                    "country": "B_ENG", 
+                    "deprive": "D_Least", 
+                    "value": 5.1
+                }, 
+                {
+                    "country": "C_WAL", 
+                    "deprive": "D_Least", 
+                    "value": 8.6
+                }
+            ]
+        }
     }
-}
+]
