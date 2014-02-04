@@ -66,7 +66,7 @@
 			</div>
 			<div class="gp_demodata2">
 				<span class="head_cap">
-					Area Deprivation<span class="info" id="ideprive">&nbsp;<img src="{% static 'rx/image/i.png' %}" ></span>
+					Area Deprivation
 				</span><br>
 				<span class="deprived">
 					{% if gp_info.deprive == '1' %}Least Deprived{% endif %}
@@ -215,12 +215,14 @@
 
 
 
-<div class="help_dialog"><p>*Depression prevalence is a measure of the percentage of registered patients ever having been coded for depression by a GP. It is assessed as part of the Quality and Outcomes Framework, which is a voluntary incentive scheme included in the General Medical Services Contract. Read more about prevalence statistics <a href="http://www.dhsspsni.gov.uk/statistics_and_research-qof-prevalence">here</a>. QOF data for GPs can be found <a href="http://www.gpcontract.co.uk/">here</a>.</div>
+<div id="help_dialog">
+
+	<p>*Depression prevalence is a measure of the percentage of registered patients ever having been coded for depression by a GP. It is assessed as part of the Quality and Outcomes Framework, which is a voluntary incentive scheme included in the General Medical Services Contract. Read more about prevalence statistics <a href="http://www.dhsspsni.gov.uk/statistics_and_research-qof-prevalence">here</a>. QOF data for GPs can be found <a href="http://www.gpcontract.co.uk/">here</a>.
 
 
-<div class="help_dialog">
-	<p>**This GP's prescription rate ranked against all GPs within the same deprivation group that have prescribed this medicine in Northern Ireland.
-	<p>This GP's prescription rate ranked against all other GPs that have prescribed this medicine in Northern Ireland.
+
+	<p>**Prescription rates are calculated in Defined Daily Doses per 1,00 registered patients per month. The rates for each GP are then ranked against other GPs that also prescribe that drug. Those ranks are calculated among GPs within a deprivation group and also all GPs in Northern Ireland.
+
 </div>
 
 
