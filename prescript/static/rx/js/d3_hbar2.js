@@ -312,7 +312,9 @@ function update2(rawdata2, chem2, grouper2) {
     d.value = +d.value});
 
 
-  var sub_max2 = d3.max(data2, function(d) { return d.value; });
+  var data_max2 = JSONSelect.match('.chem:val("'+chem2+'") ~ .data .ungrouped',rawdata2)[0];
+  data_max2.forEach(function(d) {d.value = +d.value});
+  var sub_max2 = d3.max(data_max2, function(d) { return d.value; });
 
 
   svg2.selectAll(".range_guide2")

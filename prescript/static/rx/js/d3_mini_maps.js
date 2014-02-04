@@ -44,10 +44,10 @@ var map_stat_instruct = map_textbox.append("text")
 		.attr("class","map_instruct")
 		.text("Click on a country below to see its antidepressant consumption.")
 		.attr("y",40)
-		.attr("font-size", "20px")
+		.attr("font-size", "24px")
 		.attr("font-family", "'Lora'")
 		.attr("fill", "#800000")
-		.attr("x",function(){return (map_svg_width / 2)-(599/2)  ;});
+		.attr("x",function(){return (map_svg_width / 2)-(712/2)  ;});
 
 var map_stat_country = map_textbox.append("text")
 		.attr("class","map_instruct")

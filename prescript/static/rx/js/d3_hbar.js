@@ -306,13 +306,16 @@ function update1(rawdata1, chem1, grouper1) {
   var data1 = JSONSelect.match(selector1,rawdata1)[0];
 
 
+
+
   //Add IDs to data
   data1.forEach(function(d) {
     d.id = d.country + d.deprive;
     d.value = +d.value});
 
-
-  var sub_max1 = d3.max(data1, function(d) { return d.value; });
+  var data_max1 = JSONSelect.match('.chem:val("'+chem1+'") ~ .data .ungrouped',rawdata1)[0];
+  data_max1.forEach(function(d) {d.value = +d.value});
+  var sub_max1 = d3.max(data_max1, function(d) { return d.value; });
 
 
   svg1.selectAll(".range_guide1")

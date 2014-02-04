@@ -105,7 +105,7 @@
 	<form method="get" action="drugs/">
 {% endif %}
 	<div id="tfheader" class="searchbox">
-        	<input type="text" id="tfq" class="tftextinput2" name="q" size="21" maxlength="120" value="Search for drugs by name"><input type="submit" value=">" class="tfbutton2">
+        	<input type="text" id="tfq" class="tftextinput2" name="q" size="21" maxlength="120" value="Enter drug name to search"><input type="submit" value=">" class="tfbutton2">
 	</div>
 	</form>
 {% if search_error %}
@@ -114,7 +114,7 @@
 	<form method="get" action="gp_search_name/">
 {% endif %}
 	<div id="tfheader2" class="searchbox">
-    		<input type="text" id="tfr" class="tftextinput2" name="q" size="21" maxlength="120" value="Search for GPs by name"><input type="submit" value=">" class="tfbutton2">
+    		<input type="text" id="tfr" class="tftextinput2" name="q" size="21" maxlength="120" value="Enter GP name to search"><input type="submit" value=">" class="tfbutton2">
 	</div>
 	</form>
 {% if search_error %}
@@ -130,7 +130,7 @@
 
 
 
-
+<hr class="separated"></hr>
 
 
 
@@ -165,7 +165,7 @@ This graph shows the average monthly rate antidepressants are prescribed by GPs 
 	<div class="center_limit">
 	<p><a href="http://www.psychologytoday.com/blog/side-effects/201311/the-oecd-warns-antidepressant-overprescribing">In a widely publicized report</a> last November, the Organization for Economic Co-operation and Development compared international antidepressant prescribing rates. The report cited the number of defined daily doses per 1,000 people per day, which is a measure designed to approximate the number of patients regularly using a medication per thousand.
 
-	<p>In the report, the United Kingdom ranked 7th highest in the world at 71 daily doses per thousand people per day. Topping the list was Iceland at 106 daily doses per thousand per day.
+	<p>In the report, the United Kingdom ranked 7th highest among OECD member nations at 71 daily doses per thousand people per day. Topping the list was Iceland at 106 daily doses per thousand per day.
 
 	</div>
 	<div id="minimaps_svg"></div>
@@ -197,7 +197,7 @@ var nir_map_black = "{% static 'rx/image/nir_black.png' %}"
 
 
 <div class="drugs_list">
-<h4>For information on common antidepressants like:</h4>
+<h4>Click a link below to see more information on some of the most widely prescribed antidepressants, such as:</h4>
 <ul>
 	<li>
 		<a href="{% url 'rx.views.drug' 'Venlafaxine' %}">Venlafaxine</a> also prescribed under the brands Vensir, Efexor and Venlalic
@@ -225,7 +225,7 @@ var nir_map_black = "{% static 'rx/image/nir_black.png' %}"
 </div>
 
 
-
+<hr class="separated"></hr>
 
 
 
@@ -257,7 +257,7 @@ The average monthly rate anti-anxiety drugs are prescribed by GPs in Northern Ir
 <p>Benzodiazepines, a class of drugs commonly featured among anti-anxiety medicines, were found responsible for the deaths of 290 people between 2003 and 2012.
 
 <div class="drugs_list">
-<h4>See more data on common anti-anxiety drugs like:</h4>
+<h4>Click a link below to see more information on some of the most widely prescribed anti-anxiety drugs, such as:</h4>
 <ul>
 	<li>
 		<a href="{% url 'rx.views.drug' 'Diazepam' %}">Diazepam</a> also prescribed under the brands Diazemuls and Stesolid
@@ -274,6 +274,7 @@ The average monthly rate anti-anxiety drugs are prescribed by GPs in Northern Ir
 
 </div>
 
+<hr class="separated"></hr>
 
 <h2 style='clear:left;'>Opioid Painkillers and Sedatives</h2>
 
@@ -286,7 +287,7 @@ The average monthly rate anti-anxiety drugs are prescribed by GPs in Northern Ir
 <p>Opioid analgesics are prescribed in slightly greater quantities among GPs in most deprived areas. Sedatives showed no clear trend between prescription rates and deprivation. 
 
 <div class="drugs_list">
-<h4>More on common opioid painkillers and sedatives:</h4>
+<h4>Click below to get more information on some of the most common opioid painkillers and sedatives, such as:</h4>
 <ul>
 	<li>
 		<a href="{% url 'rx.views.drug' 'Tramadol' %}">Tramadol</a> also prescribed under the brands Maxitram, Mabron and Zydol
@@ -320,14 +321,14 @@ window.onload = function(){
 	//Add listener to submit button
 	if(submitbutton.addEventListener){
 		submitbutton.addEventListener("click", function() {
-			if (submitbutton.value == 'Search for drugs by name'){
+			if (submitbutton.value == 'Enter drug name to search'){
 				submitbutton.value = '';
 			}
 		});
 	}
 	if(submitbutton2.addEventListener){
 		submitbutton2.addEventListener("click", function() {
-			if (submitbutton2.value == 'Search for GPs by name'){
+			if (submitbutton2.value == 'Enter GP name to search'){
 				submitbutton2.value = '';
 			}
 		});
