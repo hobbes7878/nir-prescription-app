@@ -78,7 +78,7 @@ def no_ie(redirect):
         def dec(request, *args, **kwargs):
         	#Check MSIE version number, too
             if request.META['HTTP_USER_AGENT'].find('MSIE') > 0:
-	            if int(re.search(r'MSIE (\d+)\.',request.META['HTTP_USER_AGENT']).group(1)) < 9 :
+	            if int(re.search(r'MSIE (\d+)\.',request.META['HTTP_USER_AGENT']).group(1)) < 10 :
 	                return HttpResponseRedirect(redirect)
             return view(request, *args, **kwargs)
         return dec
