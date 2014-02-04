@@ -81,9 +81,9 @@
 				</div>
 				<span class="deprived_mini" >
 				{% if gp_info.qof > 0 %}
-				&nbsp;{{gp_info.qof|percentize}}%<span style="margin-left:-5px;" class="info" id="iprevale">&nbsp;<img src="{% static 'rx/image/i.png' %}" ></span> 
+				&nbsp;{{gp_info.qof|percentize}}%<span style="margin-left:-5px;" class="info" >*</span> 
 				{% else %}
-				NA<span class="info" id="iprevale">&nbsp;<img src="{% static 'rx/image/i.png' %}" ></span> 
+				NA<span class="info" >*</span> 
 				{% endif %}
 				</span>
 			</div>
@@ -137,7 +137,7 @@
 			<td></td>
 			<td><span class="rx_writ">Prescriptions</span></td>
 		
-			<td class="over_hd" colspan="3">Prescription Rate (Defined Daily Doses)</td>
+			<td class="over_hd" colspan="3">Prescription Rate (Defined Daily Doses)<span style="margin-left:-5px;" class="info" >*</span> </td>
 		</tr>
 		<tr class="lower_th">
 			<th class="rx_chem">Drug</th>
@@ -145,8 +145,8 @@
 			<th class="rx_writ">Written</th>
 			
 			<th><span class="table_sub"> Per 1,000 registered patients per month</span></th>
-			<th><span class="table_sub"> Deprivation Group Rank&nbsp;<span class="info" id="idgroup"><img src="{% static 'rx/image/i.png' %}" ></span></span></th>
-			<th><span class="table_sub"> All N. Irish GPs Rank&nbsp;<span class="info" ><img id="iagroup" src="{% static 'rx/image/i.png' %}" ></span></span></th>
+			<th><span class="table_sub"> Deprivation Group Rank</span></th>
+			<th><span class="table_sub"> All N. Irish GPs Rank</span></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -213,49 +213,23 @@
 
 
 
-<div id="deprive_dialog" class="help_dialog" title="Area Deprivation"><p>Area deprivation is assigned according to the employment and income deprivation scores assessed by the Northern Ireland Statistics and Research Agency at the postcode of each GP. <br><br>Groups are determined by quartiles of deprivation scores and range Most-More-Less-Least deprived.</div>
-
-<div id="prevale_dialog" class="help_dialog" title="Depression Prevalence"><p>Depression prevalence is a measure of the percentage of registered patients ever having been coded for depression by a GP. It is assessed as part of the Quality and Outcomes Framework, which is a voluntary incentive scheme included in the General Medical Services Contract. Read more about prevalence statistics <a href="http://www.dhsspsni.gov.uk/statistics_and_research-qof-prevalence">here</a>. QOF data for GPs can be found <a href="http://www.gpcontract.co.uk/">here</a>.</div>
 
 
-<div id="dgroup_dialog" class="help_dialog" title="Deprivation Rank"><p>This GP's prescription rate ranked against all GPs within the same deprivation group that have prescribed this medicine in Northern Ireland.</div>
+<div class="help_dialog"><p>*Depression prevalence is a measure of the percentage of registered patients ever having been coded for depression by a GP. It is assessed as part of the Quality and Outcomes Framework, which is a voluntary incentive scheme included in the General Medical Services Contract. Read more about prevalence statistics <a href="http://www.dhsspsni.gov.uk/statistics_and_research-qof-prevalence">here</a>. QOF data for GPs can be found <a href="http://www.gpcontract.co.uk/">here</a>.</div>
 
-<div id="agroup_dialog" class="help_dialog" title="All GPs Rank"><p>This GP's prescription rate ranked against all other GPs that have prescribed this medicine in Northern Ireland.</div>
+
+<div class="help_dialog">
+	<p>**This GP's prescription rate ranked against all GPs within the same deprivation group that have prescribed this medicine in Northern Ireland.
+	<p>This GP's prescription rate ranked against all other GPs that have prescribed this medicine in Northern Ireland.
+</div>
+
+
 
 
 	
 
 
-<script>
-$(window).load(function () {
 
-	$( "#deprive_dialog" ).dialog({ autoOpen: false, width: 540, maxHeight:500});
-	$( "#ideprive" ).click(function() {
-  		$( "#deprive_dialog" ).dialog( "open" );
-	});
-	
-	$( "#prevale_dialog" ).dialog({ autoOpen: false, width: 540, maxHeight:500});
-	$( "#iprevale" ).click(function() {
-  		$( "#prevale_dialog" ).dialog( "open" );
-	});
-
-	$( "#cost_dialog" ).dialog({ autoOpen: false, width: 340, height:120  });
-	$( "#icost" ).click(function() {
-  		$( "#cost_dialog" ).dialog( "open" );
-	});
-
-	$( "#dgroup_dialog" ).dialog({ autoOpen: false, width: 400, height:140 });
-	$( "#idgroup" ).click(function() {
-  		$( "#dgroup_dialog" ).dialog( "open" );
-	});
-
-	$( "#agroup_dialog" ).dialog({ autoOpen: false, width: 400, height:140 });
-	$( "#iagroup" ).click(function() {
-  		$( "#agroup_dialog" ).dialog( "open" );
-	});
-
-});
-</script>
 
 
 
