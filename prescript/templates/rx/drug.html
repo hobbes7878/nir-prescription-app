@@ -50,6 +50,10 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 {{drug_stat.drug_description|safe|linebreaks}}
 </div>
 
+<hr class="less_separated">
+
+
+
 <script type="text/javascript">
   var NIR_probability={{nir_rx_prob}}
       drug="{{drug_stat.chem_name}}"
@@ -89,7 +93,7 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 </div>
 
 
-<hr class="styled_hr"> 
+<!-- <hr class="styled_hr">  -->
 <h3>100 Doses</h3>
 <p>To get a sense of how Northern Irish prescription rates for {{drug_stat.chem_name}} compare, consider a hypothetical based on the difference in rates between England and Northern Ireland.</p>
 
@@ -101,7 +105,10 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 
 <p>The graph at right models that difference for a random collection of 100 daily doses.
 
-<hr class="styled_hr">
+<!-- <hr class="styled_hr"> -->
+
+<hr class="less_separated">
+
 <h2>Drug Facts</h2>
 
 
@@ -216,7 +223,7 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 
 
 
-
+<hr class="less_separated">
 
 <div class="top_rx">
 
