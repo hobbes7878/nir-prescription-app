@@ -272,8 +272,7 @@ td a:hover{
 
 
 .info{
-	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
-	font-size: 15px;
+
 	color:#800000;
 }
 
@@ -286,7 +285,7 @@ td a:hover{
 	margin:0 auto;
 	max-width: 750px;
 	font-family:'Lora',"Times New Roman", serif;
-	font-size:12px;
+	font-size:10px;
 	color:#888888;
 }
 
