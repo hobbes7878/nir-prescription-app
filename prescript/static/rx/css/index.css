@@ -44,12 +44,17 @@
 
 
 .center_limit{
-	width:750px;
+	width:850px;
 	margin:0 auto;
 	display:block;
 	font-family: 'Lora', "Times New Roman", serif;
   	font-size: 18px;
   	color:#404040;
+}
+
+p.margin{
+	margin-left:50px;
+	margin-right:50px;
 }
 
 .drugs_list{

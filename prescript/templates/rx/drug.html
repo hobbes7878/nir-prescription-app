@@ -95,6 +95,10 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 
 <!-- <hr class="styled_hr">  -->
 <h3>100 Doses</h3>
+{% if drug_stat.chem_action == 'Antidepressant' %}
+<p>Disease prevalence statistics, reported by GPs as part of the <a target="_blank" href="http://www.dhsspsni.gov.uk/statistics_and_research-qof-prevalence">Quality and Outcomes Framework</a>, indicate English GPs diagnose a greater percentage of their patients as having suffered from depression and yet prescribe fewer antidepressant doses per registered patient.
+{% endif %}
+
 <p>To get a sense of how Northern Irish prescription rates for {{drug_stat.chem_name}} compare, consider a hypothetical based on the difference in rates between England and Northern Ireland.</p>
 
 <div id="bigint">
@@ -102,6 +106,8 @@ var map_url = "{% static 'rx/image/map-uk.png' %}",
 </div>
 
 <p style="font-size:19px;">If a single GP had an equal number of registered patients from Northern Ireland and England, <span class="smallint">{{nir_rx_prob|percentize}}</span> out of every 100 daily doses of {{drug_stat.chem_name}} would be prescribed to Northern Irish patients.</p>
+
+
 
 <p>The graph at right models that difference for a random collection of 100 daily doses.
 
