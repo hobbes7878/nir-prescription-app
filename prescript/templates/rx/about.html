@@ -13,13 +13,36 @@
 <div id="body_main">
 <img id="drug_title" src="{% static 'rx/image/pill box1.png' %}">
 <h2>About the Data</h2>
+<p>GP prescribing data are aggregated as a monthly total of the number of prescriptions and amounts of each drug prescribed by each GP and filled by a patient during the reporting period.
 
-<p>The data is good.
-<p>The data is good.
-<p>The data is good.
-<p>The data is good.
-<p>The data is good.
-<p>The data is good.
+<p><a href="http://www.hscbusiness.hscni.net/services/2471.htm" target="_blank">Northern Irish prescribing data</a> are published by HSC Business Services Organization. The data are released quarterly, beginning with prescriptions filled April 2013. 
+
+<p><a href="http://www.hscic.gov.uk/gpprescribingdata" target="_blank">English prescribing data</a> are published by the Health & Social Care Information Centre.
+
+<p><a href="http://www.wales.nhs.uk/sites3/page.cfm?orgid=428&pid=65866" target="_blank">Welsch prescribing data</a> are published by Primary Care Services, part of NHS Wales Shared Services Partnership.
+
+<p>Scotland does not release prescribing data at the level of individual GPs. Without these data, there is no way to make comparisons with other UK countries that do. Scotland was excluded from the analysis.
+
+<p>The most recent and complete data for Northern Ireland, England and Wales are for the period beginning April 2013 and ending September last year. All data, except where explicitly stated, pertain to that period.
+
+<p>The World Health Organization's (WHO) <a href="http://www.whocc.no/ddd/definition_and_general_considera/" target="_blank">Defined Daily Dose</a> system was used to make drugs comparable across different strengths and dosages.
+
+<p>WHO's daily doses are calculated for drugs according to the <a href="http://www.whocc.no/atc/structure_and_principles/" target="_blank">Anatomical Therapeutic Chemical</a> (ATC) classification system, which groups drugs according to their active chemical, the organ or system in the body on which they act and their therapeutic, pharmacological and chemical properties.
+
+<p>Drugs in GP prescribing data, however, are specified by <a href="http://en.wikipedia.org/wiki/British_National_Formulary" target="_blank"> British National Formulary</a> (BNF) code.
+
+<p>The Detail mapped ATC to BNF codes in order to apply correct daily doses to drugs in the prescribing data. A full record of that mapping is available <a href="{% static 'rx/BNF ATC.html' %}">here</a>. 
+
+<p>Drugs were selected for inclusion in the analysis by their ATC classification, corresponding to general pharmacological categories of antidepressants, anti-anxiety drugs, opioid painkillers and certain sedatives.
+
+<p>There were 456 individual medications selected for study, comprised of 54 different active chemicals.
+
+<p>In total, data were analysed for 352 Northern Irish GPs; 9,563 English GPs and 541 Welsch GPs.
+
+<p>During the study period (April - September 2013), there were 400 million prescriptions recorded in the data, UK-wide, with over 23,000 medications represented in that total.
+
+<p>Filtering the data for the specific drugs in the study, there were over 36 million prescriptions filled UK-wide. Over 3.5 million of those were prescribed by Northern Irish GPs.
+
 
 <h2>Notes to Statistics</h2>
 <table style="border-collapse:collapse; margin:20px auto;">
@@ -35,7 +58,7 @@
 
 <h3>GP Deprivation Groups</h3>
 
-<p>One major goal of the analysis was to determine what effect economic circumstances had on antidepressant prescription rates. To measure the relationship, first some gauge of economics had to be assessed at the level of individual GPs. Official statisical indexes of deprivation at the smallest geographic census level were used.
+<p>One major goal of the analysis was to determine what effect economic circumstances had on antidepressant prescription rates. To measure the relationship, first some gauge of economics had to be assessed at the level of individual GPs. Official statistical indexes of deprivation at the smallest geographic census level were used.
 
 
 <img id="deprive_chart" src="{% static 'rx/image/GP_Deprivation_Distribution.png' %}">
@@ -52,7 +75,7 @@
 <h3>Deprivation Influence</h3>
 
 <img id="deprive_ddd_charts" src="{% static 'rx/image/Deprivation_DDD_Charts.png' %}">
-<p>The Pearson correlation coefficients for GP deprivation scores and daily doses prescribed per head were .44 for Northern Ireland; .31, Wales; .22, England, all of which were significant at p < .001 .
+<p>The Pearson correlation coefficients for GP deprivation scores and daily doses prescribed per registered patient were .44 for Northern Ireland; .31, Wales; .22, England, all of which were significant at p < .001 .
 
 <p>A few influential outliers were identified via Cook’s Distance for both Northern Ireland and England. Excluding four outlying data points did not significantly improve the correlation coefficient for England. Northern Ireland’s coefficient improved to .48 after excluding two influential outliers.
 

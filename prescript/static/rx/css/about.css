@@ -14,6 +14,20 @@
 	font-size: 20px;
 }
 
+#body_main h2{
+	margin:20px auto;
+	padding:0px;
+}
+
+
+a{
+	text-decoration: none;
+	color:darkblue;
+}
+a:hover{
+	text-decoration: underline;
+}
+
 
 #deprive_chart{
 	display:block;
@@ -28,6 +42,7 @@
 #warn_cell_img{
 	border:10px solid #800000;
 	padding:10px;
+
 }
 #warn_cell{
 	border:10px solid #800000;
