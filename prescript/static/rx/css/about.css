@@ -1,0 +1,44 @@
+
+
+
+#drug_title{
+	float:left;
+	display:block;
+	height:350px;
+}
+
+#body_main p{
+	margin:20px 50px;
+	font-family: 'Lora','Times New Roman',serif;
+	color:#404040;
+	font-size: 20px;
+}
+
+
+#deprive_chart{
+	display:block;
+	margin:40px auto 10px;
+}
+
+#deprive_ddd_charts{
+	display:block;
+	float:left;
+	margin:20px;
+}
+#warn_cell_img{
+	border:10px solid #800000;
+	padding:10px;
+}
+#warn_cell{
+	border:10px solid #800000;
+	background-color: #800000;
+	color:white;
+	padding:0px 10px;
+	font-family: monospace;
+	font-size: 14px
+}
+#warn_cell_warning{
+	font-size:26px;
+	font-weight: bold;
+	vertical-align: top;
+}

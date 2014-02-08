@@ -230,3 +230,6 @@ def gp(request,gp_code):
 
 def redirect(request):
 	return render_to_response('rx/redirect.html',{})	
+
+def about(request):
+	return render_to_response('rx/about.html',{'links':drug_links(),})

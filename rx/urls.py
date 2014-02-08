@@ -5,6 +5,7 @@ from rx import views
 urlpatterns = patterns('rx.views',
     url(r'^$', views.index),
     url(r'^redirect/$', views.redirect),
+    url(r'^about/$', views.about),
     url(r'^drugs/$', views.drug_search),
     url(r'^drugs/(?P<chem>.+)/$', views.drug),
     url(r'^gp_search_name/$', views.gp_search_name),
