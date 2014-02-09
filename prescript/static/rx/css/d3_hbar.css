@@ -128,16 +128,6 @@
 }
 
 
-.A_NIR{
-  fill:steelblue;
-}
-.B_ENG{
-  fill:#800000;
-}
-.C_WAL{
-  fill:orange;
-}
-
 .x2.axis path {
   display: none;
 }
@@ -174,6 +164,81 @@
   fill:rgba(178,34,34,.7);
 
 }
+
+
+
+
+/* Chart3 */
+.y3.axis text {
+  font: 14px serif;
+}
+
+.y3.axis path,
+.y3.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x3.axis text{
+  font-size: 0px;
+}
+
+
+
+.bar3 {
+  fill-opacity: .9;
+  stroke:black;
+  stroke-width:1px;
+
+}
+.bar3:hover{
+  stroke:red;
+  stroke-width:2px;
+}
+.pointer3{
+  fill:red;
+  stroke:#800000;
+  stroke-width:1px;
+}
+
+
+.x3.axis path {
+  display: none;
+}
+
+.graph_back3{
+  fill:rgba(84,84,84,0.25);
+}
+
+#drug_drop3{
+  font-family: 'Times New Roman',serif;
+  font-size: 24px;
+  color:black;
+  width:200px;
+  background-color: white;
+  margin-left: 10px;
+  cursor:pointer;
+  max-height: 100px;
+  overflow-y:scroll;
+}
+.key3{
+  font-family: arial, sans-serif;
+  font-size: 12px;
+  color:black;
+  font-style: italic;
+}
+
+.range_guide_back3{
+  fill:#999999;
+  fill-opacity:.5;
+}
+.range_guide3{
+  fill:rgba(178,34,34,.7);
+
+}
+
+
 
 .chart_button_left {
   background-color:#ffffff;

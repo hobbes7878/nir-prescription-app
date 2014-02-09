@@ -90,8 +90,6 @@ p.margin{
 }
 
 
-
-
 .vizblocklock2{
 	max-width: 500px;
 	clear:left;
@@ -104,7 +102,16 @@ p.margin{
   	font-size: 16px;
   	color:#404040;
 }
-
+.vizblocklock3{
+	max-width: 500px;
+	margin-top: 20px;
+	float:left;
+	padding: 20px;
+	display:block;
+	font-family: 'Lora', "Times New Roman", serif;
+  	font-size: 16px;
+  	color:#404040;
+}
 
 #instruct_table{
 	width:800px;

@@ -39,6 +39,19 @@ a:hover{
 	float:left;
 	margin:20px;
 }
+
+#qof_ddd_charts{
+	display:block;
+	float:right;
+	margin:20px;
+}
+
+#qof_dep_charts{
+	display:block;
+	float:left;
+	margin:20px;
+}
+
 #warn_cell_img{
 	border:10px solid #800000;
 	padding:10px;
