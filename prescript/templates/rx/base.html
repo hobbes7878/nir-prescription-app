@@ -86,6 +86,13 @@
 		</li>
 	   <li class="title_li"><a href="{% url 'rx.views.index' %}" class="top_line"><img class="title_white" src="{% static 'rx/image/title_white.png' %}"></a></li>
 	   
+	   <li onclick="return true" ><a class="top_line"><span>GPs</span></a>
+			<ul>
+		         <li><a href="{% url 'rx.views.gp_search_area' %}"><span>Search by Postcode</span></a></li>
+		         <li><a href="{% url 'rx.views.gp_search_name' %}"><span>Search by Name</span></a></li>
+		    </ul>
+	   </li>
+
 	   <li  class='has-sub'><a class="top_line"><span onclick="return true">Drugs</span></a>
 	      <ul class="scroll">
 			
@@ -128,12 +135,7 @@
 			
 	      </ul>
 	   </li>
-	   <li onclick="return true" ><a class="top_line"><span>GPs</span></a>
-			<ul>
-		         <li><a href="{% url 'rx.views.gp_search_area' %}"><span>Search by Postcode</span></a></li>
-		         <li><a href="{% url 'rx.views.gp_search_name' %}"><span>Search by Name</span></a></li>
-		    </ul>
-	   </li>
+	   
 	   <li><a href="{% url 'rx.views.about' %}" class="top_line"><span>About</span></a>
 	   </li>
 	   <li><a href='.' class="top_line"><span><img style="height:20px; width:30px; padding:10px; display:inline;" src="{% static 'rx/image/share.png' %}"></span></a>

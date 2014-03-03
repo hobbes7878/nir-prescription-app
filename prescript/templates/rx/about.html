@@ -46,7 +46,7 @@
 
 <h2>Notes to Statistics</h2>
 
-<p>One major goal of the analysis was to determine how strong were the relationships between local economic circumstance, the prevalence of clinical depression and antidepressant prescription rate. 
+<p>One major goal of the analysis was to determine how strong were the relationships among local economic circumstance, the prevalence of clinical depression and antidepressant prescription rate. 
 
 
 
@@ -69,8 +69,13 @@
 
 
 <img id="deprive_chart" src="{% static 'rx/image/GP_Deprivation_Distribution.png' %}">
+<div id="dist_viz"></div>
+<script type="text/javascript" src="{% static 'rx/js/gp_dist.js' %}"></script>
 
-<p>The above probability density chart shows what ratio of GPs are in each of four deprivation groups in Northern Ireland, England and Wales. The deprivation groups range from least deprived to most deprived and were calculated by taking the <a href="http://en.wikipedia.org/wiki/Standard_score" target="_blank">Z-score</a> — a statistical measure that allows for comparison of the scores between countries — for each GP’s local deprivation level. 
+
+<p>The above probability density chart shows the distribution of GPs in each of four deprivation groups in Northern Ireland, England and Wales. The deprivation groups range from least deprived to most deprived and were calculated by taking the <a href="http://en.wikipedia.org/wiki/Standard_score" target="_blank">Z-score</a> — a statistical measure that allows for comparison of the scores between countries — for each GP’s local deprivation level. 
+
+ 
 
 <p>In Northern Ireland and Wales, The Detail assigned deprivation scores to each GP based on the scores for income and employment levels in the area of each GP’s postcode. In England, GPs are assessed deprivation scores and these were used.
 

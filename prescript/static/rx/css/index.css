@@ -58,18 +58,31 @@ p.margin{
 }
 
 .drugs_list{
-	width:700px;
+	width:390px;
 	margin:0px auto 50px;
+	padding:10px;
 	display:block;
 	font-family: 'Lora', "Times New Roman", serif;
   	font-size: 16px;
   	color:#404040;
+  	border: 2px solid black;
+  	border-radius: 20px;
+}
+.drugs_list h6{
+	color:black;
+	font-style:italic;
+	font-family: sans-serif;
+	text-align: center;
 }
 .drugs_list ul{
 	list-style-position:inside;
+	list-style-type: none;
+}
+.drugs_list li{
+	margin-left:20px;
 }
 .drugs_list li a{
-	font-size: 26px;
+	font-size: 20px;
 	color:#800000;
 	text-decoration: none;
 	font-weight: 500;
@@ -78,9 +91,21 @@ p.margin{
 	font-weight: 700;
 }
 
+.vizblock h2{
+	padding-bottom: 0px;
+}
+
+#text_main .vizblock p{
+	font-family: 'Lora', "Times New Roman", serif;
+  	font-size: 15px;
+  	color:#404040;
+  	padding-bottom: 20px;
+  	text-align: center;
+}
+
 .vizblocklock1{
 	max-width: 500px;
-	margin-top: 20px;
+	margin: 5px 10px;
 	float:left;
 	padding: 20px;
 	display:block;
@@ -88,6 +113,8 @@ p.margin{
   	font-size: 16px;
   	color:#404040;
 }
+
+
 
 
 .vizblocklock2{
@@ -170,7 +197,85 @@ blockquote:before {
   margin-right: 0.25em;
   vertical-align: -0.4em;
 }
-blockquote p {
+#text_main blockquote p {
   display: inline;
-  font-size: 14px;
+  font-size: 24px;
+  color:black;
+}
+
+
+
+
+
+.chapt {
+
+	position:fixed;
+	top:40px;
+
+
+	background-color:white;
+
+
+	-webkit-border-bottom-right-radius:13px;
+	-moz-border-radius-bottomright:13px;
+	border-bottom-right-radius:13px;
+	
+	-webkit-border-bottom-left-radius:13px;
+	-moz-border-radius-bottomleft:13px;
+	border-bottom-left-radius:13px;
+	text-indent:0px;
+	border:1px solid #000000;
+	display:inline-block;
+	color:#000000;
+	font-family:monospace;
+	font-size:18px;
+	font-style:normal;
+	height:28px;
+	line-height:28px;
+	width:106px;
+	text-decoration:none;
+	text-align:center;
+}
+.chapt:hover {
+	background:#333333;
+	color:white;
+}
+
+#TOC{
+	background-color: rgba(0,0,0,.8);
+	border-radius:20px;
+	padding:40px;
+	width:400px;
+	height:420px;
+	display:none;
+	position:fixed;
+	top: 50%;
+  	left: 50%;
+  	margin-top: -240px;
+  	margin-left: -240px;
+  	color:white;
+}
+#TOC h2{
+	color:white;
+}
+#TOC ul{
+	padding-left: 120px;
+}
+
+#TOC li{
+	height:28px;
+
+}
+#TOC li a{
+	font-family: sans-serif;
+	font-size: 20px;
+	text-decoration: none;
+	color:white;
+}
+
+#chapt_X{
+	color:white;
+	font-size: 40px;
+	float: right;
+	text-decoration: none;
 }
