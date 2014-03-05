@@ -297,6 +297,8 @@ td a:hover{
 	font-size: 14px;
 	color:#555555;
 	font-style: italic;
+	text-align:center; 
+    vertical-align:middle;
 }
 
 #gpCompare td{
@@ -304,4 +306,6 @@ td a:hover{
 	font-size: 70px;
 	font-weight: bold;
 	color:white;
+	border-radius:14px;
+	padding: 5px 15px;
 }
