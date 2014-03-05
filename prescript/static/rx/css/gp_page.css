@@ -292,19 +292,22 @@ td a:hover{
 	color:#555555;
 }
 
+
+/* COMPARE TABLE */
+
 #gpCompare{
 	margin:0 auto 30px;
-	border-spacing: 20px 0px;
+	border-spacing: 10px 0px;
 }
 
-#gpCompare th{
+#gpCompare .gpC_header{
 	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
 	font-size: 18px;
 	color:#555555;
 	font-style: italic;
 	text-align:center; 
     vertical-align:middle;
-    width:140px;
+    width:180px;
 
 }
 
