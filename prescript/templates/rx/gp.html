@@ -119,10 +119,13 @@
 <br>
 {% if gp_compare != "NA" %}
 
-	<h4 class="h_break">How this GP compares</h4>
+	
 
 	<table id="gpCompare">
 		<tbody>
+			<tr>
+				<td class="over_hd" colspan="4">How this GP compares</td>
+			</tr>
 			<tr>
 				<td class="gpC_header">Antidepressants</td>
 				<td class="gpC_header">Anxiolytics</td>
@@ -145,7 +148,7 @@
 	{% elif gp_compare.anti_comp == "HIGH" %}
 	<style>.anti_cell{background-color:#EEAD0E;}</style>
 	{% else %}
-	<style>.anti_cell{background-color:#86C67C;}</style>
+	<style>.anti_cell{background-color:#4A7023;}</style>
 	{% endif %}
 
 	{% if gp_compare.anxi_comp == "OVER" %}
@@ -153,7 +156,7 @@
 	{% elif gp_compare.anxi_comp == "HIGH" %}
 	<style>.anxi_cell{background-color:#EEAD0E;}</style>
 	{% else %}
-	<style>.anxi_cell{background-color:#86C67C;}</style>
+	<style>.anxi_cell{background-color:#4A7023;}</style>
 	{% endif %}
 
 	{% if gp_compare.opio_comp == "OVER" %}
@@ -161,7 +164,7 @@
 	{% elif gp_compare.opio_comp == "HIGH" %}
 	<style>.opio_cell{background-color:#EEAD0E;}</style>
 	{% else %}
-	<style>.opio_cell{background-color:#86C67C;}</style>
+	<style>.opio_cell{background-color:#4A7023;}</style>
 	{% endif %}
 	
 	{% if gp_compare.hypn_comp == "OVER" %}
@@ -169,7 +172,7 @@
 	{% elif gp_compare.hypn_comp == "HIGH" %}
 	<style>.hypn_cell{background-color:#EEAD0E;}</style>
 	{% else %}
-	<style>.hypn_cell{background-color:#86C67C;}</style>
+	<style>.hypn_cell{background-color:#4A7023;}</style>
 	{% endif %}
 
 	
