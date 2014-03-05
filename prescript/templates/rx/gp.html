@@ -115,12 +115,11 @@
 	</div>
 
 </div>
-<br>
-<h4 class="h_break">Top Prescriptions: Antidepressant, Anti-anxiety, Analgesic, Hypnotic</h4>
+
 <br>
 {% if gp_compare != "NA" %}
 
-	<h4 class="h_break">GP Comparison</h4>
+	<h4 class="h_break">How this GP compares</h4>
 
 	<table id="gpCompare">
 		<thead>
@@ -175,12 +174,13 @@
 	<style>.hypn_cell{background-color:#86C67C;}</style>
 	{% endif %}
 
-
+	
+	<!-- Superscript Ordinals -->
 	<script type="text/javascript">
 	$('.superord').each(function() {
 	    $(this).html(
 	        $(this).html().substr(0, $(this).html().length-2)
-	          + "<span style='font-size:30px; vertical-align:top;'>"
+	          + "<span style='font-size:20px; vertical-align:top; font-weight: normal;'>"
 	          + $(this).html().substr(-2)
 	          + "</span>");
 	});

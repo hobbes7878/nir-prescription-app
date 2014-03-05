@@ -292,20 +292,29 @@ td a:hover{
 	color:#555555;
 }
 
+#gpCompare{
+	margin:0 auto 30px;
+	border-spacing: 20px 0px;
+}
+
 #gpCompare th{
 	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
-	font-size: 14px;
+	font-size: 18px;
 	color:#555555;
 	font-style: italic;
 	text-align:center; 
     vertical-align:middle;
+    width:140px;
+
 }
 
 #gpCompare td{
 	font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
-	font-size: 70px;
+	font-size: 80px;
 	font-weight: bold;
 	color:white;
 	border-radius:14px;
+	border:7px solid white;
 	padding: 5px 15px;
+	text-align:center;
 }
