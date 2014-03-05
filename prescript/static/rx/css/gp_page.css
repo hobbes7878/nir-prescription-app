@@ -288,7 +288,7 @@ td a:hover{
 }
 #help_dialog p{
 	font-family:'Lora',"Times New Roman", serif;
-	font-size:14px;
+	font-size:16px;
 	color:#555555;
 }
 
@@ -296,7 +296,7 @@ td a:hover{
 /* COMPARE TABLE */
 
 #gpCompare{
-	margin:30px auto 30px;
+	margin:50px auto 30px;
 	border-spacing: 20px 0px;
 	width:850px;
 }
@@ -310,15 +310,19 @@ td a:hover{
     vertical-align:middle;
     width:160px;
     border:0px;
+    padding:0px;
+    line-height: 12px;
 }
 
 #gpCompare .gpC_over_hd{
 	text-align: center;
-	background: #42526C;
+	background: #999999;
+	font-weight: normal;
 	color:white;
 	font-size: 22px;
 	font-style:italic;
 	border-radius:0px;
+	padding:0px;
 }
 
 #gpCompare td{
