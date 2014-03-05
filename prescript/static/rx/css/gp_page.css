@@ -296,8 +296,9 @@ td a:hover{
 /* COMPARE TABLE */
 
 #gpCompare{
-	margin:0 auto 30px;
-	border-spacing: 10px 0px;
+	margin:30px auto 30px;
+	border-spacing: 20px 0px;
+	width:850px;
 }
 
 #gpCompare .gpC_header{
@@ -308,15 +309,16 @@ td a:hover{
 	text-align:center; 
     vertical-align:middle;
     width:160px;
-
+    border:0px;
 }
 
 #gpCompare .gpC_over_hd{
 	text-align: center;
 	background: #42526C;
 	color:white;
-	font-size: 16px;
-	font-family: Monaco, Consolas, "Lucida Console", monospace;
+	font-size: 22px;
+	font-style:italic;
+	border-radius:0px;
 }
 
 #gpCompare td{
