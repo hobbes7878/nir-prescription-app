@@ -299,6 +299,8 @@ td a:hover{
 	margin:50px auto 30px;
 	border-spacing: 20px 0px;
 	width:850px;
+	clear:left;
+	display:block;
 }
 
 #gpCompare .gpC_header{
