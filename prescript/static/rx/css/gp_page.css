@@ -292,3 +292,16 @@ td a:hover{
 	color:#555555;
 }
 
+#gpCompare th{
+	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+	font-size: 14px;
+	color:#555555;
+	font-style: italic;
+}
+
+#gpCompare td{
+	font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+	font-size: 70px;
+	font-weight: bold;
+	color:white;
+}

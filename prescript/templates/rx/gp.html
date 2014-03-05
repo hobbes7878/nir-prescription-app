@@ -115,8 +115,72 @@
 	</div>
 
 </div>
-
 <br>
+<h4 class="h_break">Top Prescriptions: Antidepressant, Anti-anxiety, Analgesic, Hypnotic</h4>
+<br>
+{% if gp_compare != "NA" %}
+
+	<h4 class="h_break">GP Comparison</h4>
+
+	<table id="gpCompare">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Antidepressants</th>
+				<th>Anxiolytics</th>
+				<th>Opioid Analgesics</th>
+				<th>Hypnotics</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Nearest 10</td>
+				<td class="anti_cell">{{gp_compare.anti_rank|ordinal}}</td>
+				<td class="anxi_cell">{{gp_compare.anxi_rank|ordinal}}</td>
+				<td class="opio_cell">{{gp_compare.opio_rank|ordinal}}</td>
+				<td class="hypn_cell">{{gp_compare.hypn_rank|ordinal}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+	<!-- COMP TABLE STYLES -->
+	{% if gp_compare.anti_comp == "OVER" %}
+	<style>.anti_cell{background-color:#800000;}</style>
+	{% elif gp_compare.anti_comp == "HIGH" %}
+	<style>.anti_cell{background-color:#FBEC5D;}</style>
+	{% else %}
+	<style>.anti_cell{background-color:#86C67C;}</style>
+	{% endif %}
+
+	{% if gp_compare.anxi_comp == "OVER" %}
+	<style>.anxi_cell{background-color:#800000;}</style>
+	{% elif gp_compare.anxi_comp == "HIGH" %}
+	<style>.anxi_cell{background-color:#FBEC5D;}</style>
+	{% else %}
+	<style>.anxi_cell{background-color:#86C67C;}</style>
+	{% endif %}
+
+	{% if gp_compare.opio_comp == "OVER" %}
+	<style>.opio_cell{background-color:#800000;}</style>
+	{% elif gp_compare.opio_comp == "HIGH" %}
+	<style>.opio_cell{background-color:#FBEC5D;}</style>
+	{% else %}
+	<style>.opio_cell{background-color:#86C67C;}</style>
+	{% endif %}
+	
+	{% if gp_compare.hypn_comp == "OVER" %}
+	<style>.hypn_cell{background-color:#800000;}</style>
+	{% elif gp_compare.hypn_comp == "HIGH" %}
+	<style>.hypn_cell{background-color:#FBEC5D;}</style>
+	{% else %}
+	<style>.hypn_cell{background-color:#86C67C;}</style>
+	{% endif %}
+
+{% endif %}
+
+
+
 <h4 class="h_break">Top Prescriptions: Antidepressant, Anti-anxiety, Analgesic, Hypnotic</h4>
 <div id="table_container">
 <div id="table_div">

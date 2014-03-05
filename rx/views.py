@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from rx.models import Drug_Detail, PostGEO, TopDrugGPs, Drug_Stat, Fatal_Stat
+from rx.models import Drug_Detail, PostGEO, TopDrugGPs, Drug_Stat, Fatal_Stat, GPCompare
 import operator
 import re
 import string
@@ -193,6 +193,12 @@ def gp_search_area(request):
 @no_ie('/prescript/redirect/')
 def gp(request,gp_code):
 	top_drugs = TopDrugGPs.objects.filter(code=gp_code).order_by('code','drug_gp_rank')
+	
+	try:
+		gp_compare = GPCompare.objects.filter(code=gp_code)[0]
+	except:
+		gp_compare = "NA"
+
 	for td in top_drugs:
 		#################################
 		#Surely, there's a better way...
@@ -224,7 +230,7 @@ def gp(request,gp_code):
 	all_gps = len(TopDrugGPs.objects.distinct('code'))
 	top_drugs_sorted = top_drugs #sorted(top_drugs, key=operator.attrgetter('deprive_rank'))
 
-	return render_to_response('rx/gp.html', {'share_url':share_url(request), 'links':drug_links(), 'gp_code':gp_code, 'top_drugs':top_drugs_sorted, 'gp_info':gp_info, 'all_gps':all_gps })
+	return render_to_response('rx/gp.html', {'share_url':share_url(request), 'links':drug_links(), 'gp_code':gp_code, 'top_drugs':top_drugs_sorted, 'gp_info':gp_info, 'all_gps':all_gps,'gp_compare':gp_compare, })
 
 
 

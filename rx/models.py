@@ -61,7 +61,19 @@ class TopDrugGPs(models.Model):
 	def __unicode__(self):
 		return self.code + "-" + self.name + "-" + self.chem_name
 
-
+#Geographic rate comparisons calculated via separate script
+class GPCompare(models.Model):
+	code = models.CharField(max_length=10)
+	anti_comp = models.CharField(max_length=10)
+	anxi_comp = models.CharField(max_length=10)
+	opio_comp = models.CharField(max_length=10)
+	hypn_comp = models.CharField(max_length=10)
+	anti_rank = models.CharField(max_length=10)
+	anxi_rank = models.CharField(max_length=10)
+	opio_rank = models.CharField(max_length=10)
+	hypn_rank = models.CharField(max_length=10)
+	def __unicode__(self):
+		return self.code
 
 
 class Drug_Stat(models.Model):
