@@ -311,6 +311,14 @@ td a:hover{
 
 }
 
+#gpCompare .gpC_over_hd{
+	text-align: center;
+	background: #42526C;
+	color:white;
+	font-size: 16px;
+	font-family: Monaco, Consolas, "Lucida Console", monospace;
+}
+
 #gpCompare td{
 	font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
 	font-size: 80px;
