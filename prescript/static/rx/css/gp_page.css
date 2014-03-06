@@ -295,7 +295,7 @@ td a:hover{
 
 /* COMPARE TABLE */
 
-table #gpCompare{
+#gpCompare{
 	margin:0px auto 30px;
 	border-spacing: 20px 0px;
 	width:850px;
@@ -345,8 +345,15 @@ table #gpCompare{
 	color:#555555;
 }
 
-
-.gpC_over_hd{
+#heading2{
+	margin:0px auto 30px;
+	border-spacing: 20px 0px;
+	width:850px;
+	clear:left;
+	display:block;
+	border-color:white;
+}
+#heading2 .gpC_over_hd{
 	text-align: center;
 	background: #999999;
 	font-weight: normal;
