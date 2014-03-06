@@ -295,12 +295,13 @@ td a:hover{
 
 /* COMPARE TABLE */
 
-#gpCompare{
-	margin:50px auto 30px;
+table #gpCompare{
+	margin:0px auto 30px;
 	border-spacing: 20px 0px;
 	width:850px;
 	clear:left;
 	display:block;
+	border-color:white;
 }
 
 #gpCompare .gpC_header{
@@ -336,4 +337,22 @@ td a:hover{
 	border:7px solid white;
 	padding: 5px 15px;
 	text-align:center;
+}
+
+#gpCompare #comp_key_td p{
+	font-family:'Lora',"Times New Roman", serif;
+	font-size:16px;
+	color:#555555;
+}
+
+
+.gpC_over_hd{
+	text-align: center;
+	background: #999999;
+	font-weight: normal;
+	color:white;
+	font-size: 22px;
+	font-style:italic;
+	border-radius:0px;
+	padding:0px;
 }

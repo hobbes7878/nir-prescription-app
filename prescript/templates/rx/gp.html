@@ -115,9 +115,9 @@
 	</div>
 
 </div>
-<br><br><br><br>
+<br><br><br><br><br><br><br><br>
 <div id="help_dialog">
-	<p>Depression prevalence is a measure of the percentage of registered patients ever having been coded for depression by a GP. It is assessed as part of the Quality and Outcomes Framework, which is a voluntary incentive program included in the General Medical Services Contract. Read more about prevalence statistics <a href="http://www.dhsspsni.gov.uk/statistics_and_research-qof-prevalence">here</a>. QOF data for GPs can be found <a href="http://www.gpcontract.co.uk/">here</a>.
+	<p>*Depression prevalence is a measure of the percentage of registered patients ever having been coded for depression by a GP. It is assessed as part of the Quality and Outcomes Framework, which is a voluntary incentive program included in the General Medical Services Contract. Read more about prevalence statistics <a href="http://www.dhsspsni.gov.uk/statistics_and_research-qof-prevalence">here</a>. QOF data for GPs can be found <a href="http://www.gpcontract.co.uk/">here</a>.
 
 </div>
 
@@ -143,10 +143,12 @@
 				<td class="hypn_cell superord">{{gp_compare.hypn_rank|ordinal}}</td>
 			</tr>
 			<tr>
-				<td colspan="4">
-					<p>The Medicines Management Advisors use statistical reports that compare GPs to determine those that may be over-prescribing. Sometimes there are legitimate reasons why a GP may prescribe a class of drug more regularly than others. Sometimes there are not.
+				<td id="comp_key_td" colspan="4">
+					<p>The Medicines Management Advisors (MMA) use statistical reports that compare GPs to determine those that may be over-prescribing. Sometimes there are legitimate reasons why a GP may prescribe a class of drug more regularly than others. Sometimes there are not.
 
-					<p>The number in each box above ranks this GP's per capita prescription rate within a group of the 10 nearest GPs. The color of the box shows whether this GP's rate is statistically above average within their <a href="http://www.hscboard.hscni.net/lcg/" target="_blank">Local Commissioning Group</a> area.
+					<p>The number in each box above ranks this GP's per capita prescription rate within a group of 10 GPs, including the nine nearest to it. 
+					<p>The color of each box shows whether this GP's rate is statistically above average within their <a href="http://www.hscboard.hscni.net/lcg/" target="_blank">Local Commissioning Group</a> area. GPs with a "High" rate are two <a href="http://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule" target="_blank">standard deviations</a> above the average, which is the standard for review by the MMA.
+					<br><br>
 
 				<svg
 				   width="300"
