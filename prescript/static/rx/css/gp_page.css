@@ -343,6 +343,9 @@ td a:hover{
 	font-family:'Lora',"Times New Roman", serif;
 	font-size:16px;
 	color:#555555;
+	text-align: left;
+	max-width:700px;
+	margin:0 auto;
 }
 
 #heading2{
