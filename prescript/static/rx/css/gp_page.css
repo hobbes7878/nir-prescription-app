@@ -310,7 +310,7 @@ td a:hover{
 #gpCompare{
 	margin:-15px auto 0px;
 	border-spacing: 20px 0px;
-	width:850px;
+	width:784px;
 	clear:left;
 	display:block;
 	border-color:white;
@@ -361,7 +361,7 @@ td a:hover{
 }
 
 #heading2{
-	margin:0px auto 8px;
+	margin:0px auto 20px;
 	border-spacing: 20px 0px;
 	width:760px;
 	clear:left;
