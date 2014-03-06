@@ -178,7 +178,7 @@ thead.zero td{
 
 .over_hd{
 	text-align: center;
-	background: #42526C;
+	background: #999999;
 	color:white;
 	font-size: 16px;
 }
@@ -292,11 +292,23 @@ td a:hover{
 	color:#555555;
 }
 
+#help_dialog2{
+	display:block;
+	margin:-25px auto 0px;
+	max-width: 750px;
+	
+}
+#help_dialog2 p{
+	font-family:'Lora',"Times New Roman", serif;
+	font-size:15px;
+	color:#555555;
+}
+
 
 /* COMPARE TABLE */
 
 #gpCompare{
-	margin:-15px auto 30px;
+	margin:-15px auto 0px;
 	border-spacing: 20px 0px;
 	width:850px;
 	clear:left;
@@ -358,7 +370,7 @@ td a:hover{
 }
 #heading2 .gpC_over_hd{
 	text-align: center;
-	background: #999999;
+	background: #42526C;
 	font-weight: normal;
 	color:white;
 	font-size: 22px;
@@ -369,3 +381,6 @@ td a:hover{
 	width:760px;
 }
 
+#keySVG{
+	margin-left:204px;
+}
